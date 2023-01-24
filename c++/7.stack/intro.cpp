@@ -2,12 +2,12 @@
 using namespace std;
 #define n 100
 class Stack{
-    int* arr;
+    int arr[n];
     int top;
 
     public:
     Stack(){
-        arr = new int[n];
+        
         top = -1;
     }
     void push(int x)
@@ -52,9 +52,8 @@ int main()
     st.push(2);
     st.pop();
     st.push(3);
-    st.pop();
-    st.pop();
-    st.pop();
+    
+
 
     cout<<st.Top()<<endl;
 }

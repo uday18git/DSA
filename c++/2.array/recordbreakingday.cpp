@@ -9,17 +9,15 @@ int main(){
     {
         cin>>arr[i];
     }
-    int ans=0;
-    int m=-1;
-    for(int i=0;i<n;i++)
+    int ans,currmax= INT_MIN;
+    for(int i=0;i<n-1;i++)
     {
-        if(arr[i]>m && ((i==n-1)||(arr[i]>arr[i+1])) )
-        {
-            m = arr[i];
-            ans++;
-        }
         
-
+        if(arr[i]>arr[i+1] && arr[i]>currmax)
+        {
+            ans = arr[i];
+        }
+        currmax = max(currmax,arr[i]);
     }
     cout<<ans;
 

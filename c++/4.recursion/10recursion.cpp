@@ -16,7 +16,8 @@ void inc(int n)
     {
         return;
     }
-    inc(n-1);
+    n=n-1;
+    inc(n);
 
     cout<<n<<endl;
     

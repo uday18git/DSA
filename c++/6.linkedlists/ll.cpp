@@ -16,8 +16,7 @@
 //     node* temp=head;
 
 // }
-// int main()
-// {
+
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -42,8 +41,10 @@ void reversePrint(node* llist) {
     {
         return;
     }
-    llist = llist->next;
-    reversePrint(llist);
+    // llist = llist ->next; why does this not work 
+    //     reversePrint(llist); 
+    reversePrint(llist -> next); // this works!! whyyyyyyyy its the same na?? pass by value and pass by reference.
+    //btw this is head recursion 
     cout<<llist->value<<endl;
 
 
@@ -61,7 +62,7 @@ void insertAtTheFront(node**head,int newVal)
     *head = newNode;
 
 }
-void insertAtTheEnd(node**head,int newVal)
+void insertAtTail(node**head,int newVal)
 {
     node* newNode = new node();//allocating the memory using new
     newNode->value = newVal;
@@ -179,7 +180,7 @@ void removeCycle(node*head)
     }
     slow->next = NULL;
 }
-//
+
 int main()
 {
     node *head = new node();
@@ -191,12 +192,13 @@ int main()
     head->value = 1;
     second->value = 2;
     third->value = 3;
-    insertAtTheFront(&head,7);
-    insertAtTheEnd(&head,10);
-    // insertAfter(second,11);
-    deletion(&head,11);
-    printll(head);
+    // insertAtTheFront(&head,7);
+    // insertAtTheEnd(&head,10);
+    //  insertAfter(second,11);
+    // deletion(&head,11);
+    // printll(head);
     // printll(reversell(head));
     reversePrint(head);
+
 
 }

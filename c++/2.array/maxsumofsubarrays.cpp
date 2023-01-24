@@ -85,7 +85,7 @@ public:
         int currentsum = 0;
         for(int i=0;i<nums.size();i++)
         {
-            currentsum= max(nums[i],currentsum+nums[i]);
+            currentsum = max(nums[i],currentsum+nums[i]);
             
             max_sum=max(max_sum,currentsum);
         }
