@@ -1,20 +1,20 @@
 
-#include<bits/stdc++.h>
-using namespace std;
-int main()
-{   int n;
-    cin>>n;
-    vector<vector<string>> arr(n,vector<string>(n,"."));
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            cout<<arr[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-    return 0;
-}
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main()
+// {   int n;
+//     cin>>n;
+//     vector<vector<string>> arr(n,vector<string>(n,"."));
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             cout<<arr[i][j]<<" ";
+//         }
+//         cout<<endl;
+//     }
+//     return 0;
+// }
 
 // your code goes here
 // int T,N,X;
@@ -241,3 +241,70 @@ int main()
 //     cout<<a;
 //     return 0;
 // }
+class Solution {
+public:
+
+
+bool issafe(int r,int c,vector<string> &s,int n){
+    int i=r;
+    int j=c;
+    //upperdiagonal
+    while(r>=0 && c>=0){
+        if(s[r][c]=='Q'){
+            return false;
+        }
+        r--;
+        c--;
+    }
+    //left
+    r=i;
+    c=j;
+    while(c>=0){
+        if(s[r][c]=='Q'){
+            return false;
+        }
+        c--;
+    }
+    //lowerdiagonal
+    r=i;
+    c=j;
+    while(r<n && c>=0){
+        if(s[r][c]=='Q'){
+            return false;
+        }
+        r++;
+        c--;
+    }
+    return true;
+
+}
+
+
+
+
+void helper(int c,vector<string> &s,vector<vector<string>> &v,int n){
+    if(c==n){
+        v.push_back(s);
+        return;
+    }
+    for(int r=0;r<n;++r){
+        if(issafe(r,c,s,n)){
+            s[r][c]='Q';
+            helper(c+1,s,v,n);
+            //backtracking step after that function returns
+            s[r][c]='.';
+        }
+    }
+}
+    vector<vector<string>> solveNQueens(int n) {
+        vector<vector<string>> v;
+        vector<string> s(n);
+        string s1(n,'.');
+        for(int i=0;i<n;++i){
+            s[i]=s1;
+        }
+        helper(0,s,v,n);
+        return v;
+
+    }
+};

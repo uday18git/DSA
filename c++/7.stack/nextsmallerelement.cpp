@@ -5,9 +5,8 @@ vector<int> nextSmaller(vector<int> v)
     vector<int> ans;
 
     stack<int> s1;
-    // s1.push(-1);
     s1.push(v.back());
-    // cout<<-1<<" ";
+    
     for (int i = v.size() - 1; i >= 0; i--) // for next least element just run the loop in reverse and create a new array to store and avoid the reverse print of the sequence
     {
 

@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+#include<string>
 using namespace std;
 bool isSafe(vector<vector<int>> &arr,int x,int y,int n)
 {
-    for(int i=0;i<x;i++)// to see if that row already contains a queen....
+    for(int i=0;i<x;i++)// to see if that columnnnn!! already there's a queen (above only)
     {
         if(arr[i][y]==1)
         {
@@ -35,7 +36,7 @@ bool isSafe(vector<vector<int>> &arr,int x,int y,int n)
 }
 bool nqueen(vector<vector<int>> &arr,int x,int n)
 {
-    if(x>=n)
+    if(x>=n)//base condition
     {
         return true;
     }

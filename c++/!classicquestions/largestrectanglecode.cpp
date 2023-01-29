@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+//==========BRUTE FORCE===========//
 int main(){
     int n,ans=0,a;
     vector<int> v1;
@@ -26,3 +27,4 @@ cout<<ans;
 
 return 0;
 }
+//===================OPTIMISED=================//
