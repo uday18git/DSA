@@ -1,0 +1,64 @@
+### dfs ###
+struct node
+{
+    int vertex;
+    struct node* link;
+}
+typedef struct node* node_pointer;
+void dfs(int v)
+{
+    node_pointer w;
+    visited[v]=true;
+    printf("%d",v);
+    for(w=graph[v];w;w=w->link)
+    {
+        if(!visited[w->vertex])
+        {
+            dfs(w->vertex);
+        }
+    }
+}
+void bfs(int v)
+{
+    node_pointer w;
+    queueptr front,rear;
+    rear=front=NULL;
+    visited[v]=TRUE;
+    printf("%d",v);
+    addq(&front,&rear,v);
+    while(&front)
+    {
+        v= deleteq(&front);
+        for(w=graph[v];w;w=w->link)
+        {
+            if(!visited[w->vertex])
+            {
+                printf("%d",w->vertex);
+                addq(&front,&rear,w->vertex);
+                visited[w->vertex]=TRUE
+            }
+        }
+    }
+}
+void bfs(int v)
+{
+    node_pointer w;
+    visited[v]=TRUE;
+    queueptr front, rear;
+    front=rear=NULL;
+    addq(&front,&rear,v);
+    printf("%d",v);
+    while(&front)
+    {
+        v = deleteq(&front);
+        for(w=graph[v];w;w=w->link)
+        {
+            if(!visited[w->vertex])
+            {
+                addq(&front,&rear,w->vertex);
+                visited[w->vertex]=true;
+                printf("%d",w->vertex);
+            }
+        }
+    }
+}

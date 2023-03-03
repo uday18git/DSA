@@ -1,0 +1,188 @@
+polynomial addition
+void attach(int coefficient,int exponent,polyptr *ptr)
+{
+    polyptr temp;
+    temp = (polyptr)malloc(sizeof(struct node));
+    temp -> coef = coefficient;
+    temp -> expon = exponent;
+    (*ptr)->link = temp;
+    (*ptr) = temp;
+}
+polyptr cpadd(polyptr a, polyptr b)
+{
+    polyptr startA,c,lastC;
+    int sum,done=0;
+    startA = a;  //expo=-1 s element
+    c = (polyptr)malloc(sizeof(struct node));
+    a = a->link;
+    b = b->link;
+    c->expo=-1;
+    lastC = c;
+    do
+    {
+        switch(COMPARE(a->expo,b->expo))
+        {
+            case -1:
+                    attach(b->coef,b->expo,&lastC);
+                    b=b->link;
+                    break;
+            case 0:
+                    if(startA==a)
+                    done=1;
+                    sum = a->coef+b->coef;
+                    if(sum)
+                    {
+                        attach(sum,b->expo,&lastC);
+                    }
+                    b=b->link;
+                    a=a->link;
+                    break;
+            case 1:
+                    attach(a->coef,a->expo,&lastC);
+                            a=a->link;
+                            break;
+
+                    
+        }
+
+    }while(!done)
+    lastC->link=c;
+    return c;
+}
+#### MULTIPLE LINKED STACKS ####
+void push(element item,int i)# the number of stack in which they want to enter
+{
+    stckptr temp;
+    temp = (stckptr)malloc(struct stack);
+    temp->data = item;
+    temp->link = top[i]
+    top[i]=temp;
+}
+element pop(int i)
+{
+    stckptr temp;
+    element item;
+    temp = (stckptr)malloc(struct stack);
+    temp = top[i];
+    if(!temp)
+    {
+        item->data=-1;
+        return item;
+    }
+    top[i]=top[i]->link;
+    item=temp->data;
+    free(temp);
+    return item;
+}
+#### MULTIPLE QUEUES ####
+PENDING
+
+#### DOUBLY LINKED LISTS ####
+struct node
+{
+    int data;
+    struct node* llink;
+    struct node* rlink;
+}
+typedef struct node* listptr;
+
+
+void insert(listptr *first,int item)
+{
+    listptr temp;
+    temp = (listptr)malloc(sizeof(listptr));
+    temp->data=item;
+    temp->llink=NULL;
+    temp->rlink=NULL;
+    if(*first)
+    {
+        temp->rlink= *first;
+        (*first)->llink=temp;
+    }
+    *first=temp;
+    return;
+}
+void insert(listptr* first,int item)//saja dhaja ke tmep ko
+{
+    listptr temp;
+    temp = (listptr)malloc(sizeof(struct node));
+    temp->data=item;
+    temp->llink=NULL;
+    temp->rlink=NULL;
+    if(*first)
+    {
+        temp->rlink = (*first);
+        (*first)->llink = temp;
+    }
+    *first=temp;
+    return;
+}
+int del(listptr *first)
+{
+    int item;
+    listptr temp;
+    temp = (*first);
+    (*first)=(*first)->rlink;
+    (*first)->llink = NULL;
+    item = temp->data;
+    free(temp);
+    return item;
+}
+void display(listptr first)
+{
+    if(first)
+    {
+        while(first)
+        {
+            printf("%d",first->data);
+            first=first->rlink;
+        }
+    }
+    else
+    {
+        printf("Empty list");
+    }
+}
+void displayrev(listptr first)
+{
+    if(first)
+    {
+        while(first->rlink!=NULL)
+        {
+            first=first->rlink;
+        }
+        
+        while(first)
+        {
+            printf("%d",first->data)
+            first=first->llink;
+       }
+    }
+    else
+    {
+        printf("Empty list");
+    }
+}
+##### Additional List Operations #####
+listptr invert(listptr lead)
+{
+    listptr middle,trail;
+    middle = NULL;
+    while(lead)
+    {
+        trail=middle;
+        middle=lead;
+        lead=lead->link;
+        middle->link = trail;
+    }
+    return middle;
+}
+listptr concatenate(listptr a,listptr b)
+{
+    listptr temp;
+    if(!a) return b;
+    if(!b) return a;
+    for(temp=a;temp->link;temp=temp->link);
+    temp->link = b;
+    return a;
+}

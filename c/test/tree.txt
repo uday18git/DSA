@@ -1,0 +1,17 @@
+tree_pointer copy(tree_pointer original)
+{
+    tree_pointer temp;
+    if(original)
+    {
+        temp = (tree_pointer)malloc(sizeof(node));
+        if(ISFULL(temp))
+        {
+            printf(stderr,"memory is full");
+        }
+        temp->right_child = copy(original->right_child);
+        temp->left_child = copy(original->left_child);
+        temp->data = original->data;
+        return temp;
+    }
+    return null;
+}
