@@ -241,70 +241,148 @@
 //     cout<<a;
 //     return 0;
 // }
-class Solution {
-public:
+// class Solution {
+// public:
 
 
-bool issafe(int r,int c,vector<string> &s,int n){
-    int i=r;
-    int j=c;
-    //upperdiagonal
-    while(r>=0 && c>=0){
-        if(s[r][c]=='Q'){
-            return false;
-        }
-        r--;
-        c--;
-    }
-    //left
-    r=i;
-    c=j;
-    while(c>=0){
-        if(s[r][c]=='Q'){
-            return false;
-        }
-        c--;
-    }
-    //lowerdiagonal
-    r=i;
-    c=j;
-    while(r<n && c>=0){
-        if(s[r][c]=='Q'){
-            return false;
-        }
-        r++;
-        c--;
-    }
-    return true;
+// bool issafe(int r,int c,vector<string> &s,int n){
+//     int i=r;
+//     int j=c;
+//     //upperdiagonal
+//     while(r>=0 && c>=0){
+//         if(s[r][c]=='Q'){
+//             return false;
+//         }
+//         r--;
+//         c--;
+//     }
+//     //left
+//     r=i;
+//     c=j;
+//     while(c>=0){
+//         if(s[r][c]=='Q'){
+//             return false;
+//         }
+//         c--;
+//     }
+//     //lowerdiagonal
+//     r=i;
+//     c=j;
+//     while(r<n && c>=0){
+//         if(s[r][c]=='Q'){
+//             return false;
+//         }
+//         r++;
+//         c--;
+//     }
+//     return true;
 
-}
-
-
+// }
 
 
-void helper(int c,vector<string> &s,vector<vector<string>> &v,int n){
-    if(c==n){
-        v.push_back(s);
-        return;
-    }
-    for(int r=0;r<n;++r){
-        if(issafe(r,c,s,n)){
-            s[r][c]='Q';
-            helper(c+1,s,v,n);
-            //backtracking step after that function returns
-            s[r][c]='.';
-        }
-    }
-}
-    vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string>> v;
-        vector<string> s(n);
-        string s1(n,'.');
-        for(int i=0;i<n;++i){
-            s[i]=s1;
-        }
-        helper(0,s,v,n);
-        return v;
 
+
+// void helper(int c,vector<string> &s,vector<vector<string>> &v,int n){
+//     if(c==n){
+//         v.push_back(s);
+//         return;
+//     }
+//     for(int r=0;r<n;++r){
+//         if(issafe(r,c,s,n)){
+//             s[r][c]='Q';
+//             helper(c+1,s,v,n);
+//             //backtracking step after that function returns
+//             s[r][c]='.';
+//         }
+//     }
+// }
+//     vector<vector<string>> solveNQueens(int n) {
+//         vector<vector<string>> v;
+//         vector<string> s(n);
+//         string s1(n,'.');
+//         for(int i=0;i<n;++i){
+//             s[i]=s1;
+//         }
+//         helper(0,s,v,n);
+//         return v;
+
+//     }
+// };
+// to find distance at distance k from a specific node it can either be through subtree of the node or from the ancestor 
+// first case(subtree) we will take k=number then keep decrementing k till k is 0 in the subtree of the node
+// second case(ancestor) 1.find the distance(d) of all ancestors from target node ... for all ancestors find the node using k-d ... if node is in the left subtree of ancestor we will search in right subtree
+// so the second case is reduced into first case 
+#include "bits/stdc++.h"
+using namespace std;
+struct Node
+{
+    int data;
+    struct Node *left;
+    struct Node *right;
+    Node(int val)
+    {
+        data = val;
+        right = NULL;
+        left = NULL;
     }
 };
+void printSubtreeNodes(Node * root,int k,vector<int>&v)
+{
+    if(!root || k<0)return;
+    if(k==0){v.push_back(root->data);return;}
+    printSubtreeNodes(root->left,k-1,v);
+    printSubtreeNodes(root->right,k-1,v);
+}
+//case 2.. if we get the target node then we will return the distance from target to ancestor
+int printNodesAtk(Node* root,Node *target,int k,vector<int> &v)
+{
+    if(root==NULL)//if we do not get the target
+    {
+        return -1;
+    }
+    if(root==target)//if we get the 
+    {
+        printSubtreeNodes(root,k,v);
+        return 0;
+    }//we did not get target yet, to find target so we'll first try to find in leftsubtree
+    int dl = printNodesAtk(root->left,target,k,v);//dl is the distance from root to target
+    if(dl!=-1){ //means that we have found our target in the left subtree
+        if(dl+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
+        {
+            v.push_back(root->data);
+        }else//in the else case we will try to find dist k nodes in the right subtree of the root
+        {
+            printSubtreeNodes(root->right,k-dl-2,v);// we are calling it on roots right so there 1 extra and 
+        }
+        return 1+dl;
+    }
+    int dr = printNodesAtk(root->right,target,k,v);//dr is the 
+    if(dr!=-1){ //means that we have found our target in the left subtree
+        if(dr+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
+        {
+            v.push_back(root->data);
+        }else//in the else case we will try to find dist k nodes in the right subtree of the root
+        {
+            printSubtreeNodes(root->left,k-dr-2,v);// we are calling it on roots right so there 1 extra and 
+        }
+        return 1+dr;
+    }
+    return -1;
+}
+int main()
+{
+    vector<int> v;
+    struct Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    printNodesAtk(root,root,2,v);
+    for(auto element:v)
+    {
+        cout<<element<<" ";
+    }
+    return 0;
+}
