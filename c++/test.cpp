@@ -54,7 +54,6 @@
 
 // 	    if ((a=p) && (q==b))
 // 	    {
-
 // 	        cout<<0<<endl;
 // 	    }
 // 	    else if(~((a+b)%2)==0 ^ ((p+q)%2)==0)
@@ -244,7 +243,6 @@
 // class Solution {
 // public:
 
-
 // bool issafe(int r,int c,vector<string> &s,int n){
 //     int i=r;
 //     int j=c;
@@ -279,9 +277,6 @@
 
 // }
 
-
-
-
 // void helper(int c,vector<string> &s,vector<vector<string>> &v,int n){
 //     if(c==n){
 //         v.push_back(s);
@@ -308,81 +303,165 @@
 
 //     }
 // };
-// to find distance at distance k from a specific node it can either be through subtree of the node or from the ancestor 
+// to find distance at distance k from a specific node it can either be through subtree of the node or from the ancestor
 // first case(subtree) we will take k=number then keep decrementing k till k is 0 in the subtree of the node
 // second case(ancestor) 1.find the distance(d) of all ancestors from target node ... for all ancestors find the node using k-d ... if node is in the left subtree of ancestor we will search in right subtree
-// so the second case is reduced into first case 
-#include "bits/stdc++.h"
+// so the second case is reduced into first case
+// #include "bits/stdc++.h"
+// using namespace std;
+// struct Node
+// {
+//     int data;
+//     struct Node *left;
+//     struct Node *right;
+//     Node(int val)
+//     {
+//         data = val;
+//         right = NULL;
+//         left = NULL;
+//     }
+// };
+// void printSubtreeNodes(Node * root,int k,vector<int>&v)
+// {
+//     if(!root || k<0)return;
+//     if(k==0){v.push_back(root->data);return;}
+//     printSubtreeNodes(root->left,k-1,v);
+//     printSubtreeNodes(root->right,k-1,v);
+// }
+// //case 2.. if we get the target node then we will return the distance from target to ancestor
+// int printNodesAtk(Node* root,Node *target,int k,vector<int> &v)
+// {
+//     if(root==NULL)//if we do not get the target
+//     {
+//         return -1;
+//     }
+//     if(root==target)//if we get the
+//     {
+//         printSubtreeNodes(root,k,v);
+//         return 0;
+//     }//we did not get target yet, to find target so we'll first try to find in leftsubtree
+//     int dl = printNodesAtk(root->left,target,k,v);//dl is the distance from root to target
+//     if(dl!=-1){ //means that we have found our target in the left subtree
+//         if(dl+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
+//         {
+//             v.push_back(root->data);
+//         }else//in the else case we will try to find dist k nodes in the right subtree of the root
+//         {
+//             printSubtreeNodes(root->right,k-dl-2,v);// we are calling it on roots right so there 1 extra and
+//         }
+//         return 1+dl;
+//     }
+//     int dr = printNodesAtk(root->right,target,k,v);//dr is the
+//     if(dr!=-1){ //means that we have found our target in the left subtree
+//         if(dr+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
+//         {
+//             v.push_back(root->data);
+//         }else//in the else case we will try to find dist k nodes in the right subtree of the root
+//         {
+//             printSubtreeNodes(root->left,k-dr-2,v);// we are calling it on roots right so there 1 extra and
+//         }
+//         return 1+dr;
+//     }
+//     return -1;
+// }
+// int main()
+// {
+// vector<int> v;
+// struct Node* root = new Node(1);
+//     root->left = new Node(2);
+// root->right = new Node(3);
+// root->left->left = new Node(4);
+// root->left->right = new Node(5);
+// root->right->left = new Node(6);
+// root->right->right = new Node(7);
+// printNodesAtk(root,root,2,v);
+// for(auto element:v)
+// {
+// cout<<element<<" ";
+// }
+//     return 0;
+// }
+// #include "bits/stdc++.h"
+
+// using namespace std;
+// int staradd(int *a,int*b){*b=20;return *a+*b;}
+// int andadd(int &a,int &b){b=30;return a+b;}
+
+// int main(){
+//     int b=10,c=100;
+//     int d = andadd(b,c);
+//     int a = staradd(&b,&c);
+//     cout<<a<<c<<endl;
+
+// return 0;
+// }
+// #include "bits/stdc++.h"
+// using namespace std;
+// struct TreeNode{
+// //     int val;
+//     TreeNode* right,*left;
+//     TreeNode(int data)
+//     {
+//         val = data;
+//         right = NULL;
+//         left = NULL;
+//     }
+// };
+// void level(vector<vector<int>> &v,TreeNode* root)
+//     {
+//         if(!root)return;
+//         queue<TreeNode*> q;
+//         q.push(root);
+//         q.push(NULL);
+//         vector<int> v1 ={};
+//         while(!q.empty())
+//         {
+//             TreeNode* node =q.front();
+//             q.pop();
+
+//             if(node)
+//             {
+//                 v1.push_back(node->val);
+//                 if(node->left)q.push(node->left);
+//                 if(node->right)q.push(node->right);
+//             }
+//             else if(q.empty())
+//             {
+//                 q.push(NULL);
+//                 v.push_back(v1);
+//                 v1={};
+//             }
+//         }
+//     }
+// vector<vector<int>> levelOrder(TreeNode* root) {
+//     vector<vector<int>> v;
+//     level(v,root);
+//     return v;
+// }
+// int main(){
+
+//     return 0;
+// }
+// #include <bits/stdc++.h>
+// using namespace std;
+// int main(){
+// char s='9';
+// char a= '0';
+// cout<<s-a;
+// return 0;
+// }
+#include <bits/stdc++.h>
 using namespace std;
-struct Node
-{
-    int data;
-    struct Node *left;
-    struct Node *right;
-    Node(int val)
-    {
-        data = val;
-        right = NULL;
-        left = NULL;
-    }
-};
-void printSubtreeNodes(Node * root,int k,vector<int>&v)
-{
-    if(!root || k<0)return;
-    if(k==0){v.push_back(root->data);return;}
-    printSubtreeNodes(root->left,k-1,v);
-    printSubtreeNodes(root->right,k-1,v);
-}
-//case 2.. if we get the target node then we will return the distance from target to ancestor
-int printNodesAtk(Node* root,Node *target,int k,vector<int> &v)
-{
-    if(root==NULL)//if we do not get the target
-    {
-        return -1;
-    }
-    if(root==target)//if we get the 
-    {
-        printSubtreeNodes(root,k,v);
-        return 0;
-    }//we did not get target yet, to find target so we'll first try to find in leftsubtree
-    int dl = printNodesAtk(root->left,target,k,v);//dl is the distance from root to target
-    if(dl!=-1){ //means that we have found our target in the left subtree
-        if(dl+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
-        {
-            v.push_back(root->data);
-        }else//in the else case we will try to find dist k nodes in the right subtree of the root
-        {
-            printSubtreeNodes(root->right,k-dl-2,v);// we are calling it on roots right so there 1 extra and 
-        }
-        return 1+dl;
-    }
-    int dr = printNodesAtk(root->right,target,k,v);//dr is the 
-    if(dr!=-1){ //means that we have found our target in the left subtree
-        if(dr+1==k)//means ancestor is only k distance from target therefore we print the ancestor's data
-        {
-            v.push_back(root->data);
-        }else//in the else case we will try to find dist k nodes in the right subtree of the root
-        {
-            printSubtreeNodes(root->left,k-dr-2,v);// we are calling it on roots right so there 1 extra and 
-        }
-        return 1+dr;
-    }
-    return -1;
-}
 int main()
 {
-    vector<int> v;
-    struct Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->left = new Node(6);
-    root->right->right = new Node(7);
-    printNodesAtk(root,root,2,v);
-    for(auto element:v)
+    int count=0;
+    for(int i=0;i<4096;i++)
     {
-        cout<<element<<" ";
+        if(i%128==0)
+        {
+            count++;
+        }
     }
+        cout<<count;
     return 0;
 }

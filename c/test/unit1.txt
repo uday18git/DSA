@@ -1,0 +1,208 @@
+Algorithm is a finite set of instructions that, when followed performs a specific task
+All Algorithms must satisfy
+1 input
+2 output
+3 definiteness
+4 finiteness
+5 effectiveness
+
+selection sort
+for(i=0;i<n;i++)
+{
+    for(j=i+1;j<n;j++)
+    {
+        if(a[j]<a[i])
+        {
+            int temp=a[j];
+            a[j]=a[i];
+            a[i]=temp;
+        }
+    }
+}
+ 
+recursive binary search
+
+int recursiveBinarySearch(int arr[],int high,int low,int key)
+{
+    int mid=(high+low)/2;
+    if(arr[mid]==key)
+    {
+        return mid;
+    }
+    else if(arr[mid]>key)
+    {
+        return recursiveBinarySearch(arr,mid-1,low,key);
+    }
+    else
+    {
+        return recursiveBinarySearch(arr,high,mid+1,key);
+    }
+}
+
+An abstract data type is a datatype that is organized in such a way that the specification of objects and specification of operations is seperated from the representation of the objects and implementaion of the operations
+
+// polynomial 
+
+structure polynomial is
+    objects p(x)=a1x^e1 + .... anx^en ; a set of ordered pairs of <ei,ai> where ai is coefficient and ei are the exponenets 
+    functions:
+        for all poly1,poly2 belongs to polynomial , coef belongs to coefficients and expon belongs to exponenets
+        polynomial Zero() ::= returns the polynomial p(x)=0
+        boolean is Zero
+        coefficient coef(poly)
+        exponent 
+        polynomial attach
+        polynomial remove
+
+// polynomial addition
+
+typedef struct
+{
+    int expon;
+    int coeff;
+}polynomial;
+
+polynomial terms[MAX_TERMS];
+int avail=0;
+
+void attach(int coefficient,int exponent)
+{
+    if(avail>= MAX_TERMS-1)
+    {
+        fprintf(stderr,"MAX terms reached");
+        exit();
+    }
+    terms[avail].coeff=coefficient;
+    terms[avail++].expon = exponent;
+}
+
+void padd(int startA,int finishA,int startB,int finishB,int startD,int *finishD)
+{
+    float coefficient;
+    while(startA<=finishA && startB<=finishB)
+    {
+        switch(COMPARE(terms[startA].expon,terms[startB].expo))
+        {
+            case 1:
+                attach(terms[startA].coef,terms[startA].expo);
+                startA++;
+                break;
+            case 0:
+                coefficient= terms[startA].coeff+terms[startB].coeff;
+                attach(coefficient,terms[startA].expo);
+                startA++;
+                startB++;
+                break;
+            case -1:
+                attach(terms[startB].coeff,terms[startB].expo);
+                startB++;
+                break;
+        }
+    }
+    for(;startA<=finishA;startA++)
+    {
+        attach(terms[startA].coef,terms[startA].expo);
+    }
+    for(;startB<=finishB;startB++)
+    {
+        attach(terms[startB].coef,terms[startB].expo);
+    }
+}
+
+// sparce matrix
+
+sparce_matrix create(max_row,max_col)::=
+sparce matrix transpose(a)::=
+sparce_matrix Add(a,b)::=
+sparce_matrix multiply(a,b)::=
+
+// sparce_matrix transpose
+
+typedef struct
+{
+    int row;
+    int col;
+    int value;
+}sparce;
+sparce a[MAX_TERMS];
+sparce b[MAX_TERMS];
+
+void fast_transpose(sparce a[],sparce b[])
+{
+    int row_terms[MAX],start_pos[MAX];
+    int i,j,k;
+    int numCols = a[0].col;
+    int numTerms = a[0].value;
+    b[0].col = a[0].row;
+    b[0].row = a[0].col;
+    b[0].value = numTerms;
+    for(int i=0;i<numCols;i++)
+    {
+        row_terms[i]=0;
+    }   
+    for(int i=1;i<=numTerms;i++)
+    {
+        row_terms[a[i].col]++;
+    }
+    start_pos[0]=1;
+    for(int i=1;i<numCols;i++)
+    {
+        start_pos[i]=start_pos[i-1]+row_terms[i-1];
+    }
+    for(int i=1;i<=numTerms;i++)
+    {
+        j=start_pos[a[i].col]++;
+        b[j].col=a[i].row;
+        b[j].row=a[i].col;
+        b[j].val = a[i].val;
+    }
+}
+
+// KMP Algorithm
+
+int failure[20];
+void fail(char* pat)
+{   //failure array -1 -1 0 1 
+    int i,j,n;
+    failure[0]=-1;
+    n=strlen(pat);
+    for(j=1;j<n;j++)//*************SHD START FROM J=1 ***********************//
+    {
+        i=failure[j-1];
+        while(pat[j]!=pat[i+1]&&i>0)//a b a b d
+        {
+            i=failure[i];
+        }
+        if(pat[j]==pat[i+1]) //j is moving throughout the pattern and i is just checking for patterns
+        {
+            failure[j]=i+1;
+        }
+        else
+        {
+            failure[j]=-1;
+        }
+    }
+}
+int match(char* str,char* pat)
+{
+    int i=0,j=0;//both the functions start with the declaration of i,j
+    int lens=strlen(str);
+    int lenp=strlen(pat);
+    while(i<lens && j<lenp)
+    {
+        if(str[i]==pat[j])//i is iterating through string,and j through pattern
+        {
+            i++;
+            j++;
+        }
+        else if(j==0)// j(pattern) is still on first one and not matching means simply i++ we should do 
+        {
+            i++;
+        }
+        else
+        {
+            j = failure[j-1]+1;//does not send j to the start of pat instead sends it to failure[j-1]+1;
+        }
+    }
+    return ((j==lenp)?(i-lenp):-1);//if j has reached length of patern means that we have found the pattern
+}

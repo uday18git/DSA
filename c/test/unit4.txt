@@ -1,3 +1,159 @@
+### treee we use treeptr
+###tree traversals
+
+inorder 
+void inorder(treeptr node)
+{
+    if(node)
+    {
+        inorder(node->left);
+        printf("%d",node->data);
+        inorder(node->right);
+    }
+}
+postorder
+void postorder(treeptr node)
+{
+    if(node)
+    {
+        postorder(node->left);
+        postorder(node->right);
+        printf("%d",node->data);
+    }
+}
+preorder
+void preorder(treeptr node)
+{
+    if(node)
+    {
+        printf("%d",node->data);
+        preorder(node->left);
+        preorder(node->right);
+    }
+}
+
+###iterative inorder
+make the stack then for(;;) then for(;node;node=node->left)add to stack all left elements
+void iter_inorder(treeptr node)
+{
+    int top=-1;
+    treeptr stack[MAXSIZE];
+    for(;;)
+    {
+        for(;node;node=node->left_child)
+            add(&top,node);
+        node=deleteq(&top);
+        if(!node)break;//stack empty
+        printf("%d",node->data);//node visited
+        node=node->right_child;// visiting right child
+    }
+}
+
+### level order traversal
+// make queue first then for(;;) then ptr=deleteq then if(ptr) exists
+void level_order(treeptr ptr)
+{
+    int front=rear=0;
+    treeptr queue[MAXSIZE];
+    if(!ptr)return ;
+    addq(&front,&rear,ptr);
+    for(;;)
+    {
+        ptr=deleteq(&front,rear);
+        if(ptr)
+        {
+            printf("%d",ptr->data);
+            if(ptr->left_child)
+                addq(front,rear,ptr->left_child);
+            if(ptr->right_child)
+                addq(front,&rear,ptr->right_child);
+        }
+        else break;
+    }
+}
+
+
+
+### additional binary tree operations
+### copy 
+postorder type.. it is
+treeptr copy(treeptr original)
+{
+    treeptr temp;
+    if(original)
+    {
+        temp=(treeptr)malloc(sizeof(treeptr));
+        if(IS_FULL(temp))
+        {
+            printf(stderr,"tree full");
+            exit(1);
+        }
+        temp->left_child=copy(original->left_child);
+        temp->right_child=copy(original->right_child);
+        temp->data=original->data;
+        return temp;
+    }
+    return NULL;
+}
+
+### checking if equal
+## check if they r null , then check data then check left and right child
+int equal(treeptr first,treeptr second)
+{
+    return ((!first&&!second)) || (first&&second &&first->data=second->data)&& equal(first->left_child,second->left_child) &&equal(first-right->child,second->right_child);
+}
+####threaded binary trees####
+threaded_pointer insucc(threaded_pointer tree)// temp
+{
+    threaded_pointer temp;
+    temp = tree->right_child; //for any node inorder successor is right node so. first tree->right_child 
+    if(!tree->right_thread) // if its not a thread then go the left most of that right node
+    {
+        while(!temp->left_thread)
+        {
+            temp=temp->left_child;
+        }
+    }//if it is a thread then return temp
+    return temp;
+}
+
+inorder of a threaded binary tree
+void tinorder(threaded_pointer tree)// we will give the head node of the threaded binary tree total top one
+{   
+    threaded_pointer temp=tree;
+    for(;;)
+    {
+        temp = insucc(temp);
+        if(temp==tree)break; // if temp goes round and again reaches tree (head) then stop
+        print("%c",temp->data);
+    }
+}
+void tinorder(threaded_pointer tree)
+{
+    threaded_pointer temp=tree;
+    for(;;)
+    {
+        temp=insucc(temp);
+        if(temp==tree)break;
+        printf("%d",temp->data);
+    }
+}
+insertion in a threaded binary tree
+void insert_right(threaded_pointer parent,threaded_pointer child)
+{
+    threaded_pointer temp;
+    child->right_child = parent->right_child;
+    child->right_thread = parent->right_thread;
+    child->left_child = parent;
+    child->left_thread=true;
+    parent->right_child = child;
+    parent->right_thread=false;
+    if(!child->right_thread) //b part in the text book 
+    {
+        temp = insucc(child);
+        temp -> left_child = child;
+    }
+}
 #MAX HEAP
 insertion
 
@@ -17,7 +173,7 @@ void insert_maxheap(element item,int*n)
         fprintf(stderr,"HEAP full");
     }
     i=++(*n);//this is where the new node is currently for now.. then it will be compared to its parent if it is larger it will be swapped
-    while(i!=1 && (item.key > heap[i/2].key))//till i does not reach root && from the last node it keeps on comparing
+    while(i!=1 && (item.key > heap[i/2].key))//till i does not reach root && from the last node it keeps on comparing with parent
     {
         heap[i]=heap[i/2]; //bringing the smaller element down
         i/=2;
@@ -29,14 +185,14 @@ void insert_maxheap(element item,int*n)
     int i;
     if(ISFULL(*n))
     {
-        stderr
-        exit(1)
+        printf(stderr);
+        exit(0);
     }
-    i = ++(*n);
-    while(i!=1 && item.key> heap[i/2].key)//while item is greater than its parent
+    i=++(*n);
+    while(i!=1 && item.key>heap[i/2].key)
     {
         heap[i]=heap[i/2];
-        i/=2;
+        i=i/2;
     }
     heap[i]=item;
 }
@@ -44,7 +200,7 @@ void insert_maxheap(element item,int*n)
 deletion
 IN MAX HEAP ONLY DELETION OF ROOT NODE IS THERE
 
-void delete_maxheap(int *n)
+element delete_maxheap(int *n)
 {
     int child ,parent;
     element temp,item;
@@ -61,7 +217,7 @@ void delete_maxheap(int *n)
     {
         if(child< *n && heap[child].key<heap[child+1].key)//comparing the left and right children to see which is larger then the larger one will be taken and swapped with current root()
             child++;
-        if(temp.key >=heap[child].key)break;
+        if(temp.key >heap[child].key)break;
         heap[parent]=heap[child];
         parent=child;
         child*=2
@@ -69,30 +225,7 @@ void delete_maxheap(int *n)
     heap[parent]=temp;
     return item;
 }
-void delete_maxheap(int *n)
-{
-    int child,parent;
-    element temp,item;
-    if(ISEMPTY(heap))
-    {
-        exit(1);
-    }
-    item = heap[1];
-    temp = heap[*n--];
-    parent=1;
-    child=2;
-    while(child<=*n)
-    {
-        if(child<*n && heap[child].key<heap[child+1].key)
-            child++;
-        if(temp.key>heap[child])break;
-        heap[parent]=heap[child];
-        parent=child;
-        child*=2;
-    }
-    heap[parent]=temp;
-    return item;
-}
+
 #### binary search tree search ####
 tree_pointer is used in bst
 struct tree{
@@ -119,7 +252,7 @@ tree_pointer search(tree_pointer root,int key)
 #### inserting into a binary search tree ####
 uses a modified search function which returns NULL is the key is found or null if tree is empty.
 if condition phir ptr ko saja dhaja ke daal dete h..
-void insert_node(tree_pointer *node,int num)
+void insert_node(tree_pointer *root,int num)
 {
     tree_pointer ptr,temp=modifiedsearch(*node,num);
     if(temp || !(*node)) //it will run if node is empty itll create new.. but if nodes are there and temp is null means it means that node is already there so it wont run
@@ -143,20 +276,4 @@ void insert_node(tree_pointer *node,int num)
         *node = ptr //when the tree is empty
 
     }
-}
-####threaded binary trees####
-threaded_pointer insucc(threaded_pointer tree)
-{
-    to find the inorder successor of tree in a threaded binary tree
-    threaded_pointer temp;
-    temp = tree->right_child;
-    if(!tree->right_thread)
-    {
-        while(!tree->left_thread)
-        {
-            temp = temp->left_child
-        }
-        
-    }
-    return temp;
 }

@@ -42,7 +42,7 @@ Node *buildTree(int postorder[], int inorder[], int start, int end)
         return curr;
     }
     int pos = search(inorder, start, end, val);
-    curr->right = buildTree(postorder, inorder, pos + 1, end);
+    curr->right = buildTree(postorder, inorder, pos + 1, end);//****************
     curr->left = buildTree(postorder, inorder, start, pos - 1); // first we will build the left subtree of the root
     // position is where we find the root node so we take till pos-1 above
     

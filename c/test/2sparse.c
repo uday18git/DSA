@@ -58,7 +58,8 @@
 //             for(i=1; i<numCols; i++)
 //                start_pos[i] = start_pos[i-1] + row_terms[i-1];
 //             for(i=1; i<=numTerms; i++)
-//             {  j = start_pos[a[i].col]++;
+//             {  
+//                 j = start_pos[a[i].col]++;
 //                 b[j].row = a[i].col;
 //                 b[j].col = a[i].row;
 //                 b[j].val = a[i].val;
@@ -86,40 +87,89 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define MAX 100
-typedef struct
+typedef struct 
 {
     int row;
     int col;
     int val;
-}sparse;
-void readsparse(sparse a[],int m,int n)
+}sparce;
+void readsparse(sparce a[],int m,int n)
 {
-    int i,j,k,item;
+    int  i,j,k,item,p;
     a[0].row=m;
     a[0].col=n;
     k=1;
+    printf("Enter the elements");
     for(i=0;i<m;i++)
     {
         for(j=0;j<n;j++)
         {
             scanf("%d",&item);
             if(item==0)
-            continue;
-            else{
-                a[k].row=i;
-                a[k].col=j;
-                a[k].val=item;
-                k++;
+            {
+                continue;
             }
+            a[k].row=i;
+            a[k].col=j;
+            a[k].val=item;
+            k++;
         }
     }
     a[0].val=k-1;
-    printf("Entered sparse matrix is");
-    printf("\nRow\tCol\tVal");
-    for( i=0;i<=a[1].val;i++)
+    printf("\nEntered matrix is\n");
+    printf("Row\tCol\tVal\n");
+    for(i=0;i<=a[0].val;i++)
     {
-        printf("\n%d\t%d\t%d\n",a[i].row,a[i].col,a[i].val);
+        
+        printf("%d\t%d\t%d\n",a[i].row,a[i].col,a[i].val);
     }
 }
-   
-
+void fast_transpose(sparce a[],sparce b[])
+{
+    int row_terms[MAX],start_pos[MAX];
+    int i,j,p;
+    int numCols = a[0].col;
+    int numTerms = a[0].val;
+    b[0].row=numCols;
+    b[0].col = a[0].row;
+    b[0].val = numTerms;
+    if(numTerms>0)
+    {
+        for(i=0;i<numCols;i++)
+        {
+            row_terms[i]=0;
+        }
+        for(i=1;i<=numTerms;i++)
+        {
+            row_terms[a[i].col]++; //row terms is array that consists of num of values in each column of the input a sparce matrix
+        }
+        start_pos[0]=1;
+        for(i=1;i<numCols;i++)
+        {
+            start_pos[i]=start_pos[i-1]+row_terms[i-1];//***********//
+        }
+        for(int i=1;i<=numTerms;i++)
+        {
+            j=start_pos[a[i].col]++;
+            b[j].col=a[i].row;
+            b[j].row=a[i].col;
+            b[j].val=a[i].val;
+        }
+    }
+    printf("\nRow\tColumn\tValue\n");
+            for(p=0; p<=a[0].val; p++)
+            {
+                        printf("%d\t", b[p].row);
+                        printf("%d\t", b[p].col);
+                        printf("%d\n", b[p].val);
+            }
+}
+void main()
+{
+        int m, n, key;
+        sparce a[MAX], b[MAX];
+        printf("\nEnter  the no of rows and columns:\t");
+        scanf("%d%d",&m, &n);
+        readsparse(a, m, n);
+        fast_transpose(a, b);
+}

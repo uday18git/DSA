@@ -10,9 +10,6 @@ bool sorted(int arr[],int n)
     bool restarray = sorted(arr+1,n-1);
     return(arr[0]<arr[1] && restarray ); 
 }
-
-
-
 int main(){
     int arr[] = {1,9,3,8};
     cout<<sorted(arr,4);

@@ -18,6 +18,19 @@ void dfs(int v)
         }
     }
 }
+void dfs(int v)
+{
+    nodeptr w;
+    visited[v]=true;
+    printf("%d",v);
+    for(w=graph[v];w;w=w->link)
+    {
+        if(!visited[w->vertex])
+        {
+            dfs(w->vertex);
+        }
+    }
+}
 void bfs(int v)
 {
     node_pointer w;
@@ -40,25 +53,4 @@ void bfs(int v)
         }
     }
 }
-void bfs(int v)
-{
-    node_pointer w;
-    visited[v]=TRUE;
-    queueptr front, rear;
-    front=rear=NULL;
-    addq(&front,&rear,v);
-    printf("%d",v);
-    while(&front)
-    {
-        v = deleteq(&front);
-        for(w=graph[v];w;w=w->link)
-        {
-            if(!visited[w->vertex])
-            {
-                addq(&front,&rear,w->vertex);
-                visited[w->vertex]=true;
-                printf("%d",w->vertex);
-            }
-        }
-    }
-}
+

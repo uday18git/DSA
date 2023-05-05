@@ -57,10 +57,8 @@ void insertAtTheFront(node**head,int newVal)
     newNode->value=newVal;
     //2.put it in fronnt of the list
     newNode->next= *head;
-
     //3.move head of the list to point to the newNode
     *head = newNode;
-
 }
 void insertAtTail(node**head,int newVal)
 {
@@ -83,6 +81,7 @@ void insertAtTail(node**head,int newVal)
 
 
 }
+
 void insertAfter(node*previous,int newVal)
 {
     if(previous==NULL)
@@ -180,7 +179,42 @@ void removeCycle(node*head)
     }
     slow->next = NULL;
 }
-
+node* merge(node* &ptr1,node* &ptr2)
+{
+    node* p1=ptr1;
+    node* p2=ptr2;
+    node* dummyNode=new node();
+    dummyNode->value=-1;
+    dummyNode->next=NULL;
+    node* p3=dummyNode;
+    while(p1!=NULL && p2!=NULL)
+    {
+        if(p1->value<p2->value)
+        {
+            p3->next=p1;
+            p1=p1->next;
+        }
+        else
+        {
+            p3->next=p2;
+            p2=p2->next;
+        }
+        p3=p3->next;
+    }
+    while(p1)
+    {
+        p3->next=p1;
+        p1=p1->next;
+        p3=p3->next;
+    }
+    while(p2)
+    {
+        p3->next=p2;
+        p2=p2->next;
+        p3=p3->next;
+    }
+    return dummyNode->next;
+}
 int main()
 {
     node *head = new node();
@@ -189,16 +223,28 @@ int main()
     head->next = second;
     second->next = third;
     third->next = NULL;
-    head->value = 1;
-    second->value = 2;
-    third->value = 3;
+    head->value = 11;
+    second->value = 13;
+    third->value = 14;
+    node *head1 = new node();
+    node *second1 = new node();
+    node *third1 = new node();
+    head1->next = second1;
+    second1->next = third1;
+    third1->next = NULL;
+    head1->value = 9;
+    second1->value = 10;
+    third1->value = 12;
+    printll(head);
+    printll(head1);
+    node* newhead = merge(head,head1);
+    printll(newhead); 
+    
     // insertAtTheFront(&head,7);
     // insertAtTheEnd(&head,10);
     //  insertAfter(second,11);
     // deletion(&head,11);
     // printll(head);
     // printll(reversell(head));
-    reversePrint(head);
-
-
+    // reversePrint(head);
 }

@@ -1,0 +1,308 @@
+STACKS AND QUEUES
+
+stack adt ->
+structure stack is
+objects : a finite ordered list with zero or more elements
+functions :
+    for all stack belongs to stack 
+
+Stack CreateStack(max_stack_size) ::= 
+Boolean IsFull(stack,max_stack_size) ::=
+Boolean IsEmpty(stack)::=
+element Delete(stack)::=
+
+
+
+//  stack using dynamic arrays
+push(element* ptr,int*top,int x,int n)
+pop(element*ptr,int *top)
+display (element*ptr,int top)
+element* dble(element*ptr,int *n)
+{
+    element* p=(element*)realloc(ptr,(*n)*sizeof(element));
+    (*n)=2*(*n);
+    return p;
+}
+typdef struct
+{
+    int item;
+}element;
+element ptr[100];
+void push(element *ptr,int *top,int x,int n)
+{
+    if(n>=max_stack_size)
+    {
+        print("Stack overflow");
+    }
+    ptr[++(*top)].item=x;
+}
+int pop(element *ptr,int *top)
+{
+    if((*top)==-1)
+    {
+        printf("Stack underflow");
+        return -1;
+    }
+    return ptr[(*top)--].key;
+}
+void display(element *ptr,int top)
+{
+    for(int i=top;i>=0;i--)
+    {
+        printf("%d",ptr[i].key);
+    }
+}
+element* dble(element* ptr,int *n)
+{
+    element *p = (element *)realloc(ptr,(*n)*(sizeof(element)));
+    *n=(*n)*2;
+    return p;
+}
+
+##### circular queue 
+element* queuefull(int *capacity,int *rear,int *front,element *queue)
+{
+    printf("queue is full and hence resized.PLease call again to add new element\n");
+    element *newqueue;
+    newqueue=(element*)malloc(2*(*capacity)*sizeof(element));
+    int start=(*front+1)%(*capacity);
+    if(start<2)
+    {
+        copy(start,start+(*capacity)-1,0,queue,newqueue);
+    }
+    else
+    {
+        copy(start,(*capacity)-1,0,queue,newqueue);
+        copy(0,*rear,(*capacity)-start,queue,newqueue);
+    }
+    *front=0;
+    *rear=(*capacity)-1;
+    (*capacity)*=2;
+    return newqueue;
+}
+element *newQueue(element* queue,int* front,int* rear,int* capacity)
+{
+
+}
+
+
+
+#### infix to postfix
+precedence stack[30];
+precedence get_token(char*symbol,int*n)
+void postfix()
+{
+    char symbol;
+    precedence token;
+    int n=0;int top=0;
+    stack[0]=eos;
+    for(token=get_token(&symbol,&n),token!=eos;token=get_token(&symbol,&n))
+    {
+        if(token==operand)
+        {
+            printf("%c",symbol);
+        }
+        else if(token==rparen)
+        {
+            while(stack[top]!=lparen)
+            {
+                print_token(pop());
+            }
+        }
+        else
+        {
+            while(isp[stack[top]]>=icp[token])
+            {
+                print_token(pop());
+            }
+            push(token);
+        }
+    }
+    while((token=pop())!=eos)
+    {
+        print_token(token);
+    }
+}
+typedef enum
+{
+    lparen,rparen,plus,minus,times,divide,mod,eos,operand
+}precedence;
+
+precedence stack[30];
+precedence get_token(char* symbol,int* n)
+{
+    *symbol = EXPR[(*n)++];
+    switch(*symbol)
+    {
+        case '(' :
+            return lparen;
+        case ')' :
+            return rparen;
+        case '+' :
+            return plus;
+        .
+        .
+        .
+        default:
+            return operand;
+    }
+}
+
+void postfix()
+{
+    char symbol;
+    precedence token;
+    int n=0;int top=0;
+    stack[0]=eos;
+    for(token=get_token(&symbol,&n);token!=eos;token=get_token(&symbol,&n))
+    {
+        if(token==operand)
+        {
+            printf("%c",symbol);
+        }
+        else if(token==rparen)
+        {
+            while(stack[top]!=lparen)
+            {
+                print_token(pop());
+            }
+            pop();//also need to pop lparen
+        }
+        else
+        {
+            while(isp[stack[top]]>=icp[token])
+            {
+                print_token(pop());
+            }
+            push(token);
+        }
+    }
+    while((token=pop())!=eos)
+    {
+        print_token(token);
+    }
+}
+
+#### postfix evaluation
+int stack[30];
+int eval()
+{
+    char symbol;
+    precedence token;
+    int op1,op2,n=0;
+    token=get_token(&symbol,&n);
+    while(token!=eos)
+    {
+        if(token==operand)
+        {
+            push(symbol-'0');
+        }
+        else
+        {
+            op2=pop();
+            op1=pop();
+            switch(token)
+            {
+                case plus:
+                    push(op2+op1);
+                    break;
+                case minus:
+                    push(op1-op2);
+                    break;
+                case times:
+                    push(op1*op2);
+                    break;
+                case divide:
+                    push(op1/op2);
+                    break;
+                case mod:
+                    push(op1%op2);
+                    break;
+            }
+        }token=get_token(&symbol,&n);
+    }
+    return pop();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### MULTIPLE LINKED STACKS ####
+typedef struct 
+{
+    int key
+}element;
+struct stack
+{
+    element data;
+    struct stack* link;
+};
+typedef struct stack* stckptr;
+void push(element item,int i)# the number of stack in which they want to enter
+{
+    stckptr temp;
+    temp = (stckptr)malloc(struct stack);
+    temp->data = item;
+    temp->link = top[i]
+    top[i]=temp;
+}
+
+element pop(int i)
+{
+    stckptr temp;
+    element item;
+    temp = (stckptr)malloc(sizeof(struct stack));
+    temp = top[i];
+    if(!temp)
+    {
+        item->data=-1;
+        return item;
+    }
+    top[i]=top[i]->link;
+    item=temp->data;
+    free(temp);
+    return item;
+}
+// multiple QUEUES
+
+void add(element item,int i)
+{
+	queueptr temp;
+	temp=(struct queue*)malloc(sizeof(struct queue));
+	temp->data=item;
+	temp->link=NULL;
+	if(front[i])
+	{
+		rear[i]->link=temp;
+	}
+	else
+	{
+		front[i]=temp;
+	}
+	rear[i]=temp;
+}
+
+element delete(int i)
+{
+	queueptr temp=front[i];
+	element item;
+	element x;
+	x.key=-1;
+	if(!temp)
+	{
+		return x;
+	}
+	item=temp->data;
+	front[i]=front[i]->link;
+	free (temp);
+	return item;
+}

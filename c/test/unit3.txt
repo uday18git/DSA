@@ -1,5 +1,11 @@
-polynomial addition
-void attach(int coefficient,int exponent,polyptr *ptr)
+polynomial addition (polyptr)!!!
+struct node{
+    int expo;
+    int coef;
+    struct node* link;
+};
+typedef struct node* polyptr;
+void attach(int coefficient,int exponent,polyptr *ptr) //make temp saja dhaja ke link to *ptr
 {
     polyptr temp;
     temp = (polyptr)malloc(sizeof(struct node));
@@ -49,31 +55,7 @@ polyptr cpadd(polyptr a, polyptr b)
     lastC->link=c;
     return c;
 }
-#### MULTIPLE LINKED STACKS ####
-void push(element item,int i)# the number of stack in which they want to enter
-{
-    stckptr temp;
-    temp = (stckptr)malloc(struct stack);
-    temp->data = item;
-    temp->link = top[i]
-    top[i]=temp;
-}
-element pop(int i)
-{
-    stckptr temp;
-    element item;
-    temp = (stckptr)malloc(struct stack);
-    temp = top[i];
-    if(!temp)
-    {
-        item->data=-1;
-        return item;
-    }
-    top[i]=top[i]->link;
-    item=temp->data;
-    free(temp);
-    return item;
-}
+
 #### MULTIPLE QUEUES ####
 PENDING
 
@@ -86,23 +68,7 @@ struct node
 }
 typedef struct node* listptr;
 
-
-void insert(listptr *first,int item)
-{
-    listptr temp;
-    temp = (listptr)malloc(sizeof(listptr));
-    temp->data=item;
-    temp->llink=NULL;
-    temp->rlink=NULL;
-    if(*first)
-    {
-        temp->rlink= *first;
-        (*first)->llink=temp;
-    }
-    *first=temp;
-    return;
-}
-void insert(listptr* first,int item)//saja dhaja ke tmep ko
+void insert(listptr *first,int item)//temp
 {
     listptr temp;
     temp = (listptr)malloc(sizeof(struct node));
@@ -111,8 +77,8 @@ void insert(listptr* first,int item)//saja dhaja ke tmep ko
     temp->rlink=NULL;
     if(*first)
     {
-        temp->rlink = (*first);
-        (*first)->llink = temp;
+        temp->rlink= *first;
+        (*first)->llink=temp;
     }
     *first=temp;
     return;
@@ -128,6 +94,7 @@ int del(listptr *first)
     free(temp);
     return item;
 }
+
 void display(listptr first)
 {
     if(first)
@@ -151,7 +118,6 @@ void displayrev(listptr first)
         {
             first=first->rlink;
         }
-        
         while(first)
         {
             printf("%d",first->data)
