@@ -452,16 +452,26 @@
 // }
 #include <bits/stdc++.h>
 using namespace std;
-int main()
-{
-    int count=0;
-    for(int i=0;i<4096;i++)
+// int main()
+// {
+//     int count=0;
+//     for(int i=0;i<4096;i++)
+//     {
+//         if(i%128==0)
+//         {
+//             count++;
+//         }
+//     }
+//         cout<<count;
+//     return 0;
+// }
+int main(){
+    vector<int> v = {1,2,3,4,5};
+    v.erase(v.begin()+2);
+    vector<int> a = v;
+    for(auto i:v)
     {
-        if(i%128==0)
-        {
-            count++;
-        }
+        cout<<i;
     }
-        cout<<count;
-    return 0;
+
 }

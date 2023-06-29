@@ -16,8 +16,7 @@ int factorial(int n)
     {
         return 1;
     }
-    int fact = n;
-    fact *= factorial(n-1);
+    int fact = n*factorial(n-1);
     return fact;
 }
 int fibonacci(int n)
@@ -40,7 +39,7 @@ int fibonacci(int n)
 int main(){
 int a;
 // a = sumation(5);
-a = fibonacci(1);
+a = factorial(5);
 cout<<a<<endl;
 return 0;
 }

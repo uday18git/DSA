@@ -14,7 +14,7 @@
 // we can see that fib(1) is repeating no need to calculate it again and again
 // also we can write a recurrence relation for fib ie fib(n)=fib(n-1)+fib(n-2)
 // ways to handle overlapping subproblems
-// memoization(top-down) -> A lookup table is maintained and checked before computation of any state . Recursion is involved
+// memoization(top-down) -> A lookup table is maintained and checked before computation of any state . Recursion is involved , the time complexity is reduced in exchange of space complexity of the program
 // tabulation(bottom-up) -> Solution is built from base . IT is an iterative process
 // memoization
 int fib[200]={-1};
@@ -29,7 +29,7 @@ int computeFib(int n)
         return fib[n];
     }
     int res=fib[n-1]+fib[n-2];
-    fib[n]=res; //memeoization (storing the results of expensive function calls and returning the cached result when the same inputs occur again)
+    fib[n]=res; //memoization (storing the results of expensive function calls and returning the cached result when the same inputs occur again)
     return fib[n];
 }
 // tabulation (we are building from base)

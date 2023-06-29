@@ -9,8 +9,8 @@ int main()
         mp[arr[i]]++;
     }
     cout<<"Frequency of all elements"<<endl;
-    map<int,int> :: iterator it;
-    for(it=mp.begin();it!=mp.end();it++)
+    // map<int,int> :: iterator it;
+    for(auto it=mp.begin();it!=mp.end();it++)
     {
         cout<<it->first<<" "<<it->second<<endl;
     }

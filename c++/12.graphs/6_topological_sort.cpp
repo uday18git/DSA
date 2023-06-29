@@ -55,6 +55,9 @@ int main()
                 pq.push(it);
             }
         }
+        
     }
+    cout<<endl<<cnt;
     return 0;
+    // so if complete answer does not come , it means that there is a cycle in the given graph
 }

@@ -2,7 +2,7 @@
 // we will find mid then call merge sort on right and left of mid
 #include<bits/stdc++.h>
 using namespace std;
-void merge(int arr[],int l,int mid,int r)
+void merge(int arr[],int l,int mid,int r)// we are merging two sorted arrays into 1 sorted array using two pointer method 
 {
     int n1=mid-l+1;
     int n2=r-mid;
