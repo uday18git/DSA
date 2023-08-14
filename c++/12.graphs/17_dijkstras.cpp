@@ -1,6 +1,6 @@
-// Given a weighted graph , find the single source shortest path from a vertex u to all the vertices in the graph , if the node is unreachable then return -1. in any path from u to v , the weight sould be minimum.
+// Given a weighted graph , find the single source shortest path from a vertex u to all the vertices in the graph , if the node is unreachable then return -1. in any path from u to v , the weight should be minimum.
 // Note -> The weights of the edge must be positive
-
+// cant handle negative weights
 // idea
 // Assign a distance value to all the vertices in the input graph
 // Initialize all distance value as infinity. Assign distance value as 0 for the source vertex

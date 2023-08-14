@@ -45,4 +45,4 @@ int computeFib(int n)
 // key points 
 // Minimization and maximization problems are generally solved with dp where we want exhaustive solution (Sometimes with binary search on answer).
 // "Find number of ways" is also a very popular type of dp problem.
-// Wherever we can form recurrance relation or given in question can be solved using DP (sometimes with matrix exponentiation).  
+// Wherever we can form recurrance relation or given in question can be solved using DP (sometimes with matrix exponentiation).

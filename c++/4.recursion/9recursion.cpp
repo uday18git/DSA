@@ -25,7 +25,7 @@ void insert(vector<int>&arr,int temp)
 
 void insertion_sort(vector<int> &arr)
 {
-    if(arr.size()==1)
+    if(arr.size()==1) // at this(1) point the arr is sorted , so no further sorting needed 
     {
         return ;
     }

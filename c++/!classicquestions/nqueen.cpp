@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 #include<string>
 using namespace std;
 bool isSafe(vector<vector<int>> &arr,int x,int y,int n)
@@ -55,31 +56,60 @@ bool nqueen(vector<vector<int>> &arr,int x,int n)
     }
     return false;
 }
-int main(){
-    int n;
-    cin>>n;
-    vector<vector<int>> arr(n,vector<int>(n,0));
-    /*
-    We create a 2D vector containing "n"
-    elements each having the value "vector<int> (m, 0)".
-    "vector<int> (m, 0)" means a vector having "m"
-    elements each of value "0".
-    Here these elements are vectors.
-    */
-    // for(int i=0;i<n;i++)
-    // {
-    //     arr[i]=new int[n];
-    //     for(int j=0;j<n;j++){
-    //         arr[i][j]=0;
-    //     }
-    // }
-    if(nqueen(arr,0,n)){
-        for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                cout<<arr[i][j]<<" ";
-            }cout<<endl;
-        }
+// int main(){
+//     int n;
+//     cin>>n;
+//     vector<vector<int>> arr(n,vector<int>(n,0));
+//     /*
+//     We create a 2D vector containing "n"
+//     elements each having the value "vector<int> (m, 0)".
+//     "vector<int> (m, 0)" means a vector having "m"
+//     elements each of value "0".
+//     Here these elements are vectors.
+//     */
+//     // for(int i=0;i<n;i++)
+//     // {
+//     //     arr[i]=new int[n];
+//     //     for(int j=0;j<n;j++){
+//     //         arr[i][j]=0;
+//     //     }
+//     // }
+//     if(nqueen(arr,0,n)){
+//         for(int i=0;i<n;i++){
+//             for(int j=0;j<n;j++){
+//                 cout<<arr[i][j]<<" ";
+//             }cout<<endl;
+//         }
+//     }
+//     return 0;
+// }
 
+int main() {
+    int n;
+    cout << "Enter the value of n: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "Invalid input. n must be a positive integer." << endl;
+        return 1;
     }
+
+    vector<vector<int>> arr(n, vector<int>(n, 0));
+
+    if (nqueen(arr, 0, n)) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (arr[i][j] == 1) {
+                    cout << "Q ";
+                } else {
+                    cout << ". ";
+                }
+            }
+            cout << endl;
+        }
+    } else {
+        cout << "Solution does not exist for n = " << n << endl;
+    }
+
     return 0;
 }

@@ -42,15 +42,15 @@ void pi(string s1)
     s1.insert(x,"3.14");
     pi(s1);
 }
-void towerOfHanoi(int n,char src,char dest,char helper)
+void towerOfHanoi(int n,char src,char dest,char helper )//,int count ) if you want to count the number of steps
 {
     if(n==0)
     {
         return;
     }
-    towerOfHanoi(n-1,src,helper,dest);
+    towerOfHanoi(n-1,src,helper,dest); //count++
     cout<<"Move from "<<src<<" to "<<dest<<endl;
-    towerOfHanoi(n-1,helper,dest,src);
+    towerOfHanoi(n-1,helper,dest,src); // count++
 }
 // remove all the duplicates of a string
 // "aaaaaaabbbbbeeeeeeedddddddd" -> "abed"
@@ -135,6 +135,34 @@ void permutations(string s,string ans)
         permutations(ros,ans+ch);
     }
 }
+// permutations with space 
+void permutationsWithSpace(string ip,string op)
+{
+    if(ip.length()==0)
+    {
+        cout<<op<<endl;
+        return;
+    }
+    char ch = ip[0];
+    string op1 = op + " "+ch;
+    string op2 = op + ch;
+    string ros = ip.substr(1); //ros means rest of string
+    permutationsWithSpace(ros,op1);  
+    permutationsWithSpace(ros,op2);  
+}
+void permutationWithCaseChange(string ip,string op)
+{
+    if(ip.length()==0)
+    {
+        cout<<op<<endl;
+        return; 
+    }
+    char ch = ip[0];
+    char up = toupper(ch);
+    permutationWithCaseChange(ip.substr(1),op+ch);
+    permutationWithCaseChange(ip.substr(1),op+up);
+}
+
 // permutations in array leetcode
 // class Solution {
 // public:
@@ -248,6 +276,8 @@ int friendsPairing(int n)
 // 01 knapsack problem
 // put n items with given weight and value in a knapsack of capacity W to get maximum total value in the knapsack
 // for all items i have 2 options take it or not
+
+// this is without dp , because we did not store anything
 int knapsack(int value[],int weight[],int n,int W)
 {
     if(n==0 || W==0)
@@ -268,16 +298,20 @@ int main()
     // towerOfHanoi(2,'A','C','B');
     // cout<< remDuplicate("aaaaaaabbbbbeeeeeeedddddddd");
     // cout<<moveX("xasdaxsadaxasdaxadsax");
-    // subSeq("ABC","");
+    // subSeq("AB","");
     // subSeqAscii("AB","");
     // permutations("ABC","");
+    // string ip = "BC";
+    // string op = "A";
+    // permutationsWithSpace(ip,op);
+    permutationWithCaseChange("ab","");
     // cout<<countPath(0,3);
     // cout<<countPathMaze(3,0,0)<<endl;
     // cout<<tilingWays(3);
     // cout<<friendsPairing(4)<<endl;
-    int wt[] = {10,20,30};
-    int val[]= {100,50,150};
-    int W = 50;
-    cout<<knapsack(val,wt,3,W); 
+    // int wt[] = {10,20,30};
+    // int val[]= {100,50,150};
+    // int W = 50;
+    // cout<<knapsack(val,wt,3,W); 
     return 0;
 }
