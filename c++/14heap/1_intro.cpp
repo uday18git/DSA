@@ -1,6 +1,8 @@
 //INTRODUCTION --> IF THERE IS K AND SMALLEST/LARGEST IN A QUESTION .. 100% HEAP QUESTION
 // kth smallest element
-#include <bits/stdc++.h> 
+#include<iostream>
+#include<queue>
+#include<vector>
 using namespace std;
 int main(){
     priority_queue<int> max_h;

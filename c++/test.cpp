@@ -450,8 +450,8 @@
 // cout<<s-a;
 // return 0;
 // }
-#include <bits/stdc++.h>
-using namespace std;
+// #include <bits/stdc++.h>
+// using namespace std;
 // int main()
 // {
 //     int count=0;
@@ -465,13 +465,25 @@ using namespace std;
 //         cout<<count;
 //     return 0;
 // }
-int main(){
-    vector<int> v = {1,2,3,4,5};
-    v.erase(v.begin()+2);
-    vector<int> a = v;
-    for(auto i:v)
-    {
-        cout<<i;
-    }
+// int main(){
+//     vector<int> v = {1,2,3,4,5};
+//     v.erase(v.begin()+2);
+//     vector<int> a = v;
+//     for(auto i:v)
+//     {
+//         cout<<i;
+//     }
 
+// }
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string s = "abc";
+    string s1 = "def";
+    cout<<s[0];
+    s1+=s[0];
+    return 0;
 }
+// cannot append string with char , u can only append string with string and add a char to string

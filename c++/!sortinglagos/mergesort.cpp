@@ -1,6 +1,6 @@
 // divide and conquer ...
 // we will find mid then call merge sort on right and left of mid
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 void merge(int arr[],int l,int mid,int r)// we are merging two sorted arrays into 1 sorted array using two pointer method 
 {

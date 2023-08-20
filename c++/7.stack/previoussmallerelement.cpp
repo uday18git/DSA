@@ -1,5 +1,7 @@
 //=========NORMAL VERSION WHICH GIVES ARRAY WITH THE ACTUAL ELEMENTS NOT INDICES =========//
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
+#include <vector>
 using namespace std;
 vector<int> prevSmaller(vector<int> v)
 {

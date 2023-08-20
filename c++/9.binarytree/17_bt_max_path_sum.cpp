@@ -1,5 +1,5 @@
-#include "bits/stdc++.h" 
-using namespace std;
+// #include "bits/stdc++.h" 
+// using namespace std;
 //MAX PATH SUM --- TO FIND THE MAX SUM THROUGH A PATH
 //STRATEGY ---> FOR EACH NODE WE WILL COMPUTE 4 VALUES THEN COMPARE THIS WITH A GLOBAL VARIABLE MAX SUM THEN MAX VALUE WE TAKE
 //1. NODE VAL
@@ -7,7 +7,7 @@ using namespace std;
 //3. MAX PATH THROUGH RIGHT CHILD + NODE VAL
 //4. MAX PATH THROUGH LEFT CHILD + RIGHT CHILD + NODE VAL 
 // WE WILL START WITH LEAF NODE
-#include "bits/stdc++.h"
+#include <iostream>
 using namespace std;
 struct Node
 {

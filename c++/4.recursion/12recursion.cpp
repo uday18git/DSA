@@ -117,7 +117,7 @@ void subSeqAscii(string s, string ans)
     string ros = s.substr(1);
     subSeqAscii(ros,ans);
     subSeqAscii(ros,ans+ch);
-    subSeqAscii(ros,ans+to_string(code));
+    subSeqAscii(ros,ans+ to_string(code));
 }
 // ADVANCED RECURSION PROBLEMS I
 // print all permutations of ABC

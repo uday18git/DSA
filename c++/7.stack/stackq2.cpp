@@ -1,5 +1,6 @@
 //POP OPERATION COSTLY
-#include<bits/stdc++.h>
+#include<iostream>
+#include<queue>
 using namespace std;
 class Stack{
     queue<int> q1;

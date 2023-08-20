@@ -4,7 +4,7 @@
 // 3.For n nodes minumum heigth is log2(n+1)
 // 4.A bt has L leaves then it has at least log2(N+1)+1 number of levels
 
-#include "bits/stdc++.h"
+#include <iostream>
 using namespace std;
 struct Node
 {

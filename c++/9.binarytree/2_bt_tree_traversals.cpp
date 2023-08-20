@@ -1,7 +1,7 @@
 // preorder -> VLR
 // postorder -> LRV
 // inorder -> LVR
-#include "bits/stdc++.h"
+#include <iostream>
 using namespace std;
 struct Node
 {
