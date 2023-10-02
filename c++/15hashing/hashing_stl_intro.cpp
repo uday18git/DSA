@@ -12,6 +12,5 @@ int main()
     map<int,int> m; //key->value
     m[8]=2;
     cout<<m[8]<<endl;
-
     return 0;
 }

@@ -1,23 +1,28 @@
 // variations of knapsack
+
 // Subset sum problem
 // Equal sum partition
 // count of subset sum
 // minimum subset sum diff
 // target sum
 // # of subset in given difference
+
 // identification
 // if there are given some - - - - - - - items(for which there is a choice of taking or not taking) and a max weight of W or smtg like this
+
+// first three variations are here
+
 // subset sum problem
 // arr[] = 2,3,7,8,10
 // sum = 11
-// so here we can see that for all elements we can take or not take like that
+// so here we can see that for all elements we can take or not take,,, like that
+
 #include <iostream>
 #include <vector>
-
 using namespace std;
 int main()
 {
-    int sum=11;
+    int sum=22;
     vector<int> arr = {2,3,7,8,10};
     int n=arr.size();
     vector<vector<bool>> dp(n+1,vector<bool>(sum+1));
@@ -50,11 +55,11 @@ int main()
             }
         }
     }
-    cout<<dp[4][11];
-
+    cout<<dp[n][sum];
 
     return 0;
 }
+
 
 // equal sum partition
 // an array will be given {1,5,11,1}

@@ -4,6 +4,7 @@
 
 
 // q2 https://leetcode.com/contest/weekly-contest-359/problems/determine-the-minimum-sum-of-a-k-avoiding-array/
+
 class Solution {
 public:
     int minimumSum(int n, int k) {
@@ -110,7 +111,6 @@ public:
         if(j==0)
         {
             return 0;
-            
         }
         if (M[j]) {
             return M[j];
@@ -121,7 +121,7 @@ public:
     }
 
     int maximizeTheProfit(int n, std::vector<std::vector<int>>& offers) {
-
+        std::sort(offers.begin(), offers.end(), compareByEnd);
         int ans = findOpt(offers.size()-1, offers);
         return ans;
     }

@@ -1,3 +1,4 @@
+// find two unique numbers using bit manipulation
 #include<iostream>
 using namespace std;
 int getbit(int n,int pos)

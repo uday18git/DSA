@@ -81,13 +81,18 @@ using namespace std;
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        int max_sum = INT_MIN;
-        int currentsum = 0;
+        int maxSub = nums[0];
+        int cur_sum =0;
         for(int i=0;i<nums.size();i++)
         {
-            currentsum = max(nums[i],currentsum+nums[i]);
-            max_sum=max(max_sum,currentsum);
+            if(cur_sum<0)
+            {
+                cur_sum=0;
+            }
+            cur_sum+=nums[i];
+            maxSub = max(maxSub,cur_sum);
         }
-        return max_sum;
+        return maxSub;
     }
 };
+// to calculate the maximum subarray we use kedane's algorithm

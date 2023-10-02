@@ -2,9 +2,9 @@
 using namespace std;
 int sumation(int n)
 {
-    if(n==0)
+    if(n==1)
     {
-        return 0;
+        return 1;
     }
     int sum=n;
     sum += sumation(n-1);

@@ -117,7 +117,7 @@ void subSeqAscii(string s, string ans)
     string ros = s.substr(1);
     subSeqAscii(ros,ans);
     subSeqAscii(ros,ans+ch);
-    subSeqAscii(ros,ans+ to_string(code));
+    subSeqAscii(ros,ans+ string(code));
 }
 // ADVANCED RECURSION PROBLEMS I
 // print all permutations of ABC
@@ -240,6 +240,7 @@ int countPathMaze(int n,int i,int j)
         return 1;
     }
     if(i>n-1 || j>n-1)
+    
     {
         return 0;
     }

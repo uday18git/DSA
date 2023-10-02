@@ -10,9 +10,13 @@
 //
 // STRATEGY
 // 
-#include<iostream>
 #include<climits>
-using namespace std;                      //min is the number we are finding basically (mx or mid)
+#include<iostream>
+using namespace std;
+
+
+
+//min is the number we are finding basically (mx or mid)
 bool isPossible(int arr[],int n,int m,int min)
 {
     int studentsRequired=1,sum=0;
@@ -70,6 +74,6 @@ int main()
     int arr[]= {12,34,67,90};
     int n=4;
     int m=2;
-    cout<<"The minimum number of pages : "<<allocateMinimumPages(arr,n,m)<<endl;
+    cout<<"The minimum number of pages : "<<allocateMinimumPages(arr,n,m)<<endl; //113 answer
     return 0;
 }

@@ -25,7 +25,6 @@ void inc(int n)
 int main(){
 int n;
 cin>>n;
-
 inc(n);
 return 0;
 }

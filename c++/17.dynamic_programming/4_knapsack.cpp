@@ -12,35 +12,74 @@
 // take it -> minus from W (capacity of the array)
 // not take it -> capacity remains same
 //  let f(n,w) = be the maximum value of items we can take till item n and current capacity of knapsack W
-#include <bits/stdc++.h> 
+#include <iostream> 
+#include <vector>
+#include <algorithm>
 using namespace std;
+// just recursive code
+int knapsack(int val[],vector<int> wt,int W,int n)
+{
+    if(n==0 || W==0)
+    {
+        return 0;
+    }
+    if(wt[n-1]<=W)
+    {
+        return max(knapsack(val,wt,W-wt[n-1],n-1)+val[n-1],knapsack(val,wt,W,n-1));
+    }
+    else
+    {
+        return knapsack(val,wt,W,n-1);
+    }
+}
+// main function for recursive code
+// int main(){
+//     vector<int> wt = {15,30,40};
+//     int val[] = {60,100,150};
+//     int W = 50;
+//     int n=wt.size();
+//     cout<<knapsack(val,wt,50,3)<<endl;
+// return 0;
+// }
+
 // top down
 // to memoize we can write a normal recursive code and memoize it
 // to memoize means to store results of the expensive recursive calls and reuse them.
 // to memoize it we will declare dp array
-// vector<vector<int>> dp(5,vector<int>(52,-1));
-// int knapsack(int wt[],int val[],int W,int n) 
-// {
-//     if(n==0 || W==0)
-//     {
-//         return 0;
-//     }
-//     if(dp[n][W]!=-1)
-//     {
-//         return dp[n][W];
-//     }
-//     if(wt[n-1] > W)
-//     {
-//         return dp[n][W]=knapsack(wt,val,W,n-1);
-//     }
-//     else
-//     {
-//         return dp[n][W]=max(val[n-1]+knapsack(wt,val,W-wt[n-1],n-1),knapsack(wt,val,W,n-1));
-//     }
+
+
+// this memoized version sometimes gives stack overflow error so tabulation is better in some cases
+int knapsack(int wt[],int val[],int W,int n,vector<vector<int>>&dp) 
+{
+    if(n==0 || W==0)
+    {
+        return 0;
+    }
+    if(dp[n][W]!=-1)
+    {
+        return dp[n][W];
+    }
+    if(wt[n-1] > W)
+    {
+        return dp[n][W]=knapsack(wt,val,W,n-1,dp);
+    }
+    else
+    {
+        return dp[n][W]=max(val[n-1]+knapsack(wt,val,W-wt[n-1],n-1,dp),knapsack(wt,val,W,n-1,dp));
+    }
+}
+//main function for memoization
+// int main(){
+//     int wt[] = {15,30,40};
+//     int val[] = {60,100,150};
+//     int W = 50;
+//     int n=3;
+//     vector<vector<int>> dp(n+1,vector<int>(W+1,-1));
+//     cout<<knapsack(wt,val,50,3,dp)<<endl;
+// return 0;
 // }
 
 // using bottom up approach , tabulation
-
 int main(){
     vector<int> wt = {15,30,40};
     int val[] = {60,100,150};
@@ -70,15 +109,8 @@ int main(){
             }
         }
     }
-    // cout<<dp[3][50]<<endl;
-    // for(int i=0;i<n+1;i++)
-    // {
-    //     for(int j=0;j<W+1;j++)
-    //     {
-    //         cout<<dp[i][j]<<" ";
-    //     }
-    //     cout<<endl;
-    // }
+    cout<<dp[n][W]<<endl;
+    
 
 return 0;
 }
