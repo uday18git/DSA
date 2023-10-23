@@ -72,10 +72,9 @@ int main(){
             }
         }
     }
-    cout<<dp[n][sum]<<endl;// expected answer 2
+    cout<<dp[n][sum]<<endl;// expected answer 3
 return 0;
 }
-
 
 
 // for(int i=1;i<sum+1;i++)
@@ -89,3 +88,27 @@ return 0;
     //         dp[1][i]=INT_MAX-1;
     //     }
     // }
+
+
+
+// 1d array solution memoized
+// int main()
+// {
+//     vector<int> coins = {1,2,5};
+//     int sum=11;
+//     int n=coins.size();
+//     vector<int> dp(sum+1,sum+1);
+//     dp[0]=0;
+//     for(int i=1;i<sum+1;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             if(i-coins[j]>=0)
+//             {
+//                 dp[i] = min(dp[i-coins[j]]+1,dp[i]);
+//             }
+//         }
+//     }
+//     cout<<dp[sum]; //expected ans 3
+//     return 0;
+// }

@@ -31,7 +31,7 @@ return result;
 // Driver code
 int main()
 {
-int arr[] = { 3, 4, 6, 8, 16 };
+int arr[] = { 3, 4, 6, 8, 7 };
 int n = sizeof(arr) / sizeof(arr[0]);
 cout << findGCD(arr, n) << endl;
 return 0;

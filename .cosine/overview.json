@@ -1,0 +1,26 @@
+{
+  "projectName": "Untitled (Workspace)",
+  "summary": "Without any specific file names or descriptions, it's impossible to determine what this project does. Please provide more detailed information.",
+  "languages": [
+    "Markdown",
+    "C",
+    "JSON",
+    "CPP"
+  ],
+  "noteworthyDependencies": [],
+  "samplePrompts": [
+    "What is the high-level overview of this project?",
+    "What is the structure of the codebase?",
+    "What roles do the C and CPP languages play in this codebase?",
+    "What type of information is contained in the JSON files?",
+    "How does the project make use of the Markdown language?",
+    "Are there specific coding conventions followed in this codebase?",
+    "What is the entry point of the application?",
+    "How is the project documented?",
+    "What are the key data structures used in this project?",
+    "How does error handling work in this codebase?",
+    "Is there any multithreading implemented in the C or CPP files?",
+    "Are there any critical performance considerations in this codebase?",
+    "What is the testing methodology for this project?"
+  ]
+}

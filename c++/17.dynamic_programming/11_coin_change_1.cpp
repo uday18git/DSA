@@ -11,12 +11,12 @@ int main()
     vector<vector<int>> dp(n+1,vector<int>(sum+1));
     for(int i =0;i<n+1;i++)
     {
-        dp[0][i] = false;
+        dp[0][i] = 0;
     }
     
     for(int i =0;i<n+1;i++)
     {
-        dp[i][0] = true;
+        dp[i][0] = 1;
     }
     for(int i=1;i<n+1;i++)
     {
