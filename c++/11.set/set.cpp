@@ -7,6 +7,7 @@ using namespace std;
 int main()
 {
     set<int> s;
+    // s.find() is a function which we can use to see if it is there, if(s.find() !=s.end()) then the element is present
     s.insert(1);
     s.insert(2);
     s.insert(3);

@@ -13,7 +13,7 @@ void uniq2(int arr[],int n)
         totalxor = totalxor^arr[i] ;
     }
     int no=0,pos=0;
-    while(no!=1)
+    while(no!=1) // finds where 1 is there
     {
         no = totalxor & (1<<pos);
         pos++; 

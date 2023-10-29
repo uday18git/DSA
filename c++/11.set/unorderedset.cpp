@@ -11,6 +11,10 @@ int main()
     s.insert(3);
     s.insert(2);
     s.insert(5);
+    // s.find()
+    // s.erase()
+    // s.size()
+    
     // s.insert(1);
     for(auto i:s)
         cout<<i<<" ";

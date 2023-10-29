@@ -11,7 +11,8 @@
 // 2. open addressing -> if collision, do probing
 // using a second argument called probe number in the hash function , probe number depends onn key , hence given by P(k) 
 // 3 types of probing linear , quadratic, double hashing .
-
+// mapname.count is used to see whether the key exists in the map, gives 0 if not there
+// mapname.find() gives m.end() if not there
 #include <bits/stdc++.h>
 using namespace std;
 int main()
