@@ -1,7 +1,7 @@
 // q1 learnings -> u cannot append a character to a string 
 // u can add like words + s[0] smtg
 // u can append a string to a string
-
+// you can pushback in strings also
 
 // q2 https://leetcode.com/contest/weekly-contest-359/problems/determine-the-minimum-sum-of-a-k-avoiding-array/
 

@@ -2,6 +2,7 @@
 //2 METHODS -- MAKING PUSH METHOD COSTLY , OR MAKING POP METHOD COSTLY
 // Q1 AND Q2
 //PUSH COSTLY
+// we are maintaining the stack in q1
 #include <bits/stdc++.h>
 using namespace std;
 class Stack{

@@ -6,6 +6,7 @@
 using namespace std;
 int main(){
     priority_queue<int> max_h;
+    // simply priority queue means the top element will be the highest
     
     int n,k;
     printf("Enter k value");

@@ -42,6 +42,8 @@ void pi(string s1)
     s1.insert(x,"3.14");
     pi(s1);
 }
+
+
 void towerOfHanoi(int n,char src,char dest,char helper )//,int count ) if you want to count the number of steps
 {
     if(n==0)
@@ -91,7 +93,7 @@ string moveX(string s)
 //generate substrings of a string  there will be 8 of these
 // draw the recursive tree
 // input output method bro
-void subSeq(string s,string ans)
+void substr(string s,string ans)
 {
     if(s.length()==0) //when "input" becomes empty well get one ans
     {

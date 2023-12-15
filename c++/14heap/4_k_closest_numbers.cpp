@@ -4,7 +4,7 @@
 //  we have to max heap
 //  we always pop the useless
 //  when we passs pair<int,int> in a heap sorting is done on first int automatically
-// we store the differnce of arr numbers and x in first int of pair and actual number in the second int of pair
+//  we store the differnce of arr numbers and x in first int of pair and actual number in the second int of pair
 #include <bits/stdc++.h>
 using namespace std;
 int main()

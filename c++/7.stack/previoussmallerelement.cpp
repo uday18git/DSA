@@ -1,4 +1,10 @@
 //=========NORMAL VERSION WHICH GIVES ARRAY WITH THE ACTUAL ELEMENTS NOT INDICES =========//
+//steps
+// traverse from the start
+// see if stack is empty put -1 for that because there is no prev smaller element for it
+// compare curr element with stacks top , if its less we found our prev smaller element
+// if its greater then keep popping until its lesser or empty
+
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -44,3 +50,6 @@ int main()
 
     return 0;
 }
+
+// variant of this is previous greater element same approach 
+// for previous ones we are iterating from start and for the next ones we are iterating from the last

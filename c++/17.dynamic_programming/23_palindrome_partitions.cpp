@@ -16,25 +16,25 @@ bool isPalindrome(string str)
     }
     return true;
 }
-// int solve(string s,int i,int j)
-// {
-//     if(i>=j) // because empty string is palindrome and single char is also palindrome
-//     {
-//         return 0;
-//     }
-//     if(isPalindrome(s.substr(i,j-i+1)))
-//     {
-//         return 0;
-//     }
-//     int minPartitions = s.length()-1;
-//     for(int k=i;k<j;k++)
-//     {
-//         int partitions = solve(s,i,k)+solve(s,k+1,j)+1;
-//         minPartitions=min(partitions,minPartitions);
-//     }
-//     return minPartitions;
+int solve(string s,int i,int j)
+{
+    if(i>=j) // because empty string is palindrome and single char is also palindrome
+    {
+        return 0;
+    }
+    if(isPalindrome(s.substr(i,j-i+1)))
+    {
+        return 0;
+    }
+    int minPartitions = s.length()-1;
+    for(int k=i;k<j;k++)
+    {
+        int partitions = solve(s,i,k)+solve(s,k+1,j)+1;
+        minPartitions=min(partitions,minPartitions);
+    }
+    return minPartitions;
 
-// }
+}
 // int main(){
 //     string s = "abaa";
 //     cout<<solve(s,0,s.length());

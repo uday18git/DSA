@@ -13,7 +13,7 @@ bool isSafe(vector<vector<int>> &arr,int x,int y,int n)
     }
     int col=y;
     int row=x;
-    while(row>=0&&col>=0)//left diagonal
+    while(row>=0 && col>=0)//left diagonal
     {
         if(arr[row][col]==1)
         {
@@ -24,7 +24,7 @@ bool isSafe(vector<vector<int>> &arr,int x,int y,int n)
     }
     row=x;
     col=y;
-    while(row>=0&&col<n)//right diagonal
+    while(row>=0 && col<n)//right diagonal
     {
         if(arr[row][col]==1)
         {

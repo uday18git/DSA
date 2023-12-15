@@ -488,15 +488,22 @@
 // }
 // cannot append string with char , u can only append string with string and add a char to string
 
+// #include <bits/stdc++.h> 
+// using namespace std;
+// int main(){
+// vector<int> arr = {1,2,9,1,23,4};
+// sort(arr.begin(),arr.end());
+// for(int i=0;i<arr.size();i++)
+// {
+//     cout<<arr[i]<<endl;
+// }
+// cout<< 5+3*2<<endl;
+// return 0;
+// }
 #include <bits/stdc++.h> 
 using namespace std;
 int main(){
-vector<int> arr = {1,2,9,1,23,4};
-sort(arr.begin(),arr.end());
-for(int i=0;i<arr.size();i++)
-{
-    cout<<arr[i]<<endl;
-}
-cout<< 5+3*2<<endl;
+    vector<int> u = {1,2,3,4,5};
+    
 return 0;
 }

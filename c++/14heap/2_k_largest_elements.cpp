@@ -7,7 +7,7 @@ int main(){
     cout<<"Enter the k value "<<endl;
     cin>>k;
     vector<int> v1(n);
-    priority_queue<int,vector<int>,greater<int>> min_h;
+    priority_queue<int,vector<int>,greater<int>> min_h;// min heap
     for(int i=0;i<v1.size();i++)
     {
         cin>>v1[i];

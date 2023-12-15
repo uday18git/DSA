@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
+// steps 
 vector<int> nextSmaller(vector<int> v)
 {
     vector<int> ans;
-
+    cout<<v.back();
     stack<int> s1;
     s1.push(v.back());
     
     for (int i = v.size() - 1; i >= 0; i--) // for next least element just run the loop in reverse and create a new array to store and avoid the reverse print of the sequence
     {
-
         while (!(s1.empty()) && !(s1.top() < v[i])) // for nearest previous greater element > sign , for nearest previous smaller element < sign
         {
             s1.pop();

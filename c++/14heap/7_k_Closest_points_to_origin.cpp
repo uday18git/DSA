@@ -17,7 +17,7 @@ int main()
     int k = 2;
     for (int i = 0; i < v.size(); i++)
     {
-        max_h.push({v[i][0]*v[i][0]+v[i][1]*v[i][1],{v[i][0],v[i][1]}});
+        max_h.push({v[i][0]*v[i][0]+v[i][1]*v[i][1],{v[i][0],v[i][1]}});// actual distance has sqrt , but we will just ignore , its the same thing
         if(max_h.size()>k)
         {
             max_h.pop();

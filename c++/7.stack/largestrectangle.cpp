@@ -1,6 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
+// brute force approach will be to 
+// pick one element and see how much we can go left and right with that 
+// O(n square)
 
+// better solution is using previosu smaller and next smaller
 vector<int> nextSmaller(vector<int> v)
 {
     vector<int> ans;

@@ -1,5 +1,7 @@
 //postfix expression
 //46+2/5*7+
+
+// same as prefix but we start from the begining of the string
 #include <bits/stdc++.h> 
 using namespace std;
 int postfixEvaluation(string s)

@@ -1,0 +1,64 @@
+isupper() 
+islower()
+sizeof()
+integer 4 bytes
+long 8 bytes
+Float 4 bytes
+Double 8 bytes
+Character 1 byte
+
+
+// before accessing anything in if conditions make sure it is not empty
+switch(expression)
+{
+    case x:
+        // code
+        break;
+    case y:
+        // code
+        break;
+    default:
+        break;
+}
+
+
+// reverse a number
+class Solution {
+public:
+    int reverse(int x) {
+        int rev=0;
+        
+        while(x!=0)
+        {
+            int temp=x%10;
+            if(rev > INT_MAX / 10 )return 0;
+            if(rev < INT_MIN / 10 )return 0;
+            rev*=10;
+            rev+=temp;
+            x/=10;
+        }
+        return rev;
+    }
+};
+// check if a number is palindrome 
+// use above logic to reverse and check
+
+
+// to check if a string is palindrome best way
+
+bool isPalindrome(const string& str) {
+    int left = 0;
+    int right = str.length() - 1;
+
+    while (left < right) {
+        // Convert characters to lowercase to make the comparison case-insensitive
+        if (tolower(str[left]) != tolower(str[right])) {
+            return false; // Characters do not match, not a palindrome
+        }
+
+        left++;
+        right--;
+    }
+
+    return true; // All characters matched, it's a palindrome
+}

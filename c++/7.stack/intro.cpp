@@ -7,12 +7,11 @@ class Stack{
 
     public:
     Stack(){
-        
         top = -1;
     }
     void push(int x)
     {
-        if(top== n-1)
+        if(top==n-1)
         {
             cout<<"stack overflow"<<endl;
             return;

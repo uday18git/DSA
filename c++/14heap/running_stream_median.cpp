@@ -36,8 +36,8 @@ void insert(int x)
     }
     else
     {
-        // case 1: size of maxheap>size of minheap
-        //  case 2: size of minheap>size of maxheap
+        // case 1: size of maxheap > size of minheap
+        //  case 2: size of minheap > size of maxheap
         if (pqmax.size() > pqmin.size())
         {
             if (x >= pqmax.top())//comparing with median..

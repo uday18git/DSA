@@ -1,5 +1,5 @@
 // arr[] = {1,1,1,3,2,2,4}
-//  we have to give k most frequent numbers so in this case if k is ans is {1,2}
+//  we have to give k most frequent numbers so in this case if k is 2 ans is {1,2}
 //  frequency and hash related
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,6 +29,6 @@ int main()
         cout<<min_h.top().second<<" ";
         min_h.pop();
     }
-    cout<<mp.size()<<endl;
+    // cout<<mp.size()<<endl;
     return 0;
 }

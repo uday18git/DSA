@@ -8,10 +8,10 @@ void reverseSent(string s)
     for(int i=0;i<s.length();i++)
     {
         string word = "";
-        while(s[i] != ' ' && i<s.length())//' ' not " "
+        while(s[i] != ' ' && i<s.length())//' ' not " " .,,, here we are checking the above condition
         {
             word+=s[i];
-            i++;
+            i++; // when you do i++ like this in side the loop then there you have to check
         }
         st.push(word);
 

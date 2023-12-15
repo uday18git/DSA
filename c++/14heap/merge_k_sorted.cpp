@@ -1,8 +1,12 @@
 // BRUTE FORCE APPROACH TO ADD 2 ARRAYS AT A TIME AND CREATE A NEW ARRAY, BUT WE CAN DO OPTIMISED
 // BRUTE FORCE  -> TAKE 2 ARRAYS AND MERGE THEM REPEAT THIS PROCESS UNTILL WE ARE LEFT WITH 1 ARRAY
 // EFFICIENT SOLN -> USING MIN HEAP
-// 1. CREATe A MIN HEAP OF PAIRS pair-> {value,array number}
+// 1. CREATE A MIN HEAP OF PAIRS pair-> {value,array number}
 // 2. INSERT {first element ,array number }of all the sorted arrays into min heap
+// 3. Main idea : We will pop element from the min heap and store into the answer array
+// insert the next element of the same array into the min heap
+// 4. we also need to keep track of the indices of next elements using idx array
+
 #include <bits/stdc++.h>
 #define pii pair<int,int>
 #define vii vector<pii> 
@@ -21,12 +25,12 @@ int main()
         a[i]=vector<int>(size);
         cout<<"enter the "<<i+1<<"th array"<<endl;
         for(int j=0;j<size;j++)
-        {
-            
+        { 
             cin>>a[i][j];
         }
     }
-    vector<int> idx(k,0);// vector of k size initialized with all zeros .. stores index number of the element of array currently stored in the min heap
+    vector<int> idx(k,0);
+    // vector of k size initialized with all zeros .. stores index number of the element of array currently stored in the min heap
     // index in this array denotes the number of array and value denotes the index of element stored in minheap
     priority_queue<pii,vii,greater<pii>> pq;
     for(int i=0;i<k;i++)
@@ -34,7 +38,6 @@ int main()
         pii p;
         p.first = a[i][0];
         p.second = i;
-
         pq.push(p);//pushing all the first elements
     }
     vector<int> ans;
