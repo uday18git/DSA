@@ -14,7 +14,7 @@ struct Node{
 // WE WILL BE GIVEN PREORDER SEQUENCE .. WE WILL MAINTAIN MIN AND MAX 
 // 7 5 4 6 8 9
 // FOR 7 MIN MAX IS NULL NULL
-// FOR 7'S LEFT CHILD MAX IS 7 MINN IS NULL  key is current value that we are building. n is total number of eleemnts.
+// FOR 7'S LEFT CHILD MAX IS 7(because in bst left tree cannot have a number greater than its root) MINN IS NULL  key is current value that we are building. n is total number of eleemnts.
 Node* constructBST(int preorder[],int* preorderIdx,int key,int min,int max,int n)
 {
     if(*preorderIdx>=n){return NULL;}
