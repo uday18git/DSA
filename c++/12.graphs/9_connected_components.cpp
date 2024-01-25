@@ -1,3 +1,9 @@
+// if a graph has 4 portions which are not connected
+// and we apply a traversal algorithm it will not traverse because its not connected
+// so we will keep a visited array 
+// this is the logic of why we use visited array
+
+
 // connected component is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices in the supergraph
 // idea
 // visit the nodes in a depth first fashion

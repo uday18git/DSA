@@ -31,3 +31,6 @@ int main()
     return 0;
     
 }
+
+
+// unordered_set<int> st(wordList.begin(),wordList.end());

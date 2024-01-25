@@ -65,3 +65,14 @@ int main()
     cout<<endl;
     return 0;
 }
+
+
+// flatten , right child should be the next of the preorder
+// left child will be null
+// rearrange the same bt
+
+// STEPS
+// RECURSIVELY FLATTEN LEFT AND RIGHT SUBTREES
+// STORE THE RIGHT SUBTREE IN TEMP AND MAKKE LEFT SUBTREE AS RIGHT SUBTREE
+// JOIN TEMP ON THE CURRENT RIGHT SUBTREE, FOR THAT WE HAVE TO CALCULATE ITS RIGHT TAIL 
+// RETURN RIGHT TAIL
