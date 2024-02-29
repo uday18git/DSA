@@ -44,16 +44,7 @@ void pi(string s1)
 }
 
 
-void towerOfHanoi(int n,char src,char dest,char helper )//,int count ) if you want to count the number of steps
-{
-    if(n==0)
-    {
-        return;
-    }
-    towerOfHanoi(n-1,src,helper,dest); //count++
-    cout<<"Move from "<<src<<" to "<<dest<<endl;
-    towerOfHanoi(n-1,helper,dest,src); // count++
-}
+
 // remove all the duplicates of a string
 // "aaaaaaabbbbbeeeeeeedddddddd" -> "abed"
 string remDuplicate(string s)
@@ -90,10 +81,10 @@ string moveX(string s)
         return ch+ans;
     }
 }
-//generate substrings of a string  there will be 8 of these
+// generate substrings of a string  there will be 8 of these
 // draw the recursive tree
 // input output method bro
-void substr(string s,string ans)
+void subSeq(string s,string ans)
 {
     if(s.length()==0) //when "input" becomes empty well get one ans
     {
@@ -205,8 +196,8 @@ void permutationWithCaseChange(string ip,string op)
     //         roa.push_back(num);
     //         perm(nums,roa);
     //     }
-    // } causing stack overflow due to excess recursion
-    //instead we use backtracking
+    // } 
+    
 //     vector<vector<int>> permute(vector<int>& nums) {
 //         perm(nums,0);
 //         return ans;
