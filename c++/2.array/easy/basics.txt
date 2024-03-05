@@ -17,10 +17,8 @@
 
 // remove duplicates from a SORTED array
 // we will maintain a variable 
-// then increment the varaible to keep storeing new and ignore duplicates
+// then increment the varaible to keep storing new and ignore duplicates
 // similar approach we use in move zeros to the last 
-
-
 
 class Solution {
 public:
@@ -44,9 +42,7 @@ public:
         
     }
 };
-
 //  nums.erase(nums.begin()+3) remove that element did not work
-
 // nums.clear is to remove the whole array
 
 
@@ -55,6 +51,8 @@ public:
 
 // left rotate an array by one place
 // store the first number , then left shift all other by one pass
+
+// left rotate by D places
 // you can store the first k elements 
 // then shift the rest to starting 
 // then put back the stored array at last

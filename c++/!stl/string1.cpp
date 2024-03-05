@@ -35,3 +35,8 @@
 // convert to upper case
 // toupper(char) works
 
+// to get the max element in a string
+// char m = *max_element(s.begin()+start+1,s.end());
+
+// to compare
+// s.compare(s1) gives positive if s>s1 , gives 0  if equal , gives -ve if s<s1 
