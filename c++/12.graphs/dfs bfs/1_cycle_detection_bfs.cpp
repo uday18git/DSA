@@ -1,16 +1,11 @@
 // cycle detection in a undirected graph using bfs
 // first create a adj list using the given graph
-// if u start with two different paths , and end up at same ndoe
+// if u start with two different paths , and end up at same node
 // then there is a cycle
-
 // if some one is already visited and it is not the parent of the current node
 // then there is a cycle 
-
 #include <bits/stdc++.h>
 using namespace std;
-
-
-
 class Solution{
     public:
         bool isCycle(int v,vector<int> adj[])
@@ -32,7 +27,7 @@ class Solution{
                     {
                         q.push({node,vis[i]});
                     }
-                    else if (parent!=vis[i])
+                    else if (parent!=i)
                     {
                         return true;
                     }
@@ -61,3 +56,9 @@ class Solution{
 
 
 
+#include <bits/stdc++.h> 
+using namespace std;
+int main(){
+
+return 0;
+}

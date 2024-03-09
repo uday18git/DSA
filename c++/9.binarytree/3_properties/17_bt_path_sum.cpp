@@ -14,7 +14,8 @@ struct Node
 };
 bool hasPathSum(Node* root, int targetSum) {
         if (!root) {
-        return false;}
+            return false;
+        }
     
         targetSum -= root->data;
     
@@ -24,8 +25,4 @@ bool hasPathSum(Node* root, int targetSum) {
     
         return hasPathSum(root->left,targetSum) || hasPathSum(root->right, targetSum);
         
-}
-int main()
-{
-    
 }

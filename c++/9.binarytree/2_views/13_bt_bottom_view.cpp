@@ -1,3 +1,6 @@
+// sttiver
+
+// vertical order traversal
 // bottom view
 //            1
 //          /   \
@@ -61,9 +64,6 @@ int main(){
     bottom_view(node);
 return 0;
 }
-
-// i donno why level order traversal they have not done ,,, something lil different they have done
-// recursive traversal is not possible
 
 // sc = O(n)
 // tc = O(n)

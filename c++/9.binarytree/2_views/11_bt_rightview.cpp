@@ -1,3 +1,5 @@
+// striver or ac
+
 #include "bits/stdc++.h"
 using namespace std;
 struct Node

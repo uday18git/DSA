@@ -1,3 +1,6 @@
+// apna clg
+
+
 #include "bits/stdc++.h"
 using namespace std;
 struct Node
@@ -12,24 +15,38 @@ struct Node
         left = NULL;
     }
 };
-void sumReplacement(Node* root)
+// void sumReplacement(Node* root)
+// {
+//     if(!root)
+//     {
+//         return;
+//     }
+//     sumReplacement(root->left);
+//     sumReplacement(root->right);
+//     if(root->left)
+//     {
+//         root->data+=root->left->data;
+//     }
+//     if(root->right)
+//     {
+//         root->data+=root->right->data;
+//     }
+    
+    
+// }
+
+// my answer
+int sumReplacement(Node* root)
 {
     if(!root)
     {
-        return;
+        return 0 ;
     }
-    sumReplacement(root->left);
-    sumReplacement(root->right);
-    if(root->left)
-    {
-        root->data+=root->left->data;
-    }
-    if(root->right)
-    {
-        root->data+=root->right->data;
-    }
+    int left = sumReplacement(root->left);
+    int right = sumReplacement(root->right);
     
-    
+    root->data+=(left+right);
+    return root->data;
 }
 void preorder(struct Node* root){
     if(!root)
@@ -51,7 +68,8 @@ int main()
     root->right->left = new Node(6);
     root->right->right = new Node(7);
     preorder(root);
-    sumReplacement(root);
+    cout<<"\n";
+    cout<<sumReplacement(root);
     cout<<"\n";
     preorder(root);
     return 0;

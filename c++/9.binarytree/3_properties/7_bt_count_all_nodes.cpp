@@ -1,3 +1,5 @@
+// apna clg
+
 #include "bits/stdc++.h"
 using namespace std;
 struct Node
@@ -28,7 +30,6 @@ int SumNodes(Node* root)
         return 0;
     }
     return SumNodes(root->left)+SumNodes(root->right)+root->data;
-
 }
 int main()
 {
@@ -42,3 +43,5 @@ int main()
     cout<<SumNodes(root);
     return 0;
 }
+// IF ITS GIVEN THAT ITS A COMPLETE BINARY TREE THEN WE CAN USE THE PROPERTY THAT IF LEFT HEIGHT IS === RIGHT HEIGHT
+// NUMBER OF NODES  = 2^HEIGHT -1

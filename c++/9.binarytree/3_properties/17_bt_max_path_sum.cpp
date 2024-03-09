@@ -1,5 +1,8 @@
+// apna clg
+
 // #include "bits/stdc++.h" 
 // using namespace std;
+// apna college
 //MAX PATH SUM --- TO FIND THE MAX SUM THROUGH A PATH
 //STRATEGY ---> FOR EACH NODE WE WILL COMPUTE 4 VALUES THEN COMPARE THIS WITH A GLOBAL VARIABLE MAX SUM THEN MAX VALUE WE TAKE
 //1. NODE VAL
@@ -29,7 +32,7 @@ int PathSum(Node *root,int &ans)
     int nodeMax = max(max(root->data,root->data+left+right),
                     max(root->data+right,root->data+left));
     ans=max(nodeMax,ans);
-    int singlePathSum = max(root->data,max(root->data+right,root->data+left));
+    int singlePathSum = max(root->data,max(root->data+right,root->data+left)); // here we are ignoring the root->data + left+ right because we that itself will be a complete path and you cant add the ancestors here
     return singlePathSum;
 
 }

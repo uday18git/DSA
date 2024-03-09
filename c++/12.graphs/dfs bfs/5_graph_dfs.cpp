@@ -1,3 +1,8 @@
+// so basically in dfs dfs(int v)  each v we are marking it as visited and printing it
+// and for each of its neighbouring nodes we are calling dfs again
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e5+2;
@@ -57,3 +62,6 @@ int main()
 
 // sc -> o(n) + o(n) + o(n) = o(n)
 // tc -> O(2*e) + O(n)
+
+
+

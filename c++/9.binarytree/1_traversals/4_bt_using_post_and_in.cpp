@@ -1,3 +1,7 @@
+// APNA COLLEGE
+
+
+
 // using postorder and inorder
 // same as preorder and inorder we have to start from the back
 // and we have to build right first
@@ -45,7 +49,7 @@ Node *buildTree(int postorder[], int inorder[], int start, int end)
     }
     int pos = search(inorder, start, end, val);
     curr->right = buildTree(postorder, inorder, pos + 1, end);//****************
-    curr->left = buildTree(postorder, inorder, start, pos - 1); // first we will build the left subtree of the root
+    curr->left = buildTree(postorder, inorder, start, pos - 1); // first we will build the right subtree of the root
     // position is where we find the root node so we take till pos-1 above
     
 

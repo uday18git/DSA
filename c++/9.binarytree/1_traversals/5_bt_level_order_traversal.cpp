@@ -1,3 +1,6 @@
+// APNA COLLEGE
+
+
 // we use queue to do level order traversal
 // first we insert root null
 // 1 NULL
@@ -28,6 +31,14 @@
 // if the element is null 
 // check if queue is empty , if its empty stop the queue
 // if its not emmpty some more levels are tehre so pusback null
+
+
+// there is also another way of level order traversal using for loop, by finding the current length of the queue and running a for loop
+// it doesnt involve pushing any null values because for loop only indicates that a level has been traversed
+
+// another way of level order traversal is to not take any null values 
+// this is for when it doesnt matter that a level has been traversed
+
 #include "bits/stdc++.h"
 using namespace std;
 struct Node
@@ -49,10 +60,11 @@ void printLevelOrder(Node* root){
     }
     queue<Node*> q;
     q.push(root);//first we insert root null
-    q.push(NULL);
+    // q.push(NULL);
     while(!q.empty())
     {
         Node* node = q.front();
+        // here int n=q.size(), then run a for loop for alternative way of level order traversal
         q.pop();
         if(node != NULL)
         {
@@ -62,7 +74,7 @@ void printLevelOrder(Node* root){
             if(node->right)
                 q.push(node->right);
         }
-        else if(!q.empty())//this is if node==null so here we have traversed a level whatever level it is and we removed null //if it is not empty push null to the back if it is empty it will automatically terminate
+        else if(!q.empty())//this is if node==null so here we have traversed a level whatever level it is and we removed null //if Q is not empty push null to the back if it is empty it will automatically terminate
             q.push(NULL);
     }
 
@@ -71,12 +83,12 @@ void printLevelOrder(Node* root){
 int main()
 {
     struct Node* root = new Node(1);
-    // root->left = new Node(2);
-    // root->right = new Node(3);
-    // root->left->left = new Node(4);
-    // root->left->right = new Node(5);
-    // root->right->left = new Node(6);
-    // root->right->right = new Node(7);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
     printLevelOrder(root);
     return 0;
 }

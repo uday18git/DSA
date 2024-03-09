@@ -1,3 +1,5 @@
+// striver
+
 #include "bits/stdc++.h"
 using namespace std;
 struct Node
@@ -10,44 +12,41 @@ struct Node
         data = val;
         right = NULL;
         left = NULL;
-
     }
 };
 // we use level order traversal
-void left_view(Node* root)
+void left_view(Node *root)
 {
-    if(!root)return;
-    queue<Node*> q;
+    if (!root)
+        return;
+    queue<Node *> q;
     q.push(root);
-    while(!q.empty())
+    while (!q.empty())
     {
-        int n=q.size();
-        for(int i=0;i<n;i++)
+        int n = q.size();
+        for (int i = 0; i < n; i++)
         {
-            Node* curr = q.front();
+            Node *curr = q.front(); // important to note that this comes inside the loop
             q.pop();
 
-            if(i==0)
+            if (i == 0)
             {
-                cout<<curr->data<<" ";
+                cout << curr->data << " ";
             }
-            
-            
-            if(curr->left)
+            if (curr->left)
             {
                 q.push(curr->left);
             }
-            if(curr->right)
+            if (curr->right)
             {
                 q.push(curr->right);
             }
         }
-
     }
 }
 int main()
 {
-    struct Node* root = new Node(1);
+    struct Node *root = new Node(1);
     root->left = new Node(2);
     root->right = new Node(3);
     root->left->left = new Node(4);
