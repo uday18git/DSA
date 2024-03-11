@@ -9,6 +9,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+
+// do inorder and keep a counter and when counter is k return
 class Solution {
 public:
     void inorder(TreeNode* root, int &cnt, int k, int &ans) {
@@ -54,3 +57,4 @@ public:
 
 
 // for kth largest the count should be n-k , n is the total number of nodes in the tree
+// two traversals will be needed

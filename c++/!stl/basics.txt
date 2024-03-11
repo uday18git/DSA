@@ -65,3 +65,39 @@ bool isPalindrome(const string& str) {
 
     return true; // All characters matched, it's a palindrome
 }
+
+long long int A = INT_MAX+1;
+
+runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int'
+(solution.cpp)
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior prog_joined.cpp:32:34
+
+When you add 1 to INT_MAX, the expression INT_MAX+1 is first evaluated as an int operation.
+However, since INT_MAX is already the maximum value that can be stored in an int,
+adding 1 to it causes an integer overflow, which is undefined behavior in C++.
+
+to fix -> long long int A = INT_MAX+1LL; // 1LL is a long long int literal 
+// that forces the expression to be evaluated as a long long int operation.
+
+
+
+
+
+
+
+
+class Solution {
+public:
+    bool check(TreeNode* root,long long int mina,long long int  maxa)
+    {
+        if(!root)return true;
+        if(root->val<=mina || root->val>=maxa)return false;
+        bool left =  check(root->left,mina,root->val);
+        bool right = check(root->right,root->val,maxa);
+        return left && right;
+    }
+    bool isValidBST(TreeNode* root) {
+        
+        return check(root,LLONG_MIN,LLONG_MAX); // LLONG_MIN and LLONG_MAX are the minimum and maximum values that can be stored in a long long int
+    }
+};

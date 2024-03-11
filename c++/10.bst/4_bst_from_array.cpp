@@ -1,3 +1,6 @@
+// leaving
+
+
 //SORTED ARRAY TO A HEIGHT BALANCED BST .. HEIGHT DIFFERNCE BETWEEN SUBTREE IS <=1
 //sorted array [1,2,3]
 #include "bits/stdc++.h"
@@ -16,8 +19,8 @@ struct Node{
 };
 //MAKE MIDDLE ELEMENT ROOT
 //RECURSIVELY FORM SUBTREES
-//START TO MID-1 =>LEFT SUBTREE
-//MID+1 TO END =>RIGHT SUBTREE
+//START TO MID-1 => LEFT SUBTREE
+//MID+1 TO END => RIGHT SUBTREE
 
 Node* sortedArrToBST(int arr[],int start,int end)
 {

@@ -1,3 +1,5 @@
+// all apna college after that striver
+
 //rule 1 = in left subtree value should be lesser than the node
 //rule 2 = in right subtree value should be greater than the node
 //rule 3 = all the subtrees should be bst's itself
@@ -25,6 +27,7 @@ Node* insertBST(Node* root,int val){
     }
     else
     {
+        // val > root->data
         root->right=insertBST(root->right,val);
     }
     return root;
@@ -43,7 +46,7 @@ Node* searchInBST(Node* root,int key){
 // step 1 -> find the inorder successor of the node
 // step 2 -> replace the node with its inorder successor
 // step 3 -> delete the node
-Node* inorderSucc(Node* root)
+Node* inorderSucc(Node* root)  // will only work when u pass root->right , of the root which you actually want to find inorderSucc of
 {
     Node* curr = root;
     while(curr && curr->left)
@@ -72,7 +75,6 @@ Node* DeleteInBST(Node* root,int key)
         root->right = DeleteInBST(root->right,temp->data);//if there is a node following the node's right we want to delete
     }
     return root;
-
 }
 void inorder(Node* root)
 {
