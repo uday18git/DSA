@@ -11,5 +11,4 @@ d=2*r;
 printf(" area is=%d", a);
 printf("\n circumference is=%d", c);
 printf(" \n diameter is=%d", d);
-
 }

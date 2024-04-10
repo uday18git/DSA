@@ -1,0 +1,268 @@
+stdlib.h is used to use functions such as malloc, calloc, realloc, free, etc.
+
+1 ......Certainly! Here are some key features of the C programming language:
+
+1. Procedural Language : C is a procedural programming language, which means it follows a 
+top-down approach in solving a problem.
+
+A procedural programming language is a type of programming language that follows a procedural paradigm, 
+where programs are structured as a series of step-by-step instructions or procedures to be executed sequentially.
+In procedural programming,
+the emphasis is on procedures or routines that perform specific tasks rather than on data.
+
+2. Middle-level Language: C combines the features of both high-level and low-level languages. 
+It allows for low-level manipulation (e.g., direct memory access) while also providing high-level constructs 
+(e.g., functions, control structures) for structured programming.
+
+3. Efficient Memory Management: C provides manual memory management through functions like `malloc()` 
+and `free()`, allowing precise control over memory allocation and deallocation.
+
+
+4. Static Typing: C is statically typed, meaning data types are explicitly declared at 
+compile time, and type checking is performed at compile time rather than at runtime.
+
+5. **Rich Library Support**: C comes with a rich set of standard libraries, 
+including `<stdio.h>`, `<stdlib.h>`, `<string.h>`, etc., providing functions for various operations like I/O, 
+memory management, string manipulation, and more.
+
+
+6. **Pointer Manipulation**: C supports pointers, which allow direct memory access and manipulation, 
+enabling efficient handling of data structures and dynamic memory allocation.
+
+7. **Support for System Programming**: C is commonly used for system programming, 
+as it allows direct interaction with hardware components and provides low-level access to system resources.
+These features make C a versatile and powerful programming language, 
+widely used in various domains such as system programming, embedded systems, game development, and more.
+
+
+
+2 .....mention different data types in c
+
+3 types
+basic datatypes - int char float double
+derived datatypes - array pointers
+user defined datatypes - structure union enum
+
+3 ......what is thee use of static functions ? 
+functions declared with the keyword static are static functions, They have the scope restricted only to the
+ function in which they are declared
+
+4 .......dynamic memory allocation functions in c
+    malloc() calloc() realloc() free()
+malloc - allocates a continuos block of memory and pointer to the first byte of the block is returned
+Syntax: void* malloc(size_t size);
+int* ptr;
+ptr = (int*)malloc(10 * sizeof(int)); // Allocates memory for an array of 10 integers
+
+calloc - used to allocate a block of memory for an array of elements initializing all bytes to zero
+Syntax: void* calloc(size_t num, size_t size);
+where size_t is an unsigned integral data type representing the size of objects in bytes.
+int* ptr;
+ptr = (int*)calloc(10, sizeof(int)); // Allocates memory for an array of 10 integers, initialized to zero
+
+realloc - used to change the size of the previously allocated memory block
+Syntax: void* realloc(void* ptr, size_t size);
+int* ptr;
+ptr = (int*)malloc(10 * sizeof(int)); // Allocates memory for an array of 10 integers
+ptr = (int*)realloc(ptr, 20 * sizeof(int)); // Resizes the memory block to accommodate 20 integers
+
+free - used to deallocate the memory previously allocated using malloc, calloc, or realloc
+Syntax: void free(void* ptr);
+int* ptr;
+ptr = (int*)malloc(10 * sizeof(int)); // Allocates memory for an array of 10 integers
+free(ptr); // Deallocates the memory block
+
+5 ....... difference between local and global variables
+Local variables are declared within a function or block and have local scope, meaning they are accessible only within that function or block.
+
+Global variables are declared outside of any function and have global scope, meaning they are accessible throughout the entire program.
+
+example -
+int global_var = 10; // Global variable
+
+void func() {
+    int local_var = 20; // Local variable
+    // global_var is accessible here
+    // local_var is accessible only within this function
+}
+
+int main() {
+    // global_var is accessible here
+    // local_var is not accessible here
+    return 0;
+}
+
+6......what is the use of pointer variables in c and what do u mean by dangling pointer
+
+A pointer is a variable that holds the address of another variable 
+pointers are used to access the memory locations easily and increases the speed of program execution
+
+when a pointer is pointing to another variable is deleted and a pointer is still pointing at the same memory location , 
+it is known as a dangling pointers 
+
+
+7.... what are c tokens
+C tokens are the smallest individual elements withing c programs 
+including keywords, identifiers, constants, strings, operators, and special symbols.
+
+8....what is predefined functions in C
+built in functions , which are provided by the C standard library and can be used directly in C programs without any additional declarations or definitions.
+
+printf() and scanf()
+
+9.... what is the use of header files in C
+
+10.... what is an array mention its different types
+An array is a homogeneous collection of elements of the same data type , that means similar types of elements are stored under one name called a array name 
+and array is stored in a consecutive block of memory
+types = 1D array 2D array 3D array
+
+
+11.... what is the use of const keyword 
+The const keyword in C is used to declare constants, which are variables whose values cannot be changed during program execution.
+const int MAX_SIZE = 100; // Declares a constant integer with a value of 100
+
+12.... what is memory leak?
+Memory leak occurs when a program allocates memory dynamically using functions like malloc or calloc, but fails to deallocate or free the memory after it is no longer needed.
+
+13.... difference between call by value and call by reference 
+Call by value: In call by value, the actual value of the argument is passed to the function, and any changes made to the parameter inside the function do not affect the original value of the argument.
+Call by reference: In call by reference, the ADDRESS of the argument is passed to the function, allowing the function to directly modify the value of the argument in memory.
+
+
+14.... difference between compiler and interpreter? 
+compiler compiles whole code at a time
+interpreter executes line by line and displays the error of every single line
+
+15.... what is entry loop and exit loop
+entry loop , while loop
+exit loop , do while loop
+
+16.... what is typecasting 
+Typecasting is the process of converting a variable from one data type to another data type.
+automatically which is done is known as implicit conversion
+
+17.... 4 types of storage classes in C
+automatic register register and external
+
+18.... what is the use of size of an operator in C
+The sizeof operator in C is used to determine the size of a variable or data type in bytes.
+
+19.... what are the string handling functions in c
+strlen() strcpy() strcat() strcmp()
+strlen() - returns the length of a string
+strcpy() - copies one string to another example - strcpy(str1, str2); // Copies str2 to str1
+strcat() - concatenates two strings example - strcat(str1, str2); // Appends str2 to str1
+strcmp() - compares two strings example - strcmp(str1, str2); // Returns 0 if str1 is equal to str2 , returns a positive value if str1 is greater than str2, and returns a negative value if str1 is less than str2
+
+write a c pgm to print the following patter
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+#include<stdio.h>
+#include<string.h>
+void main()
+{
+    int i,j,n=5;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<i+1;j++)
+        {
+            printf("%d",j+1);
+        }
+    }
+}
+
+use terms like , control is transferred to outer for loop while explaining
+
+
+to print pyramid star pattern
+
+#include<stdio.h>
+void main()
+{
+    for(i=0;i<n;i++)
+    {
+        for(j=n-i ; j>1 ;j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+}
+
+ c code to swap two variables without using third variable
+
+#include<stdio.h>
+void main()
+{
+    int first=10;
+    int second=20;
+    first=second+first;
+    second=first-second; // swapped here
+    first=first-second;
+}
+
+
+// what is union
+union is a spcl datatype which holds elements of different data types at the same memory location.
+the concept of union and struct is same however the structure of storage space and the key word
+in union memory is allocated once the variable is created . variables are assigned to access union members
+example
+union sample
+{
+    int x;
+    char y;
+}u1;
+u1.x=65;
+printf("%d",u1.x); // 65
+printf("%c",u1.y); // A
+
+// what is structure
+structure is a user defined datatype in c which allows to hold elements of different data types
+in a single unit. it is used to group related data items together.
+example
+struct student
+{
+    int rollno;
+    char name[20];
+    float marks;    
+}s1;
+s1.rollno=1;
+strcpy(s1.name,"John");
+s1.marks=85.5;
+
+
+what is enum
+enum is a user defined datatype in c which is used to assign names to integral constants
+enum week{sun,mon,tue,wed,thu,fri,sat};
+enum week day;
+day=mon;
+printf("%d",day); // 1
+
+
+// what are macros in C
+macros are a piece of code in a program which is given some name. whenever this name is encountered by the compiler the compiler replaces the name with the actual piece of code.
+syntax #define name value
+example
+#define PI 3.14;
+
+
+//what are file operations in C
+creating a file , writing a file , reading a file , seek operation , truncating a file , deleting a file 
+
+
+// diff bw macros and functions
+macros are preprocessed
+using macros execution is faster
+macro name is replaced by macro value before compilation
+length of code increases
+
+
+functions are compiled
+speed is slower
+transfer of control takes place during function call
+the length of the code is unaffected using function

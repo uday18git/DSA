@@ -1,299 +1,423 @@
+// linked list is a linear data structure , stores a list of values
+// array is a single block of memory with partitions
+// linked list is multiple blocks of connected memory
+// can be spread out in the heap memory
+
+// limitations of arrays
+// size is fixed , wasted if less memory is used, and overflow if more is used
+// contigous block of memory
+// inserting and deleting is costly
 #include <iostream>
 using namespace std;
-class node{
-    public:
+class node
+{
+public:
     int data;
-    node* next;
+    node *next;
     node(int val)
     {
-        data=val;
-        next=NULL;
+        data = val;
+        next = NULL;
     }
 };
-
-void insertAtTail(node* &head,int val)
+// insert at tail , create new node, if head==null then the new node is the head, else we have to, traverse till last then put the new node there 
+void insertAtTail(node* &head, int val) // if u take by value the actual linked list wont be changed , same logic as others for node*
 {
-    node* n = new node(val);
-    if(head==NULL)
+    node *n = new node(val);
+    if (head == NULL)
     {
-        head=n;
+        head = n;
         return;
     }
-    node* temp=head;
-    while(temp->next!=NULL)
+    node *temp = head;
+    while (temp->next != NULL)
     {
-        temp=temp->next;
+        temp = temp->next;
     }
-    temp->next=n;
-
+    temp->next = n;
 }
 
-void insertAtHead(node* & head,int val)
+void insertAtHead(node *&head, int val)
 {
-    node* n= new node(val);
-    n->next=head;
-    head=n;
+    node *n = new node(val);
+    n->next = head;
+    head = n;
 }
-void display(node*  head)
+void display(node *head)
 {
-    while(head!=NULL)
+    while (head != NULL)
     {
-        cout<<head->data<<"->";
-        head=head->next;
+        cout << head->data << "->";
+        head = head->next;
     }
-    cout<<"NULL";
-    cout<<endl;
+    cout << "NULL";
+    cout << endl;
 }
-bool search(node* head,int key)
+bool search(node *head, int key)
 {
-    node* temp=head;
-    while(temp!=NULL)
+    node *temp = head;
+    while (temp != NULL)
     {
-        if(temp->data==key)
+        if (temp->data == key)
         {
             return true;
         }
-        temp=temp->next;
+        temp = temp->next;
     }
     return false;
 }
-void deleteAtHead(node* &head)
+void deleteAtHead(node *&head)
 {
-    node* todelete=head;
-    head=head->next;
+    node *todelete = head;
+    head = head->next;
     delete todelete;
-
 }
-void deletion(node* &head,int val) //corner case is when we try to delete the head node only , so we make a seperate function for that
+
+// in delete there are 3 types, when head and val is given , when the node is given , and when the previous element is given
+void deletion(node *&head, int val) // corner case is when we try to delete the head node only , so we make a seperate function for that
 {
-    if(head==NULL)//corner case handled
+    if (head == NULL) // corner case handled
     {
         return;
     }
-    if(head->next==NULL)//corner case handled
+    if (head->next == NULL) // corner case handled
     {
         deleteAtHead(head);
         return;
     }
-    node* temp=head;
-    while(temp->next->data!=val)
+    node *temp = head;
+    while (temp->next->data != val)
     {
-        temp=temp->next;
+        temp = temp->next;
     }
     node* todelete = temp->next;
-    temp->next=temp->next->next;
+    temp->next = temp->next->next;
     delete todelete;
-
 }
 
-//reversing a linked list
-// two methods -> iterative method and recursive method
-// we take three pointers previous ,current and next
-// initially we take previous as null , we have to remove the link between current and next and make a link between current and previous (previous<-current)
-// and we have break the loop at current == null, because at this condition the linked list has been reversed
-
-
-
-node* reverse(node* &head)
+// or another type of deletion in linked list is, when the node which has to be deleted is given
+class Solution
 {
-    node*currptr=head;
-    node*prevptr=NULL;
-    node*nextptr; // we have to initialise this in the while loop
-    while(currptr)
+public:
+    void deleteNode(node *node1)
     {
-        nextptr=currptr->next;
-        currptr->next=prevptr;
-        prevptr=currptr;
-        currptr=nextptr;
+        node1->val = node1->next->val;
+        node1->next = node1->next->next;
     }
-    return prevptr ; //because this is our new head
+}
+
+// reversing a linked list
+//  two methods -> iterative method and recursive method
+//  we take three pointers previous ,current and next
+//  initially we take previous as null , we have to remove the link between current and next and make a link between current and previous (previous<-current)
+//  and we have break the loop at current == null, because at this condition the linked list has been reversed
+
+reverse(node *&head)
+{
+    node *currptr = head;
+    node *prevptr = NULL;
+    node *nextptr; // we have to initialise this in the while loop
+    while (currptr)
+    {
+        nextptr = currptr->next; // defining nextptr
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
+    }
+    return prevptr; // because this is our new head
 }
 // recursive way , we call it on head->next itseems
 //  we have to call it on head->next and we have to manually adjust the head  node
 // we have to make the second node point to head(head->next->next=head) and head->next=NULL
-node* reverseRecursive(node*&head)
+class Solution
 {
-    if(head==NULL || head->next==NULL)
+public:
+    ListNode *reverseList(ListNode *head)
     {
-        return head;
+        if (head == NULL || head->next == NULL)
+            return head;
+        ListNode *newhead = reverseList(head->next); // one call of recursion means that it will give back the rest of the list with reversed
+        head->next->next = head;
+        head->next = NULL;
+        return newhead;
     }
-    node* newhead=reverseRecursive(head->next);
-    head->next->next=head;
-    head->next=NULL;
+};
+// when i call recursion on heads next it should return reversed list till head's next, then we are reversing the rest, that is head and its next
+// using head->next->next = head
+// head->next=NULL
 
-    return newhead;
-}
+// 1->2->3->4->NULL
 
-//reverse k nodes
+// reverse k nodes
 // first k nodes we use iterative method to reverse, and rest of the nodes we call our function again(recursion)
-// after reversing nodes generally last node is prev, curr is null like that  , and we have to point head's next to the rest(excluding the first k elements) of the array's first element 
+// after reversing nodes generally last node is prev, curr is null like that
+// and we have to point head's next to the rest(excluding the first k elements) of the array's first element
 
-node* reversek(node* &head,int k) // last part didnt understand
+node *reversek(node *&head, int k) // last part didnt understand
 {
-    node* prevptr=NULL;
-    node* currptr=head;
-    node* nextptr;
-    int count=0;
-    while(currptr && count<k)
+    node *prevptr = NULL;
+    node *currptr = head;
+    node *nextptr;
+    int count = 0;
+    while (currptr && count < k)
     {
-        nextptr=currptr->next;
-        currptr->next=prevptr;
-        prevptr=currptr;
-        currptr=nextptr;
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        prevptr = currptr;
+        currptr = nextptr;
         count++;
     }
-    if(nextptr)
+    if (nextptr)
     {
-        head->next=reversek(nextptr,k); // head->next we need to point to the rest of the array
+        head->next = reversek(nextptr, k); // head->next we need to point to the rest of the array
     }
     return prevptr; // new head
 }
+class Solution
+{
+public:
+    ListNode *reverseKGroup(ListNode *head, int k)
+    {
+        ListNode *currptr = head;
+        ListNode *prevptr = NULL;
+        ListNode *nextptr;
+        int count = 0;
+        ListNode *temp = head;
+        // counting the number of nodes in the current recursion call
+        while (temp && count < k)
+        {
+            temp = temp->next;
+            count++;
+        }
+        // handling the case when there are less than k nodes
+        if (count < k)
+        {
+            return head;
+        }
 
+        count = 0;
+        while (currptr && count < k)
+        {
+            nextptr = currptr->next;
+            currptr->next = prevptr;
+            prevptr = currptr;
+            currptr = nextptr;
+            count++;
+        }
+        if (nextptr)
+        {
+            head->next = reverseKGroup(nextptr, k);
+        }
+        return prevptr;
+    }
+};
 // floyd's algorithm, rabbit and tortoise, detection and removal of cycle in linked list
 // take one fast, slow, fast moves two steps ahead, and slow moves one step ahead at a time.
 // and if they meet at a point then it has a cycle otherwise does not have a cycle
-bool detectCycle(node* &head)
+bool detectCycle(node *&head)
 {
-    node*slow = head;
-    node*fast=head;
-    while(fast!=NULL && fast->next!=NULL){ // second condition because fast moves 2 steps at a time
-        slow=slow->next;
-        fast=fast->next->next;
-        if(slow==fast)
+    node *slow = head;
+    node *fast = head;
+    while (fast != NULL && fast->next != NULL)
+    { // second condition because fast moves 2 steps at a time
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast)
         {
             return true;
         }
     }
     return false;
 }
-void makeCycle(node* &head,int pos)
+void makeCycle(node *&head, int pos)
 {
-    node* temp=head;
-    node* cycleNode;
-    int count=1;
-    while(temp->next!=NULL)
+    node *temp = head;
+    node *cycleNode;
+    int count = 1;
+    while (temp->next != NULL)
     {
-        if(count==pos)
+        if (count == pos)
         {
-            cycleNode=temp;
+            cycleNode = temp;
         }
-        temp=temp->next;
+        temp = temp->next;
         count++;
     }
-    temp->next=cycleNode;
-
+    temp->next = cycleNode;
 }
 // to remove a cycle
 // we make fast move 2 steps at once and slow move 1 step at once okay, then next
 // after they are at same position we take fast or slow (one of them )  and put it at head
-// they will reach the position at where the cycle is there at the same time, so 
-// supppose we take fast to be head 
-// then when both are about to go to the cycle node, 
+// they will reach the position at where the cycle is there at the same time, so
+// supppose we take fast to be head
+// then when both are about to go to the cycle node,
 // we break apart the slow node and point it to null
 
-void removecycle(node* &head)
+void removecycle(node *&head)
 {
-    node*slow=head;
-    node*fast=head;
-    while(fast != slow)
+    node *slow = head;
+    node *fast = head;
+    // this we can do only when we certainly know that cycle is there , if we donno then its the below implementation
+    while (fast != slow)
     {
-        fast=fast->next->next;
-        slow=slow->next;
+        fast = fast->next->next;
+        slow = slow->next;
     }
-    fast=head;
-    while(fast->next!=slow->next)
+    fast = head;
+    while (fast->next != slow->next)
     {
-        fast=fast->next;
-        slow=slow->next;
+        fast = fast->next;
+        slow = slow->next;
     }
-    slow->next=NULL;
-    return ;
+    slow->next = NULL;
+    return;
 }
-// append last k nodes to the front of the linked list
-void lastk(node*&head,int k)
-{
-    node* temp=head;
 
-    int count=1;
-    while(temp->next)
+// return the node where the cycle is present or return NULL if no cycle is present
+
+class Solution
+{
+public:
+    ListNode *detectCycle(ListNode *head)
     {
-        temp=temp->next;
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while (true)
+        {
+            if (!fast || !fast->next)
+            {
+                return NULL;
+            }
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow)
+            {
+                break;
+            }
+        }
+        slow = head;
+        while (fast != slow)
+        {
+
+            slow = slow->next;
+            fast = fast->next;
+        }
+        return fast;
+    }
+};
+// length of the loop
+int lengthOfLoop(Node *head)
+{
+    // Write your code here
+    Node *slow = head;
+    Node *fast = head;
+    while (true)
+    {
+        if (!fast || !fast->next)
+        {
+            return 0;
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+        if (fast == slow)
+        {
+            break;
+        }
+    }
+    int count = 0;
+    while (true)
+    {
+        fast = fast->next;
+
+        count++;
+        if (fast == slow)
+        {
+            break;
+        }
+    }
+    return count;
+}
+
+// append last k nodes to the front of the linked list
+void lastk(node *&head, int k)
+{
+    node *temp = head;
+
+    int count = 1;
+    while (temp->next)
+    {
+        temp = temp->next;
         count++;
     }
 
-    temp->next=head;
+    temp->next = head;
 
-    temp=head;
-    int num=1;
-    while(num<(count-k))
+    temp = head;
+    int num = 1;
+    while (num < (count - k))
     {
-        temp=temp->next;
+        temp = temp->next;
         num++;
     }
-    head=temp->next;
-    temp->next=NULL;
-
+    head = temp->next;
+    temp->next = NULL;
 }
-
 
 int main()
 {
-    node* head=NULL;
-    //1
-    for(int i=1;i<=6;i++)
+    node *head = NULL;
+    // 1
+    for (int i = 1; i <= 6; i++)
     {
-        insertAtTail(head,i);
+        insertAtTail(head, i);
     }
-    //2
+    // 2
     display(head);
-    //3
-    // insertAtHead(head,4);
-    // display(head);
-    //4
-    // cout<<search(head,5)<<endl;
-    //5
-    // deletion(head,3);
-    // display(head);
-    //6
-    // deleteAtHead(head);
-    // display(head);
-    //7
-    // node* newhead = reverseRecursive(head);
-    // display(newhead);
-    //8 
-    // node* x= reversek(head,2);
-    // display(x);
-    //9
-    // makeCycle(head,3);
-    // display(head);
-    //10
-    // cout<<detectCycle(head)<<endl;
-    //11
-    // makeCycle(head,3);
-    // cout<<detectCycle(head)<<endl;
-    // removecycle(head);
-    // cout<<detectCycle(head)<<endl;
-    //proof idk fk it
-    //12
-    // lastk(head,3);
-    // display(head);
-    //13
-    // find intersection point
+    // 3
+    //  insertAtHead(head,4);
+    //  display(head);
+    // 4
+    //  cout<<search(head,5)<<endl;
+    // 5
+    //  deletion(head,3);
+    //  display(head);
+    // 6
+    //  deleteAtHead(head);
+    //  display(head);
+    // 7
+    //  node* newhead = reverseRecursive(head);
+    //  display(newhead);
+    // 8
+    //  node* x= reversek(head,2);
+    //  display(x);
+    // 9
+    //  makeCycle(head,3);
+    //  display(head);
+    // 10
+    //  cout<<detectCycle(head)<<endl;
+    // 11
+    //  makeCycle(head,3);
+    //  cout<<detectCycle(head)<<endl;
+    //  removecycle(head);
+    //  cout<<detectCycle(head)<<endl;
+    // proof idk fk it
+    // 12
+    //  lastk(head,3);
+    //  display(head);
+    // 13
+    //  find intersection point
 
     return 0;
 }
-
 
 // below code is for find_intersection_point
 // to find intersection point of two linked lists
 // two ways to do this, first -> O(N+M) traverse one of the linked list and mark all the nodes as visited
 // next traverse the other linked list and if any of the nodes is marked visited then it is the intersection point
 
-
 // better way to do it is
 // see which one is bigger
 // take start from m-n th node of that , then keep increasing one one node of that then you will get one node as equal
-
 
 // #include <iostream>
 // using namespace std;

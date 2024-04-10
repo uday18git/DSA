@@ -1,3 +1,4 @@
+
 // #include<bits/stdc++.h>
 // class node{
 //     public:
@@ -14,7 +15,6 @@
 // void insertAtTail(node* &head, int val){
 //     node* n = new node(val);//new denotes the request for memory allocation on free store.
 //     node* temp=head;
-
 // }
 
 

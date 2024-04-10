@@ -25,7 +25,7 @@ void maxMeetings(int s[],int e[],int n)
     sort(meet,meet+n,comparator);// sorting based on finish time
     vector<int> answer;
     int limit=meet[0].end;
-    answer.push_back(meet[0].end);
+    answer.push_back(meet[0].pos);
     for(int i=1;i<n;i++)
     {
         if(meet[i].start>limit)

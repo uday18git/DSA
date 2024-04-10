@@ -10,7 +10,6 @@ Character 1 byte
 difference between class and a struct is that in class you can give public and private access to the members of the class
 in struct by default everything is public and in class by default everything is private 
 
-
 // before accessing anything in if conditions make sure it is not empty
 switch(expression)
 {
@@ -79,13 +78,6 @@ adding 1 to it causes an integer overflow, which is undefined behavior in C++.
 to fix -> long long int A = INT_MAX+1LL; // 1LL is a long long int literal 
 // that forces the expression to be evaluated as a long long int operation.
 
-
-
-
-
-
-
-
 class Solution {
 public:
     bool check(TreeNode* root,long long int mina,long long int  maxa)
@@ -101,3 +93,28 @@ public:
         return check(root,LLONG_MIN,LLONG_MAX); // LLONG_MIN and LLONG_MAX are the minimum and maximum values that can be stored in a long long int
     }
 };
+
+
+
+
+long long flowersNeeded = (m) * (k); ,  here m and k are integers ,
+when given high values it gives a runtime error that cant store in int , 
+but i have defined the variable long long flowers needed still it gives error , 
+why does this happen , is it because the multiplication takes place in int
+
+Yes, you're correct that the issue arises because the multiplication operation is still performed using `int` operands, 
+leading to overflow. In C++, when you perform arithmetic operations with `int` operands,
+the result is also an `int`. If the result of the multiplication exceeds the maximum value representable by an `int`, it leads to overflow, causing undefined behavior.
+
+To ensure that the multiplication operation is performed using `long long` operands,
+you need to cast at least one of the operands to `long long`. Simply declaring the variable `flowersNeeded` as 
+`long long` won't solve the issue if the multiplication itself is still performed using `int` operands.
+
+You can modify the line to ensure that the multiplication is done with `long long` operands like this:
+
+cpp
+long long flowersNeeded = static_cast<long long>(m) * k;
+
+
+This ensures that `m` is cast to `long long` before the multiplication operation, ensuring that the result is also a `long long`.
+

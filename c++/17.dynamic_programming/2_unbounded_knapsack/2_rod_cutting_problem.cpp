@@ -2,7 +2,6 @@
 // is exactly unbounded knapsack but often used in interviews to check whether you identify the problem or not
 // problem statement -> given a rod of length n and prices of all pieces smaller than n, find the optimal way to cut the rod into smaller rods in order to maximize the profit
 // we can make any number of cuts and the length of each piece can be different, so it is an unbounded knapsack problem
-
 #include <iostream>
 #include <vector>
 using namespace std;

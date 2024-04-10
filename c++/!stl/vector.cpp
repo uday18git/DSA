@@ -1,6 +1,7 @@
 // v.back(); used to access the last element of a vector
 // arr.erase(arr.begin()+idx);
-
+// int low = *max_element(time.begin(), time.end());
+// int high = accumulate(time.begin(), time.end(), 0);
 // 1 is not a prime number
 // prime number function <=sqrt(n) we shd take
 

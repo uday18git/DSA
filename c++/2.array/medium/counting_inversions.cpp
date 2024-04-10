@@ -25,25 +25,22 @@ int main()
 }
 
 
-
-
-
 // merge sort approach is very good
 // while merging we will count the inversions
 // suppose [2,3,5,6] and [2,2,4,4,8]
 // we will keep  a pointer at start of both
 // and try to combine them
 // suppose len of 1st array is n and second is m
-// and if a[i] > b[j] then we will add n-i to the inversions because if a[i] > b[j] then rest of the elemetns after i will also be greater and shold be 
-// inverted, so this logiv we are putting into merge sort and getting our answer
+// and if a[i] > b[j] then we will add n-i to the inversions because if a[i] > b[j] then rest of the elements after i will also be greater and should be 
+// inverted, so this logic we are putting into merge sort and getting our answer
 
 #include <bits/stdc++.h>
 using namespace std;
 
 int merge(vector<int> &arr, int low, int mid, int high) {
-    vector<int> temp; // temporary array
-    int left = low;      // starting index of left half of arr
-    int right = mid + 1;   // starting index of right half of arr
+    vector<int> temp;// temporary array
+    int left = low;// starting index of left half of arr
+    int right = mid + 1;// starting index of right half of arr
 
     //Modification 1: cnt variable to count the pairs:
     int cnt = 0;
@@ -61,25 +58,20 @@ int merge(vector<int> &arr, int low, int mid, int high) {
             right++;
         }
     }
-
     // if elements on the left half are still left //
-
     while (left <= mid) {
         temp.push_back(arr[left]);
         left++;
     }
-
     //  if elements on the right half are still left //
     while (right <= high) {
         temp.push_back(arr[right]);
         right++;
     }
-
     // transfering all elements from temporary to arr //
     for (int i = low; i <= high; i++) {
         arr[i] = temp[i - low];
     }
-
     return cnt; // Modification 3
 }
 

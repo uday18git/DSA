@@ -5,22 +5,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 // sort
-bool sorted(int arr[], int n)
-{
-    if (n == 1)
-    {
-        return true;
-    }
-    bool restarray = sorted(arr + 1, n - 1);
-    return (arr[0] < arr[1] && restarray);
-}
+// bool sorted(int arr[], int n)
+// {
+//     if (n == 1)
+//     {
+//         return true;
+//     }
+//     bool restarray = sorted(arr + 1, n - 1);
+//     return (arr[0] < arr[1] && restarray);
+// }
+
+
+
 // insertion sort btw
+// LOGIC here , take the last element of the unsorted array , sort the rest of the array , and insert the last element in its correct position 
+// to insert it in its correct position another function , see if v.back()<= our element || the array is empty , then push the element , else if the v.back() is greater then pop it and recursively call the insert function
+
+
+
 void insert(vector<int> &v, int temp)
 {
     if (v.size() == 0 || v.back() <= temp)
     {
         v.push_back(temp);
-        return;
+        return; // v imp u keep forgetting this
     }
     int val = v.back();
     v.pop_back();
@@ -29,7 +37,7 @@ void insert(vector<int> &v, int temp)
 }
 void sort1(vector<int> &v)
 {
-    if (v.size() == 1)
+    if (v.size() == 1) // if there is only ono element it is sorted so we are returning
     {
         return;
     }
@@ -38,6 +46,7 @@ void sort1(vector<int> &v)
     sort1(v);
     insert(v, temp);
 }
+
 int main()
 {
     vector<int> v = {8, 2, 7, 6, 8};

@@ -70,3 +70,21 @@
 //         return 'a';
 //     }
 // };
+
+
+
+// ascii value of A is 65 and a is 97 so the difference is 32
+// class Solution {
+// public:
+//     int countKeyChanges(string s) {
+//         int n=s.size();
+//         int ans=0;
+//         for(int i=0;i<n;i++)
+//         {
+//             while(i<n-1 && (s[i]==s[i+1] || s[i]==s[i+1]+32 || s[i]==s[i+1]-32 ))i++;
+//             ans++;
+            
+//         }
+//         return ans-1;
+//     }
+// };

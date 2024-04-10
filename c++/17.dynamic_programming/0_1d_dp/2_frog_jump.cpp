@@ -1,5 +1,4 @@
 // frog can jump 1 step or 2 steps at a time
-
 // memoization solution
 // partially accepted on coding ninjas
 #include <bits/stdc++.h>

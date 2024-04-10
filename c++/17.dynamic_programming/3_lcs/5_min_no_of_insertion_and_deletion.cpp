@@ -24,7 +24,6 @@ int main(){
     string b = "pea";
     int m = a.length();
     int n = b.length();
-    // scs is geeke so expected answer 5
-    cout<< "deletions:"<<m- lcs(a,b,m,n)<<" insertions:"<<n-lcs(a,b,m,n)<<endl;// expected 2 ,1 
+    cout<< "deletions:"<<m-lcs(a,b,m,n)<<" insertions:"<<n-lcs(a,b,m,n)<<endl;// expected 2 ,1 
 return 0;
 }

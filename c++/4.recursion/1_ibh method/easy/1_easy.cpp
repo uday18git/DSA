@@ -32,7 +32,6 @@ int fibonacci(int n)
     }
     int fib;
     fib = fibonacci(n-1)+fibonacci(n-2);
-    
     return fib;
 }
 

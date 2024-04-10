@@ -9,8 +9,7 @@ int main(){
     for(auto &i: a)
         cin>>i;
     for(int i=0;i<k;i++)
-    {
-        
+    {  
         sum+=a[i];
     }
     if(sum<x)ans=sum;

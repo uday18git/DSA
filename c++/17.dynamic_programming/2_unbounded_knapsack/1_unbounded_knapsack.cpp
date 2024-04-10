@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-// Function to solve the unbounded knapsack problem
-
+// the problem states that we have to maximize the total value of the items in the knapsack without exceeding the capacity
+// we can take any number of items of each type
 int unboundedKnapsack(int capacity, vector<int>& weights, vector<int>& values) {
     int n = weights.size();
     vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));

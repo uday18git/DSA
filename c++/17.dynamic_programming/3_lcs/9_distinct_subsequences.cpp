@@ -8,7 +8,6 @@ public:
         int m=t.size();
         // vector<vector<int>> dp(n+1,vector<int>(m+1,0));
         vector<vector<double>> dp(n+1,vector<double>(m+1,0));
-
         for(int i=0;i<=n;i++)
         {
             dp[i][0]=1;

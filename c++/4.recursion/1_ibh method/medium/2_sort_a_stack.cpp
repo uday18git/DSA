@@ -1,5 +1,8 @@
 #include <bits/stdc++.h> 
 using namespace std;
+
+// LOGIC , same logic as sort the array using recursion , 
+// take the top element of the stack and sort rest of the stack and insert the element in its right position in the sorted stack
 void insert(stack<int>&s,int temp)
 {
     if(s.size()==0 || s.top()<=temp)

@@ -1,6 +1,4 @@
 // largest number after k_swaps
-
-
 #include <bits/stdc++.h> 
 using namespace std;
 

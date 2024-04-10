@@ -7,7 +7,7 @@ void main()
     {
         scanf("%d",&arr[i]);
     }
-    for( i=0;i<n;i++)
+    for(i=0;i<n;i++)
     {
         for(j=i+1;j<n;j++)
         {
@@ -21,7 +21,7 @@ void main()
         
     }
     for(int i=0;i<n;i++)
-        {
-            printf("%d\t",arr[i]);
-        }
+    {
+        printf("%d\t",arr[i]);
+    }
 }
