@@ -1,3 +1,5 @@
+// there are 2 other similar problems , which are in stack , one is trapping rainwater , other is largest rectangle in histogram
+
 #include <iostream>
 #include <vector>
 using namespace std;

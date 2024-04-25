@@ -11,8 +11,6 @@ class node
         data = val;
         next = nullptr;
     }
-
-
 };
 class queue
 {
@@ -24,7 +22,6 @@ class queue
     {
         front = nullptr;
         back = nullptr;
-
     }
     void push(int x){
         node* n=new node(x);

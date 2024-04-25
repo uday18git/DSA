@@ -2,75 +2,102 @@
 // memoization solution accepted in leet code
 #include <bits/stdc++.h>
 using namespace std;
+// here we are defining solve(n) to give the maximum sum from 0 till n
+// recursive soln passes 48/70 test cases
+// class Solution {
+// public:
+//     int solve(int i,vector<int> nums)
+//     {
+//         if(i<0)
+//         {
+//             return 0;
+//         }
+//         int pick = solve(i-2,nums)+nums[i];
+//         int not_pick = solve(i-1,nums);
+//         return max(pick,not_pick);
+//     }
+//     int rob(vector<int>& nums) {
+//         int n=nums.size();
+//         return solve(n-1,nums);
+//     }
+// };
 
-class Solution
-{
+// memoization
+class Solution {
 public:
-    int solve(int n, vector<int> nums, vector<int> &dp)
+    int solve(int i,vector<int>&nums,vector<int>&dp)
     {
-
-        if (n < 0)
+        if(i<0)
+        {
             return 0;
-        if (dp[n] != -1)
-            return dp[n];
-        int adj = solve(n - 1, nums, dp);
-        int non_adj = solve(n - 2, nums, dp) + nums[n];
-        return dp[n] = max(adj, non_adj);
+        }
+        if(dp[i]!=-1)return dp[i];
+        int pick = solve(i-2,nums,dp)+nums[i];
+        int not_pick = solve(i-1,nums,dp);
+        return dp[i] = max(pick,not_pick);
     }
-    int rob(vector<int> &nums)
-    {
-        int n = nums.size();
-        vector<int> dp(n, -1);
-        dp[0] = nums[0];
-        return solve(nums.size() - 1, nums, dp);
+    int rob(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> dp(n,-1);
+        return solve(n-1,nums,dp);
     }
 };
 
-// tabulation beats 100%
+// passes 40/70
+// doesnt pass test ccases like [2,1,1,2]
+// the below soln only takes into account starting from first element and the second element and all the adjcaent elements from there on
+// class Solution {
+// public:
+//     int rob(vector<int>& nums) {
+//         int n=nums.size();
+//         int one=0;
+//         int two=0;
+//         for(int i=0;i<n;i+=2)
+//         {
+//             one+=nums[i];
+//         }
+//         for(int i=1;i<n;i+=2)
+//         {
+//             two+=nums[i];
+//         }
+//         return max(one,two);
 
-class Solution
-{
-public:
-    int rob(vector<int> &nums)
-    {
-        int n = nums.size();
-        vector<int> dp(n);
-        dp[0] = nums[0];
-        if (n > 1)
-        {
-            dp[1] = max(nums[0], nums[1]);
-        }
-        for (int i = 2; i < n; i++)
-        {
-            dp[i] = max(dp[i - 1], nums[i] + dp[i - 2]);
-        }
-        return dp[n - 1];
-    }
-};
+//     }
+// };
+
+// tabulation
+// class Solution {
+// public:
+//     int rob(vector<int>& nums) {
+//         int n=nums.size();
+//         vector<int> dp(n);
+//         dp[0] = nums[0];
+//         if(n>1)
+//         {
+//             dp[1] = max(nums[0],nums[1]);
+//         }
+//         for(int i=2;i<n;i++)
+//         {
+//             dp[i] = max(dp[i-1],nums[i]+dp[i-2]);
+//         }
+//         return dp[n-1];
+//     }
+// };
 
 // space optimization most optimal approach
-
-// Function to solve the problem using dynamic programming
-int solve(int n, vector<int> &arr)
-{
-    int prev = arr[0]; // Initialize the maximum sum ending at the previous element
-    int prev2 = 0;     // Initialize the maximum sum ending two elements ago
-
-    for (int i = 1; i < n; i++)
-    {
-        int pick = arr[i]; // Maximum sum if we pick the current element
-        if (i > 1)
-            pick += prev2; // Add the maximum sum two elements ago
-
-        int nonPick = 0 + prev; // Maximum sum if we don't pick the current element
-
-        int cur_i = max(pick, nonPick); // Maximum sum ending at the current element
-        prev2 = prev;                   // Update the maximum sum two elements ago
-        prev = cur_i;                   // Update the maximum sum ending at the previous element
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        int rob1=0 , rob2 =0;
+        for(int i:nums)
+        {
+            int temp = max(i+rob1,rob2);
+            rob1=rob2;
+            rob2=temp;
+        }
+        return rob2;
     }
-
-    return prev; // Return the maximum sum
-}
+};
 
 int main()
 {

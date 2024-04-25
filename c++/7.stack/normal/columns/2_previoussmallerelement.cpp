@@ -19,7 +19,6 @@ vector<int> prevSmaller(vector<int> v)
     // cout<<-1<<" ";
     for (int i = 0; i < v.size(); i++) // for next least element just run the loop in reverse and create a new array to store and avoid the reverse print of the sequence
     {
-
         while (!(s1.empty()) && (s1.top() >= v[i])) // for nearest previous greater element > sign , for nearest previous smaller element < sign
         {
             s1.pop();

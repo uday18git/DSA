@@ -1,4 +1,11 @@
 //POP OPERATION COSTLY
+
+// push 
+// we will just push into q1
+
+// for pop
+// pop all the elemnts from q1 except the last 1 , return that last one
+// switch q1 and q2
 #include<iostream>
 #include<queue>
 using namespace std;

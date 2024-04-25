@@ -20,8 +20,7 @@ void reverseSent(string s)
         //till stack is not empty the while loop will execute
         cout<<st.top()<<" ";
         st.pop();
-    }
-    
+    }   
 }
 int main()
 {

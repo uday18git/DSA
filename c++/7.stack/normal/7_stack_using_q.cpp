@@ -1,8 +1,19 @@
-//============IMPLEMENTING STACK USING QUEUE==============
+//============IMPLEMENTING STACK USING QUEUE==============//
 //2 METHODS -- MAKING PUSH METHOD COSTLY , OR MAKING POP METHOD COSTLY
 // Q1 AND Q2
 //PUSH COSTLY
 // we are maintaining the stack in q1
+// push
+// 1. push the element in q2
+// 2. push all the elements of q1 in q2
+// 3. swap q1 and q2
+// 4. increase the size of stack
+// pop
+// 1. pop the element from q1
+// 2. decrease the size of stack
+// 3. return the element
+// so the point here is that in q only the front elemnt can be removed
+// so q s front should be top of the stack so that we can remove it 
 #include <bits/stdc++.h>
 using namespace std;
 class Stack{
@@ -12,7 +23,6 @@ class Stack{
 public:
     Stack(){
         N=0;
-
     }
     void push(int val){
         q2.push(val);

@@ -48,8 +48,6 @@ using namespace std;
     // }
     // return 0;
 // }
-
-
 #include <bits/stdc++.h> 
 using namespace std;
 void insertAtBottom(stack<int>&st,int ele)
@@ -58,16 +56,15 @@ void insertAtBottom(stack<int>&st,int ele)
     {
         st.push(ele);
         return;
-
     }
-    int topele= st.top();
+    int topele = st.top();
     st.pop();
     insertAtBottom(st,ele); // we have to still insert ele only at the bottom so we do this
     st.push(topele);
 }
 void reverse(stack<int>&st)
 {
-    if(st.empty())
+    if(st.size()==1)
     {
         return;
     }
@@ -76,6 +73,8 @@ void reverse(stack<int>&st)
     reverse(st);
     insertAtBottom(st,ele);
 }
+// reverse will remove all the elements , and when stack is empty it will return
+// then insert at bottom  
 int main(){
     stack<int>st;
     st.push(1);
@@ -91,5 +90,4 @@ int main(){
         cout<<temp;
     }
     return 0;
-return 0;
 }
