@@ -54,7 +54,6 @@ void rev(stack<int>&s)
     insert1(s,temp);
 }
 
-
 int main(){
     stack<int>s;
     s.push(9);
@@ -62,7 +61,7 @@ int main(){
     s.push(7);
     s.push(6);
     s.push(20);
-    // rev(s);
+    // revStack2(s);
     while(!s.empty())
     {
         cout<<s.top()<<" ";

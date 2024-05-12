@@ -1,4 +1,6 @@
-// height of a binary tree , suppose there is a binary tree , just draw lines over the tree on each level , number of lines is the height
+// height of a binary tree , 
+// suppose there is a binary tree , 
+// just draw lines over the tree on each level , number of lines is the height
 #include <iostream>
 using namespace std;
 struct Node

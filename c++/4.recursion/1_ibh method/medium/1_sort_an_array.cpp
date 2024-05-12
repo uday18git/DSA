@@ -19,9 +19,8 @@ using namespace std;
 
 // insertion sort btw
 // LOGIC here , take the last element of the unsorted array , sort the rest of the array , and insert the last element in its correct position 
-// to insert it in its correct position another function , see if v.back()<= our element || the array is empty , then push the element , else if the v.back() is greater then pop it and recursively call the insert function
-
-
+// to insert it in its correct position another function , see if v.back()<=our element || the array is empty , then push the element , else if the v.back() 
+// is greater then pop it and recursively call the insert function
 
 void insert(vector<int> &v, int temp)
 {
@@ -35,6 +34,7 @@ void insert(vector<int> &v, int temp)
     insert(v, temp);
     v.push_back(val);
 }
+
 void sort1(vector<int> &v)
 {
     if (v.size() == 1) // if there is only ono element it is sorted so we are returning
@@ -46,7 +46,6 @@ void sort1(vector<int> &v)
     sort1(v);
     insert(v, temp);
 }
-
 int main()
 {
     vector<int> v = {8, 2, 7, 6, 8};
@@ -57,7 +56,6 @@ int main()
     }
     return 0;
 }
-
 // 1. Initial call: `insertion_sort({100, 99, 98, 97, 96})`
 //     Since the size of the array is greater than 1, we proceed with the recursive calls.
 // 2. Recursive call 1: `insertion_sort({100, 99, 98, 97})`

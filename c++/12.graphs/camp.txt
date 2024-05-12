@@ -1,0 +1,98 @@
+bfs requires unweighted graph and source node as input
+output is list of integers that represents shortest path from src to all nodes
+
+void bfs(int v)
+{
+    q.push(v);
+    visited[v]=1;
+    while(!q.empty())
+    {
+        int node = q.front();
+        q.pop();
+        for(auto i:adj[node])
+        {
+            if(!vis[i])
+            {
+                visited[v]=1;
+                q.push(i);
+            }
+        }
+    }
+}
+
+dijkstra is very similar to bfs , bfs but for weighted graph
+input weighted graph , source node 
+output a list of integers that represents shortest distance
+from src node to every other node in the graph
+
+
+1st problem
+hospitals problem 
+given a weighted graph
+represents n cities 
+some k cities have hospitals in them
+compute for each city min dist one has to travel
+in order to reach a city with hospital
+
+my approach  -> take the hospital cities as a source and compute the shortest paths using dijkstra and update if better path is available 
+this is worst case only what u thought
+
+
+brute force -> do dijkstras from all the nodes , n dijkstras
+
+more optimal soln -> 3 steps
+1. add a dummy node "0"
+2. connect "0" with all cities which has hospital in it and edge weight 0
+3. call a single dijkstra and supply the modified graph , and it will give us the answer 
+
+KAASH.....framework
+when you are not able to make progress,
+think what makes the problem hard and how can i remove the hard part
+
+so here , hard part is that there are k hospitals 
+if we had a single hospital , we could just compute the answer easily
+so now say kaash k=1 
+the above solution is not going to work for directed
+
+problem 2
+hot and cold 
+we are given a graph
+there are 2 types of edges hot edge and cold edge
+self loops also allowed
+and source and target node are given
+find source to target 
+such that no consecutive steps should not be same hot hot , or cold cold 
+
+solution
+create new graph G'
+double the number of nodes 
+how will u double?
+X' cold edge Y''
+X'' hot edge Y'
+
+BFS (G', "src" )tar - 2
+
+bfs can only understands two things , give me a unweighted graphs , and give me a soruce node 
+so we are forcing everything is correct and apply BFS 
+
+powerful recipe for shortest path extremely powerful 
+
+1. Does the problem smells like shortest path
+2. Compare with original bfs / dijkstra we will find out the constraints
+3. G has constriant so we have to construct G' such that we have to remove the constraint 
+4. now pass it to original dijkstra / bfs.
+
+
+PARADE WALK
+
+GIVEN DIRECTED AND A WEIGHTED GRAPH 
+shortest parade ?
+1. can start any city 
+2. can end at any city 
+3. the parade should have exactly k number of roads
+
+
+
+graphx
+class is a custom datatype
+

@@ -1,4 +1,3 @@
-
 #include<bits/stdc++.h>
 using namespace std;
 void dfs(int i,int j,vector<vector<int>>&vis,int delRow[],int delCol[],int n,int m,int** arr)

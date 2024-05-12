@@ -1,6 +1,5 @@
 #include <bits/stdc++.h> 
 using namespace std;
-
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
@@ -13,6 +12,7 @@ public:
         return min(cost[0],cost[1]);
     }
 };
+
 
 class Solution {
 public:

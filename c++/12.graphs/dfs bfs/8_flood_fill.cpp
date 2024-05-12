@@ -1,7 +1,8 @@
 // here time doesnt matter , we just have to flood fill it 
+// we are using dfs below , just call dfs on sr sc
+// for loop will be over the 4 neighbors in the dfs
 #include <bits/stdc++.h> 
 using namespace std;
-
 class Solution {
 public:
     void dfs(int row, int col,vector<vector<int>>& ans,vector<vector<int>>&image,int newColor,

@@ -9,9 +9,6 @@
 // then remove it and see where 0 can go
 // add those to pq and update distance array if it is better distance
 
-
-
-
 #include <vector>
 #include <queue>
 #include <iostream>

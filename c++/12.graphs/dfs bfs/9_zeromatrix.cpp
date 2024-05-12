@@ -1,11 +1,12 @@
 // question is to find the distance of nearest 0 for all the element and return the distance array
-// so first we will traverse the whole matrix and push into the queue the elements that are 0 and ill push it as 0 distance
+// so first we will traverse the whole matrix and push into the queue the 
+// elements that are 0 and ill push it as 0 distance
 // and i will mark them as visited
-// and then on the queue i will perform bfs and keep pushing them in the queue if they are valid and not visited with the dis
+// and then on the queue i will perform bfs and keep pushing them in the
+//  queue if they are valid and not visited with the dis
 
 #include <bits/stdc++.h> 
 using namespace std;
-
 class Solution {
 public:
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
@@ -44,8 +45,6 @@ public:
                     ans[nrow][ncol]=dis+1;
                 }
             }
-
-
         }
         return ans;
     }

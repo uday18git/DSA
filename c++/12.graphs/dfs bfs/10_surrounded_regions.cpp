@@ -1,7 +1,9 @@
 // replace 0's with X's
 // logic is that when a group of 0 is not connected to any border
 // it is bound to get converted to X
-// so start from boundary zeros and mark them that they wont be converted, convert rest of them
+// so start from boundary zeros and mark them that they wont be converted, 
+// convert rest of them
+
 #include <bits/stdc++.h> 
 using namespace std;
 class Solution {
@@ -51,6 +53,5 @@ public:
 
     }
 };
-
 // tc->O(n*m)
 // sc->O(N*M)

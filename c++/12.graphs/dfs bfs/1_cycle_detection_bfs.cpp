@@ -14,7 +14,6 @@ class Solution{
             queue<pair<int,int>> q;
             q.push({v,-1});
             vis[v]=1;
-
             while(!q.empty())
             {
                 auto curr = q.front();

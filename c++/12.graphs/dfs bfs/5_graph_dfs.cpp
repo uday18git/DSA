@@ -1,4 +1,6 @@
-// so basically in dfs dfs(int v)  each v we are marking it as visited and printing it
+// so basically in dfs dfs(int v) 
+// we are making v as visited and printing it ...
+// each v we are marking it as visited and printing it
 // and for each of its neighbouring nodes we are calling dfs again
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,7 +15,7 @@ void dfs(int v)
     // vector<int> :: iterator it;
     for(auto it=adj[v].begin();it!=adj[v].end();it++)
     {
-        if(!visited[*it]) //it gives a pointer so dereferencing it
+        if(!visited[*it]) // it gives a pointer so dereferencing it
         {
             dfs(*it);
         }
@@ -61,4 +63,15 @@ int main()
 // tc -> O(2*e) + O(n)
 
 
-
+void dfs(int v)
+{
+    visited[v]=1;
+    cout<<v<<endl;
+    for(auto it:adj[v])
+    {
+        if(!visited[it])
+        {
+            dfs(it);
+        }
+    }
+}

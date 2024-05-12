@@ -1,8 +1,10 @@
 // topological sort
-// A topological ordering is an ordering of the nodes in a directed graph where for each directed edge from node A to node B, node A appears before node B in the ordering.
+// A topological ordering is an ordering of the nodes in a directed graph where for each 
+// directed edge from node A to node B, node A appears before node B in the ordering.
 // note : Topological ordering are not unique
 // Not every graph has topological sort
-// A graph has a valid topological sort if and only if it is a DAG(directed acyclic graph) does not contain directed cycles
+// A graph has a valid topological sort if and only if it is a DAG(directed acyclic graph) 
+// does not contain directed cycles
 // if cycle is there not possible
 // see book
 // algorithm
@@ -55,16 +57,17 @@
 //                 pq.push(it);
 //             }
 //         }
-        
 //     }
 //     cout<<endl<<cnt;
 //     return 0;
 //     // so if complete answer does not come , it means that there is a cycle in the given graph
 // }
-
-// using dfs
-
-
+// using dfs 
+// The key idea here is that in a directed acyclic graph (DAG), 
+// a topological sort orders the nodes in such a way that if there's a directed edge 
+// from node A to node B, then A comes before B in the sorted order.
+//  The DFS with stack approach ensures 
+// that nodes are processed in the correct order to achieve this sorted arrangement.
 #include <bits/stdc++.h>
 void dfs(int i,vector<int> adj[],vector<int>&vis,stack<int>&s)
 {
@@ -86,10 +89,7 @@ vector<int> topologicalSort(vector<vector<int>> &graph, int edges, int nodes) {
     vector<int> adj[nodes];
     for(int i=0;i<graph.size();i++)
     {
-        
         adj[graph[i][0]].push_back(graph[i][1]);
-        
-
     }
     for(int i=0;i<nodes;i++)
     {
@@ -104,5 +104,5 @@ vector<int> topologicalSort(vector<vector<int>> &graph, int edges, int nodes) {
         s.pop();
     }
     return ans;
-
 }
+
