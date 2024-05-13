@@ -14,14 +14,14 @@ int failure[20];
 void fail(char* pat)
 {   //failure array -1 -1 0 1 
     int i,j,n;
-    failure[0]=-1;
+    failure[0]=0;
     n=strlen(pat);
     for(i=1;i<n;i++)//*************SHD START FROM J=1 ***********************//
     {
         j=failure[i-1];
-        while(pat[i]!=pat[j+1]&&j>0)//a b a b d
+        while(pat[i]!=pat[j]&&j>0)//a b a b d
         {
-            j=failure[j];
+            j=failure[j-1];
         }
         if(pat[i]==pat[j+1]) //j is moving throughout the pattern and i is just checking for patterns
         {
