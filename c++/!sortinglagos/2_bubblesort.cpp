@@ -1,7 +1,76 @@
 // // MAKES THE BIGGEST ELEMENT GO AT THE LAST AFTER EACH ITERATION
 
 #include <iostream>
+#include<vector>
 using namespace std;
+
+
+// recursive bubble sort
+
+void bubble(int arr[], int endIndex)
+{
+    if (endIndex == 0)
+    {
+        return;
+    }
+    for (int i = 0; i < endIndex; i++)
+    {
+        if (arr[i] > arr[i + 1])
+        {
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+    }
+    bubble(arr,endIndex-1);
+}
+//recursive bubble sort
+void bubble_sort(vector<int>&v ,int index)
+{
+    if(index==0)
+    {
+        return;
+    }
+    for(int i=0;i<index;i++)
+    {
+        if(v[index]<v[i])
+        {
+            int temp = v[index];
+            v[index] = v[i];
+            v[i]=temp;
+        }
+    }
+    bubble_sort(v,index-1);
+}
+int main()
+{
+    vector<int> arr = {5, 4, 3, 2, 1};
+    bubble_sort(arr, 4);
+    for (int i = 0; i < 5; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    // bubble sort implemented as reverse selection sort, only the below makes sense and rest is bullshit
+    // for(int i=4;i>=0;i--)
+    // {
+    //     for(int j=0;j<i;j++)
+    //     {
+    //         if(arr[j]>arr[i])
+    //         {
+    //             swap(arr[i],arr[j]);
+    //         }
+    //     }
+    // }
+    // // print the sorted array
+    // for(int i=0;i<5;i++)
+    // {
+    //     cout<<arr[i]<<" ";
+    // }
+    return 0;
+}
+
+
 // int main()
 // {
 //     // int n;
@@ -46,34 +115,3 @@ using namespace std;
 //     }
 //     return 0;
 // }
-
-// recursive bubble sort
-
-void bubble(int arr[], int endIndex)
-{
-    if (endIndex == 0)
-    {
-        return;
-    }
-    for (int i = 0; i < endIndex; i++)
-    {
-        if (arr[i] > arr[i + 1])
-        {
-            int temp = arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1] = temp;
-        }
-    }
-    bubble(arr,endIndex-1);
-}
-
-int main()
-{
-    int arr[] = {5, 4, 3, 2, 1};
-    bubble(arr, 4);
-    for (int i = 0; i < 5; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    return 0;
-}

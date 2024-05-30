@@ -50,3 +50,7 @@ int main()
     }
     return 0;
 }
+//  swapping without using temporary variable
+// x = x+y 10+20
+// y= x-y 20  
+// x= x-y 

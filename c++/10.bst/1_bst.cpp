@@ -32,6 +32,7 @@ Node* insertBST(Node* root,int val){
     }
     return root;
 }
+
 //IN A BINARY TREE TO SEARCH O(N)
 //IN A BINARY SEARCH TREE O(LOG N)
 Node* searchInBST(Node* root,int key){
@@ -72,9 +73,38 @@ Node* DeleteInBST(Node* root,int key)
         //case 3
         Node* temp = inorderSucc(root->right);      
         root->data = temp->data;
-        root->right = DeleteInBST(root->right,temp->data);//if there is a node following the node's right we want to delete
+        root->right = DeleteInBST(root->right,temp->data);//it will call itself once and go to the above if
     }
     return root;
+}
+Node* DeleteInBST(Node* root,int key)
+{
+    if(key<root->data)
+    {
+        root->left = DeleteInBST(root->left,key);
+    }
+    else if(key>root->data)
+    {
+        root->right = DeleteInBST(root->right,key);
+    }
+    else
+    {
+        if(!root->right)
+        {
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        else if(!root->left)
+        {
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        Node* temp = inorderSucc(root->right);
+        root->data = temp->data;
+        root->right= DeleteInBST(root->right,temp->data);
+    }
 }
 void inorder(Node* root)
 {
@@ -101,3 +131,4 @@ int main()
     cout<<endl;
     inorder(root);
 }
+

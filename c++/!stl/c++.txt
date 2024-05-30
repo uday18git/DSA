@@ -1,0 +1,559 @@
+c++ is a general purpose high level programming language
+high level programming language means that the syntax is more human readable 
+low level means that the syntax is near to machine's instructions 
+
+difference between c and c++
+it is a extension of c language , it is often called c with classses
+and provides templates  and STL and also exception handling ,
+supports OOPS ofcourse
+c++ is a superset of c language , means that all the c code can be run on c++ compiler
+c with oops , exception handling , templating , and a more extensive standard library
+c supports procedural programming
+
+features of c++ 
+oops , high level , dynamic memory allocation (allocated the dynamical heap space), multi threading
+memory management , machine independent (means the code written in c++ can be run on any machine )
+but the executable file of c++ cannot be run on any os , it has to be compiled on that os
+
+compiler based , unlike python , relatively faster than python and java
+
+65 and 97 are ASCII values of A and a
+
+
+keywords are reserved words that cannot be used as a variable in a program 
+identifiers are the names of the variables ,functions and class names
+constants are read only variables in C++ , declared using the const keyword 
+literals are the data items that are used in the program , like 5 , 5.5 , 'a' , "hello" , true , false
+tokens in c++ are the smallest unit of the program , like keywords , identifiers , constants , literals , operators , punctuators
+
+scope is defined as the extent up to which a variable can be accessed in a program 
+mainly two types of variables global and local
+anything between a { } is a local scope
+local variables cannot be accessed outside the block that they are present in 
+
+gloabal variables can be accessed from any part of the program
+
+
+STORAGE CLASSES IN C++ 
+are used to describe the characteristics of a varibale / function 
+
+auto - default storage class for all variables
+extern - used to define elsewhere and not within the same block , main purpose of using extern variables is that they can be accessed between to different files which are part of a large program 
+register - register storage class is used to declare the register vairables using the register keyword , these variables are stored in free registers in the cpu if free registers are avaialable , if not available they are stored in normal storage
+static - static storage class is used to declare static variables which are 
+Static variables have the property of preserving their value even after they are out of their scope!
+Hence, static variables preserve the value of their last use in their scope.
+
+
+// C++ program to illustrate the static storage class
+// objects
+#include <iostream>
+using namespace std;
+// Function containing static variables
+// memory is retained during execution
+int staticFun()
+{
+	cout << "For static variables: ";
+	static int count = 0;
+	count++;
+	return count;
+}
+// Function containing non-static variables
+// memory is destroyed
+int nonStaticFun()
+{
+	cout << "For Non-Static variables: ";
+	int count = 0;
+	count++;
+	return count;
+}
+int main()
+{
+	// Calling the static parts
+	cout << staticFun() << "\n";
+	cout << staticFun() << "\n";
+	// Calling the non-static parts
+	cout << nonStaticFun() << "\n";
+	cout << nonStaticFun() << "\n";
+	return 0;
+}
+
+
+
+STATIC VARIABLES 
+Static has two meanings - 
+static variables : variables in a funciton , variables in a class 
+the space for it gets allocated for the lifetime of the program. 
+even if the function is callled multiple times the same variable keep 
+
+static variables in class 
+// C++ program to demonstrate static
+// variables inside a class
+ 
+#include <iostream>
+using namespace std;
+ 
+class GfG {
+public:
+    static int i;
+    GfG(){
+        // Do nothing
+    };
+};
+int main()
+{
+    GfG obj1;
+    GfG obj2;
+    obj1.i = 2;
+    obj2.i = 3;
+
+    // prints value of i
+    cout << obj1.i << " " << obj2.i;
+}
+above code gives error 
+
+
+#include <iostream>
+using namespace std;
+ 
+class GfG {
+public:
+    static int i;
+ 
+    GfG(){
+        // Do nothing
+    };
+};
+ 
+int GfG::i = 1;
+ 
+int main()
+{
+    GfG obj;
+    // prints value of i
+    cout << obj.i;
+}
+this works , like you can print the value for each object 
+but u cannot have different values for different objects
+u can access it using the class name only Gfg::i = 1;
+
+static members of class 
+
+static objects in class , 
+
+Just like variables, objects also when declared 
+as static have a scope till the lifetime of the program
+
+static functions in class
+
+#include <iostream>
+using namespace std;
+ 
+class GfG {
+public:
+    // static member function
+    static void printMsg() { cout << "Welcome to GfG!"; }
+};
+ 
+// main function
+int main()
+{
+    // invoking a static member function
+    GfG::printMsg();
+}
+output -> 
+
+Welcome to GfG!
+
+
+
+modifiers are used in c++ to change or give extra meaning to 
+already existing data types for example 
+signed 
+unsigned
+short 
+long
+
+u can mix various modifiers, signed long int ... bla bla 
+u can put two long long 
+
+type qualifiers in c++
+const    : objects of type const cannot be altered during execution . const objects cannot be modified by your program while it is runnnig 
+volatile : volatile tell the compiler that a variable's value can be changed in ways that are not explicitly defined by the program 
+restrict : A pointer qualified by restricting is intially the only means by which the object it points to can be accessed
+
+explicit type conversion - converting by assignment 
+implicit type conversion - automatic type conversion 
+casting operators in c++
+static_cast
+dynamic_cast
+const_cast
+reinterpret_cast
+
+POINTERS IN C++
+datatype * var_name;
+example of pointers in c++
+
+
+structures unions and enumerations in c++
+
+struct {
+    // Declaration of the struct 
+}
+
+struct student {
+    int roll_no;
+    char name[20];
+    float marks;
+};
+memory used is 4+4+1 = 9 bytes
+
+int main()
+{
+    struct student s1;
+    s1.roll_no = 1;
+    s1.name = "john";
+    s1.marks = 78.9;
+    cout << s1.roll_no << s1.name << s1.marks;   
+}
+
+structure using typedef 
+typedef struct {
+    // Declaration of the struct 
+} student;
+
+typedef struct student {
+    int roll_no;
+    char name[20];
+    float marks;
+} stud;
+typedef is a keyword used to assign a new name to any existing datatype.
+
+
+unions in c++ , is a type of structure that can be used where the amount of memory used is a key factor 
+
+union GFG {
+    int geek1; // 4 bytes
+    char geek2; // 1 byte
+    float geek3; // 4 bytes
+};
+memory used by the union is the maximum memory used by any of the variables in the union ie 4
+
+int main()
+{
+    union GFG G1;
+    G1.geek1 = 1;
+    G1.geek2 = 'a';
+    G1.geek3  = 10.5;
+}
+
+difference between structure and union is that union uses shared memory for all the variables in the union
+whereas structure uses different memory for each variable in the structure
+
+enums are user-defined types that consist of named integral constants 
+
+enum GeeksforGeeks {
+    A,
+    B,
+    C,
+    D
+};
+or u can assign values to the enums
+enum GeeksforGeeks {
+    A = 1,
+    B = 2,
+    C = 3,
+    D = 4
+};
+
+memory leak is when program consumes memory but 
+fails to release it back to the operating system 
+even though the memory is not required
+
+access modifiers 
+public
+public members of a class can be accessed from anywhere in the program 
+using the direct member access operator with the object of that class 
+
+private 
+the class members declared as private can be accessed only by the member functions inside the class 
+they are not allowed to be accessed directly by any OBJECT or function outside the class
+Only member functions or the friend functions are allowed to access the private data members of a class.
+
+protected
+the protected access modifier is similar to the private access modifier in the sense that it can't be accessed outside the class  unless help of friend class
+the difference is that the class members declared as protected can be accessed by any subclass(derived class) of that class as well
+ 
+class Circle
+{   
+    // private data member
+    private: 
+        double radius;
+      
+    // public member function    
+    public:    
+        double  compute_area()
+        {   // member function can access private 
+            // data member radius
+            return 3.14*radius*radius;
+        }
+     
+};
+ 
+// main function
+int main()
+{   
+    // creating object of the class
+    Circle obj;
+     
+    // trying to access private data member
+    // directly outside the class
+    obj.radius = 1.5;
+     
+    cout << "Area is:" << obj.compute_area();
+    return 0;
+}
+Output: 
+
+ In function 'int main()':
+11:16: error: 'double Circle::radius' is private
+         double radius;
+                ^
+31:9: error: within this context
+     obj.radius = 1.5;
+         ^
+
+
+// C++ Program to demonstrate the
+// functioning of a friend class
+#include <iostream>
+using namespace std;
+
+class GFG {
+private:
+	int private_variable;
+
+protected:
+	int protected_variable;
+
+public:
+	GFG()
+	{
+		private_variable = 10;
+		protected_variable = 99;
+	}
+
+	// friend class declaration
+	friend class F;
+};
+
+// Here, class F is declared as a
+// friend inside class GFG. Therefore,
+// F is a friend of class GFG. Class F
+// can access the private members of
+// class GFG.
+class F {
+public:
+	void display(GFG& t)
+	{
+		cout << "The value of Private Variable = "
+			<< t.private_variable << endl;
+		cout << "The value of Protected Variable = "
+			<< t.protected_variable;
+	}
+};
+
+// Driver code
+int main()
+{
+	GFG g;
+	F fri;
+	fri.display(g);
+	return 0;
+}
+
+
+
+constructor , copy constructor in c++
+A copy constructor is a member function that initializes an object using another object of the same class. 
+In simple terms, a constructor which creates an 
+object by initializing it with an object of the same class, which has been created previously is known as a copy constructor.  
+
+using namespace std;
+class student {
+    int rno;
+    char name[50];
+    double fee;
+ 
+public:
+    student(int, char[], double);
+    student(student& t) // COPY CONSTRUCTOR
+    {
+        rno = t.rno;
+        strcpy(name, t.name);
+        fee = t.fee;
+    }
+    void display();
+};
+ 
+student::student(int no, char n[], double f)
+{
+    rno = no;
+    strcpy(name, n);
+    fee = f;
+}
+ 
+void student::display()
+{
+    cout << endl << rno << "\t" << name << "\t" << fee;
+}
+ 
+int main()
+{
+    student s(1001, "Manjeet", 10000);
+    s.display();
+ 
+    student manjeet(s); // copy constructor called
+    manjeet.display();
+ 
+    return 0;
+}
+
+3 TYPES OF COPY CONSTRUCTORS
+1. Default Copy Constructor
+- If you do not define your own copy constructor, C++ creates a default one for you.
+2. User-defined Copy Constructor 
+
+3. Copy Constructor with Reference Parameters\
+
+In C++, a Copy Constructor may be called in the following cases: 
+
+When an object of the class is returned by value. 
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int v) : value(v) {
+        cout << "Constructor called." << endl;
+    }
+    MyClass(const MyClass &other) {
+        value = other.value;
+        cout << "Copy Constructor called." << endl;
+    }
+};
+
+MyClass createObject() {
+    MyClass obj(10);
+    return obj; // Copy constructor is called here
+}
+
+int main() {
+    MyClass obj1 = createObject();
+    return 0;
+}
+
+When an object of the class is passed (to a function) by value as an argument. 
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int v) : value(v) {
+        cout << "Constructor called." << endl;
+    }
+    MyClass(const MyClass &other) {
+        value = other.value;
+        cout << "Copy Constructor called." << endl;
+    }
+};
+
+void display(MyClass obj) {
+    cout << "Value: " << obj.value << endl;
+}
+
+int main() {
+    MyClass obj1(20);
+    display(obj1); // Copy constructor is called here
+    return 0;
+}
+
+
+When an object is constructed based on another object of the same class. 
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int v) : value(v) {
+        cout << "Constructor called." << endl;
+    }
+    MyClass(const MyClass &other) {
+        value = other.value;
+        cout << "Copy Constructor called." << endl;
+    }
+};
+
+int main() {
+    MyClass obj1(30);
+    MyClass obj2 = obj1; // Copy constructor is called here
+    return 0;
+}
+
+When the compiler generates a temporary object.
+
+#include <iostream>
+using namespace std;
+
+class MyClass {
+public:
+    int value;
+    MyClass(int v) : value(v) {
+        cout << "Constructor called." << endl;
+    }
+    MyClass(const MyClass &other) {
+        value = other.value;
+        cout << "Copy Constructor called." << endl;
+    }
+};
+
+MyClass returnTemporary() {
+    return MyClass(40); // Temporary object is created, copy constructor may be called here
+}
+
+int main() {
+    MyClass obj1 = returnTemporary();
+    return 0;
+}
+
+
+when is a  user defined copy constructor needed ?
+We need to define our own copy constructor only if an object has pointers or any runtime allocation of the resource like a file handle, a network connection, etc.
+
+What is a destructor?
+
+Destructor is an instance member function that is invoked automatically whenever an object is going to be destroyed. 
+Meaning, a destructor is the last function that is going to be called before an object is destroyed.
+
+
+The syntax for defining the destructor within the class:
+
+~ <class-name>() {
+    // some instructions
+}
+The syntax for defining the destructor outside the class:
+
+<class-name> :: ~<class-name>() {
+    // some instructions
+}
+
+important
+
+Car myCar("Toyota", "Camry", 2022); // Object created on the stack
+
+// OR
+
+Car* myCarPtr = new Car("Toyota", "Camry", 2022); // Object created on the heap

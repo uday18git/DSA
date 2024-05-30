@@ -1,5 +1,4 @@
 // apna clg
-
 // approach 1-> take any two n1 and n2 nodes take the path between root and these nodes .. the point of divergence will be the lowest common ancestor
 // approach 2-> from a specific node if right side has n1/n2 and left side also has n1/n2, then that is the lca
 #include "bits/stdc++.h"

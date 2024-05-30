@@ -35,6 +35,27 @@ bool isBalanced(Node* root)//this is O(N^2) lol
     if(abs(Height(root->left)-Height(root->right))>1)return false;
     else return true;
 }
+// more intuitive
+// check if left is balanced
+// check if right is balanced 
+// and return left && right && abs(height(root->left)-height(root->right))<2;
+class Solution {
+public:
+    int height(TreeNode* root)
+    {
+        if(root==NULL)return 0;
+        int l=height(root->left);
+        int r=height(root->right);
+        return max(l,r)+1;
+    }
+    bool isBalanced(TreeNode* root) {
+        if(root==NULL)return true;
+        bool left = isBalanced(root->left);
+        bool right = isBalanced(root->right);
+        return left && right && abs(height(root->left)-height(root->right))<2;
+    }
+};
+
 bool optisBalanced(Node* root,int* height)//this is O(N) lol
 {
     if(!root)return true;
@@ -45,6 +66,8 @@ bool optisBalanced(Node* root,int* height)//this is O(N) lol
     if(abs(lh-rh)>1)return false;
     else return true;
 }
+
+
 int main()
 {
     int height=0;

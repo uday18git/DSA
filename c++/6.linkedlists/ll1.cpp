@@ -7,18 +7,28 @@
 // size is fixed , wasted if less memory is used, and overflow if more is used
 // contigous block of memory
 // inserting and deleting is costly
-#include <iostream>
+
+// we can do both
+// Node* nodePtr = new Node(10);
+// (*nodePtr).data = 20; // Accesses and sets the 'data' member to 20
+// (*nodePtr).next = new Node(30); // Creates a new node and assigns it to 'next'
+// Node* nodePtr = new Node(10);
+// nodePtr->data = 20; // Accesses and sets the 'data' member to 20
+// nodePtr->next = new Node(30); // Creates a new node and assigns it to 'next'
+
+
+#include <bits/stdc++.h>
 using namespace std;
 class node
 {
-public:
-    int data;
-    node *next;
-    node(int val)
-    {
-        data = val;
-        next = NULL;
-    }
+    public:
+        int data;
+        node *next;
+        node(int val)
+        {
+            data = val;
+            next = NULL;
+        }
 };
 // insert at tail , create new node, if head==null then the new node is the head, else we have to, traverse till last then put the new node there 
 void insertAtTail(node* &head, int val) // if u take by value the actual linked list wont be changed , same logic as others for node*
@@ -95,16 +105,17 @@ void deletion(node *&head, int val) // corner case is when we try to delete the 
     delete todelete;
 }
 
-// or another type of deletion in linked list is, when the node which has to be deleted is given
-class Solution
-{
-public:
-    void deleteNode(node *node1)
-    {
-        node1->val = node1->next->val;
-        node1->next = node1->next->next;
-    }
-}
+// deletion in linked list when the node which has to be deleted is given
+// unintuitive
+// class Solution
+// {
+// public:
+//     void deleteNode(node *node1)
+//     {
+//         node1->val = node1->next->val;
+//         node1->next = node1->next->next;
+//     }
+// }
 
 // reversing a linked list
 //  two methods -> iterative method and recursive method
@@ -112,7 +123,7 @@ public:
 //  initially we take previous as null , we have to remove the link between current and next and make a link between current and previous (previous<-current)
 //  and we have break the loop at current == null, because at this condition the linked list has been reversed
 
-reverse(node *&head)
+node* reverse(node *&head)
 {
     node *currptr = head;
     node *prevptr = NULL;
@@ -129,19 +140,19 @@ reverse(node *&head)
 // recursive way , we call it on head->next itseems
 //  we have to call it on head->next and we have to manually adjust the head  node
 // we have to make the second node point to head(head->next->next=head) and head->next=NULL
-class Solution
-{
-public:
-    ListNode *reverseList(ListNode *head)
-    {
-        if (head == NULL || head->next == NULL)
-            return head;
-        ListNode *newhead = reverseList(head->next); // one call of recursion means that it will give back the rest of the list with reversed
-        head->next->next = head;
-        head->next = NULL;
-        return newhead;
-    }
-};
+// class Solution
+// {
+// public:
+//     ListNode *reverseList(ListNode *head)
+//     {
+//         if (head == NULL || head->next == NULL)
+//             return head;
+//         ListNode *newhead = reverseList(head->next); // one call of recursion means that it will give back the rest of the list with reversed
+//         head->next->next = head; // on first return this will make the last pointer to point to its prev ptr
+//         head->next = NULL; // making the next pointer of the second last pointer from last pointer to NULL 
+//         return newhead;
+//     }
+// };
 // when i call recursion on heads next it should return reversed list till head's next, then we are reversing the rest, that is head and its next
 // using head->next->next = head
 // head->next=NULL
@@ -173,44 +184,43 @@ node *reversek(node *&head, int k) // last part didnt understand
     }
     return prevptr; // new head
 }
-class Solution
-{
-public:
-    ListNode *reverseKGroup(ListNode *head, int k)
-    {
-        ListNode *currptr = head;
-        ListNode *prevptr = NULL;
-        ListNode *nextptr;
-        int count = 0;
-        ListNode *temp = head;
-        // counting the number of nodes in the current recursion call
-        while (temp && count < k)
-        {
-            temp = temp->next;
-            count++;
-        }
-        // handling the case when there are less than k nodes
-        if (count < k)
-        {
-            return head;
-        }
-
-        count = 0;
-        while (currptr && count < k)
-        {
-            nextptr = currptr->next;
-            currptr->next = prevptr;
-            prevptr = currptr;
-            currptr = nextptr;
-            count++;
-        }
-        if (nextptr)
-        {
-            head->next = reverseKGroup(nextptr, k);
-        }
-        return prevptr;
-    }
-};
+// class Solution
+// {
+// public:
+//     ListNode *reverseKGroup(ListNode *head, int k)
+//     {
+//         ListNode *currptr = head;
+//         ListNode *prevptr = NULL;
+//         ListNode *nextptr;
+//         int count = 0;
+//         ListNode *temp = head;
+//         // counting the number of nodes in the current recursion call
+//         while (temp && count < k)
+//         {
+//             temp = temp->next;
+//             count++;
+//         }
+//         // handling the case when there are less than k nodes
+//         if (count < k)
+//         {
+//             return head;
+//         }
+//         count = 0;
+//         while (currptr && count < k)
+//         {
+//             nextptr = currptr->next;
+//             currptr->next = prevptr;
+//             prevptr = currptr;
+//             currptr = nextptr;
+//             count++;
+//         }
+//         if (nextptr)
+//         {
+//             head->next = reverseKGroup(nextptr, k);
+//         }
+//         return prevptr;
+//     }
+// };
 // floyd's algorithm, rabbit and tortoise, detection and removal of cycle in linked list
 // take one fast, slow, fast moves two steps ahead, and slow moves one step ahead at a time.
 // and if they meet at a point then it has a cycle otherwise does not have a cycle
@@ -274,69 +284,67 @@ void removecycle(node *&head)
 }
 
 // return the node where the cycle is present or return NULL if no cycle is present
-
-class Solution
-{
-public:
-    ListNode *detectCycle(ListNode *head)
-    {
-        ListNode *slow = head;
-        ListNode *fast = head;
-        while (true)
-        {
-            if (!fast || !fast->next)
-            {
-                return NULL;
-            }
-            fast = fast->next->next;
-            slow = slow->next;
-            if (fast == slow)
-            {
-                break;
-            }
-        }
-        slow = head;
-        while (fast != slow)
-        {
-
-            slow = slow->next;
-            fast = fast->next;
-        }
-        return fast;
-    }
-};
+// class Solution
+// {
+// public:
+//     ListNode *detectCycle(ListNode *head)
+//     {
+//         ListNode *slow = head;
+//         ListNode *fast = head;
+//         while (true)
+//         {
+//             if (!fast || !fast->next)
+//             {
+//                 return NULL;
+//             }
+//             fast = fast->next->next;
+//             slow = slow->next;
+//             if (fast == slow)
+//             {
+//                 break;
+//             }
+//         }
+//         slow = head;
+//         while (fast != slow)
+//         {
+//             slow = slow->next;
+//             fast = fast->next;
+//         }
+//         return fast;
+//     }
+// };
 // length of the loop
-int lengthOfLoop(Node *head)
-{
-    // Write your code here
-    Node *slow = head;
-    Node *fast = head;
-    while (true)
-    {
-        if (!fast || !fast->next)
-        {
-            return 0;
-        }
-        slow = slow->next;
-        fast = fast->next->next;
-        if (fast == slow)
-        {
-            break;
-        }
-    }
-    int count = 0;
-    while (true)
-    {
-        fast = fast->next;
+// int lengthOfLoop(Node *head)
+// {
+//     // Write your code here
+//     Node *slow = head;
+//     Node *fast = head;
+//     while (true)
+//     {
+//         if (!fast || !fast->next)
+//         {
+//             return 0;
+//         }
+//         slow = slow->next;
+//         fast = fast->next->next;
+//         if (fast == slow)
+//         {
+//             break;
+//         }
+//     }
+//     int count = 0;
+//     while (true)
+//     {
+//         fast = fast->next;
 
-        count++;
-        if (fast == slow)
-        {
-            break;
-        }
-    }
-    return count;
-}
+//         count++;
+//         if (fast == slow)
+//         {
+//             break;
+//         }
+//     }
+//     return count;
+// }
 
 // append last k nodes to the front of the linked list
 void lastk(node *&head, int k)

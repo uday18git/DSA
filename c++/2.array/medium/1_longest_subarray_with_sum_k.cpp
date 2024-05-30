@@ -30,7 +30,7 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
 
 
 }
-
+// longest subarray with sum k
 
 // better approach is to use a hashmap
 // concept of prefix sum

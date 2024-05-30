@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+// DIVIDE AND CONQUER
 // flow
 // given l and r , check if l<r and
 // cut the arry into two parts , call merge sort on both
@@ -60,7 +61,7 @@ void merge(int arr[], int l, int mid, int r)
 }
 void mergesort(int arr[], int l, int r)
 {
-    if (l < r)
+    if (l < r) 
     {
         int mid = (l + r) / 2;
         mergesort(arr, l, mid);

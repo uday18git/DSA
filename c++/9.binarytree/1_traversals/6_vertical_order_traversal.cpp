@@ -24,6 +24,7 @@ struct TreeNode
 vector<vector<int>> vertical_order_traversal(TreeNode *root)
 {
     // vertical  // level // each level nodes
+    // we need to store level also because we have to maintain the order up to down
     map<int, map<int, multiset<int>>> ds;
     queue<pair<TreeNode *, pair<int, int>>> q;
     vector<vector<int>> ans;
@@ -35,7 +36,7 @@ vector<vector<int>> vertical_order_traversal(TreeNode *root)
         {
             auto x = q.front();
             q.pop();
-            if (x.first)
+            if(x.first)
             {    
                 int y = x.second.first;
                 int z = x.second.second;

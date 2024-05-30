@@ -1,5 +1,4 @@
 // APNA COLLEGE
-
 // using preorder and inorder
 // algo
 // 1. Pick element from preorder and create a node.
@@ -8,7 +7,6 @@
 // 4. call to build left subtree from inorder's 0 to pos-1
 // 5. call to build right subtree from inorder pos+1 to n
 // 6. Return the node.
-
 // first we have to build left then right
 #include "bits/stdc++.h"
 using namespace std;
@@ -38,7 +36,6 @@ struct Node
 // // inorder's start and end
 // Node *buildTree(int preorder[], int inorder[], int start, int end)
 // {
-
 //     static int idx = 0;
 //     if (start > end)
 //     {
@@ -56,12 +53,10 @@ struct Node
 //     node->left = buildTree(preorder, inorder, start, pos - 1); // first we will build the left subtree of the root
 //     // position is where we find the root node in inorder so we take till pos-1 above
 //     node->right = buildTree(preorder, inorder, pos + 1, end);
-
 //     return node;
 // }
 // void inorderPrint(Node *root)
 // {
-
 //     if (root == NULL)
 //     {
 //         return;
@@ -152,7 +147,7 @@ Node *buildtree(int preorder[], int inorder[], int start, int end)
 
 // passed in leet code
 
-/**
+/*
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -190,3 +185,4 @@ public:
         return build(preorder,inorder,0,preorder.size()-1,idx);
     }
 };
+

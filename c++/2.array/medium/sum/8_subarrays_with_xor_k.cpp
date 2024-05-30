@@ -15,7 +15,6 @@ int subarraysWithSumK(vector < int > a, int b) {
         count+=m[x];
         m[xr]++;
     }
-    
     return count;
 }
 

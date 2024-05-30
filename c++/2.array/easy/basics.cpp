@@ -1,4 +1,3 @@
-
 // things used 
 // map.find();
 // swap(a[i],a[j]); to swap in vector 
@@ -157,7 +156,7 @@ vector < int > sortedArray(vector < int > a, vector < int > b) {
     {
         if(a[i]<=b[j])
         {
-            if(unionArr.size()==0 || unionArr.back()!=a[i])
+            if(unionArr.size()==0 || unionArr.back()!=a[i]) // to make sure that there are no duplicates
             {
                 unionArr.push_back(a[i]);
             }
@@ -217,7 +216,6 @@ class Solution{
             }
             return ans;
         }
-        
 }
 
 
@@ -244,10 +242,8 @@ public:
                     i++;
                 }
                 ans=max(curr,ans);
-
             }
             curr=0;
-            
         }
         return ans;
     }

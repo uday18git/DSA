@@ -22,13 +22,13 @@ void preorder(struct Node* root){
 }
 void inorder(struct Node* root){
     
-    preorder(root->left);
+    inorder(root->left);
     cout<<root->data<<" ";
-    preorder(root->right);
+    inorder(root->right);
 }
 void postorder(struct Node* root){
     
-    preorder(root->left);
-    preorder(root->right);
+    postorder(root->left);
+    postorder(root->right);
     cout<<root->data<<" ";
 }

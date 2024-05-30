@@ -16,14 +16,14 @@ int main(){
     int n=arr.size();
     for(int i=1;i<n;i++)
     {
-        int current = arr[i]; // current unsorted array start
-        int j=i-1; 
+        int current = arr[i]; // first element of current unsorted array 
+        int j=i-1; // we will go from one element before the first element of the current unsorted array to 0 and until bigger number is there move the bigger number front
         while(j>=0 && arr[j]>current) //  we can start from 0 and go till i-1 , but its more hectic, this approach is easier
         {
             arr[j+1]=arr[j]; //  moving bigger elements forward
             j--;
         }
-        arr[j+1]=current;
+        arr[j+1]=current; // and putting the current in its correct place
     }
     for(auto i:arr)
     {

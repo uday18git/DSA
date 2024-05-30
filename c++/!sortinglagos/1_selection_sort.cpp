@@ -1,6 +1,6 @@
 #include <bits/stdc++.h> 
 using namespace std;
-// // shifts the smallest element to the first each time
+// shifts the smallest element to the first each time
 // int main(){
 //     vector<int> arr={5,2,4,9,10,13,6};
 //     int n=arr.size();
@@ -18,22 +18,22 @@ using namespace std;
 //     {
 //         /* code */cout<<arr[i]<<" ";
 //     }
-    
-    
 // return 0;
 // }
+
+
 // RECURSIVE SELECTION SORT
 
 void selection(int arr[],int startIndex,int n)
 {
     if(startIndex==n-1)return;
-    for(int i=n-2;i>=startIndex;i--)
+    for(int i=startIndex;i<n;i++)
     {
-        if(arr[i]>arr[i+1])
+        if(arr[startIndex]>arr[i])
         {
-            int temp =arr[i];
-            arr[i] = arr[i+1];
-            arr[i+1]=temp;
+            int t = arr[startIndex];
+            arr[startIndex] = arr[i];
+            arr[i]=t;
         }
     }
     selection(arr,startIndex+1,n);

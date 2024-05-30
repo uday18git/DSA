@@ -10,6 +10,7 @@ struct ListNode {
 };
 
 // naive approach
+// store the values in a list and check if palindrom using two pointer approach
 class Solution
 {
 public:
@@ -37,8 +38,6 @@ public:
         return true;
     }
 };
-
-
 
 // optimzed approach
 class Solution
