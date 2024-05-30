@@ -14,22 +14,22 @@ int failure[20];
 void fail(char* pat)
 {   //failure array -1 -1 0 1 
     int i,j,n;
-    failure[0]=-1;
+    failure[0]=0;
     n=strlen(pat);
-    for(j=1;j<n;j++)//*************SHD START FROM J=1 ***********************//
+    for(i=1;i<n;i++)//*************SHD START FROM J=1 ***********************//
     {
-        i=failure[j-1];
-        while(pat[j]!=pat[i+1]&&i>0)//a b a b d
+        j=failure[i-1];
+        while(pat[i]!=pat[j]&&j>0)//a b a b d
         {
-            i=failure[i];
+            j=failure[j-1];
         }
-        if(pat[j]==pat[i+1]) //j is moving throughout the pattern and i is just checking for patterns
+        if(pat[i]==pat[j+1]) //j is moving throughout the pattern and i is just checking for patterns
         {
-            failure[j]=i+1;
+            failure[i]=j+1;
         }
         else
         {
-            failure[j]=-1;
+            failure[i]=-1;
         }
     }
 }
