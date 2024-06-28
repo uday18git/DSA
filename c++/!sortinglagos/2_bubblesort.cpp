@@ -1,4 +1,4 @@
-// // MAKES THE BIGGEST ELEMENT GO AT THE LAST AFTER EACH ITERATION
+// MAKES THE BIGGEST ELEMENT GO AT THE LAST AFTER EACH ITERATION
 
 #include <iostream>
 #include<vector>
@@ -52,21 +52,21 @@ int main()
     }
 
     // bubble sort implemented as reverse selection sort, only the below makes sense and rest is bullshit
-    // for(int i=4;i>=0;i--)
-    // {
-    //     for(int j=0;j<i;j++)
-    //     {
-    //         if(arr[j]>arr[i])
-    //         {
-    //             swap(arr[i],arr[j]);
-    //         }
-    //     }
-    // }
-    // // print the sorted array
-    // for(int i=0;i<5;i++)
-    // {
-    //     cout<<arr[i]<<" ";
-    // }
+    for(int i=4;i>=0;i--)
+    {
+        for(int j=0;j<i;j++)
+        {
+            if(arr[j]>arr[i])
+            {
+                swap(arr[i],arr[j]);
+            }
+        }
+    }
+    // print the sorted array
+    for(int i=0;i<5;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
     return 0;
 }
 

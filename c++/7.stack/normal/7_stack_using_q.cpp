@@ -2,6 +2,10 @@
 //2 METHODS -- MAKING PUSH METHOD COSTLY , OR MAKING POP METHOD COSTLY
 // Q1 AND Q2
 //PUSH COSTLY
+// !!!!!!!!!!!!
+// THE POINT IN STACK USING Q IS THAT , WE ARE MAINTAINING STACK IN Q1 , 
+// SO NEWLY ADDED ELEMENTS SHOULD BE IN THE FRONT OF Q1
+
 // we are maintaining the stack in q1
 // push
 // 1. push the element in q2
@@ -16,33 +20,81 @@
 // so q s front should be top of the stack so that we can remove it 
 #include <bits/stdc++.h>
 using namespace std;
+// class Stack{
+//     int N;
+//     queue<int> q1;
+//     queue<int> q2;
+// public:
+//     Stack(){
+//         N=0;
+//     }
+//     void push(int val){
+//         q2.push(val);
+//         N++;
+//         while(!q1.empty())
+//         {
+//             q2.push(q1.front());
+//             q1.pop();
+//         }
+//         queue<int> temp = q1;
+//         q1=q2;
+//         q2=temp;
+//     }
+//     void pop(){
+//         q1.pop();
+//         N--;
+//     }
+//     int top(){
+//         return q1.front();
+//     }
+// };
+// int main()
+// {
+//     Stack s1;
+//     s1.push(1);
+//     s1.push(2);
+//     s1.push(3);
+//     s1.push(4);
+//     s1.pop();
+//     cout<<s1.top()<<endl;
+//     return 0;
+// }
+
 class Stack{
-    int N;
+    private:
     queue<int> q1;
     queue<int> q2;
-public:
-    Stack(){
-        N=0;
-    }
-    void push(int val){
-        q2.push(val);
-        N++;
-        while(!q1.empty())
+    public:
+        int N;
+        Stack()
         {
-            q2.push(q1.front());
-            q1.pop();
+            N=0;
         }
-        queue<int> temp = q1;
-        q1=q2;
-        q2=temp;
-    }
-    void pop(){
-        q1.pop();
-        N--;
-    }
-    int top(){
-        return q1.front();
-    }
+        void push(int val)
+        {
+            q2.push(val);
+            while(!q1.empty())
+            {
+                q2.push(q1.front());
+                q1.pop();
+            }
+            queue<int> temp =q1;
+            q1=q2;
+            q2=temp;
+            N++;
+        }
+        int pop()
+        {
+            int temp = q1.front();
+            q1.pop();
+            N--;
+            return temp;
+        }
+        int top()
+        {
+            return q1.front();
+        }
+
 };
 int main()
 {
@@ -50,8 +102,6 @@ int main()
     s1.push(1);
     s1.push(2);
     s1.push(3);
-    s1.push(4);
     s1.pop();
-    cout<<s1.top()<<endl;
-    return 0;
+    cout<< s1.top()<<endl;
 }

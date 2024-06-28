@@ -11,8 +11,6 @@ int main(){
         cin>>a;
         v1.push_back(a);
     }
-    
-
     for(int i=0;i<n;i++)
     {
         int minh=v1[i];

@@ -9,7 +9,8 @@ using namespace std;
 int partition(int arr[],int l,int r)
 {
     int p=arr[r];
-    int i=l-1; // here i is defined as the last element in arr which is less than pivot , IMPORTANT TO UNDERSTAND
+    int i=l-1; // here i is defined as the last element in arr which is less than pivot ,we will maitain this throughout  IMPORTANT TO UNDERSTAND
+    // all the elements less than the pivot will be stored till i
     for(int j=l;j<r;j++)
     {
         if(arr[j]<p)

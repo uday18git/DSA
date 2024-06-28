@@ -31,11 +31,11 @@ vector<int> getSecondOrderElements(int n, vector<int> a) {
             secondsmallest=smallest;
             smallest = a[i];
         }
-        if(a[i]>smallest && a[i]<secondsmallest)
+        if(a[i]>smallest && a[i]<secondsmallest) // IMPORTANT TO CONSIDER
         {
             secondsmallest=a[i];
         }
-        if(a[i]<largest && a[i]>secondlargest) // IMPORTANT TO CONSIDER
+        if(a[i]<largest && a[i]>secondlargest) 
         {
             secondlargest=a[i];
         }
@@ -47,9 +47,6 @@ vector<int> getSecondOrderElements(int n, vector<int> a) {
 
 
 // to see if it is sorted or not, simple one pass nothing complex
-
-
-
 // remove duplicates from a SORTED array
 // we will maintain a variable 
 // then increment the varaible to keep storing new and ignore duplicates
@@ -72,9 +69,7 @@ public:
                 ans++;
             }
         }
-        
         return ans;
-        
     }
 };
 //  nums.erase(nums.begin()+3) remove that element did not work

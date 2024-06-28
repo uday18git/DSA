@@ -1,6 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
 struct Node
 {
     Node* links[26];
@@ -34,7 +33,6 @@ public:
     Trie() {
         root = new Node();
     }
-    
     void insert(string word) {
         Node* node = root; //  dummy node
         for(int i=0;i<word.length();i++)
@@ -43,7 +41,7 @@ public:
             {
                 node->put(word[i],new Node());
             }
-            // moves to reference trie
+            // moves to reference trie , or basically moves forward
             node =  node->get(word[i]);
         }
         node->setEnd();

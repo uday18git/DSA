@@ -4,7 +4,6 @@
 
 namespace fs = std::filesystem;
 
-// Function to count cpp files recursively
 int countCppFiles(const fs::path& directory) {
     int count = 0;
     for (const auto& entry : fs::recursive_directory_iterator(directory)) {

@@ -34,7 +34,6 @@ using namespace std;
 // }
 // int paintersPartition(int arr[],int n,int m)
 // {
-
 //     if(n<m)return -1;
 //     int sum=0;
 //     int ans=INT_MAX;

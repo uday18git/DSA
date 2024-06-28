@@ -3,72 +3,134 @@
 // if '(' push to stack
 // if ')' pop from stack and print until '(' is found
 // if operator 
-
 // pop from stack and print until an operator with less precedence is found
 // consider this infix expression (a-b/c)*(a/k-l)
 #include <bits/stdc++.h> 
 using namespace std;
+// int prec(char c)
+// {
+//     if(c == '^')
+//     {
+//         return 3;
+//     }
+//     else if(c == '*' || c == '/')
+//     {
+//         return 2;
+//     }
+//     else if(c == '+' || c == '-')
+//     {
+//         return 1;
+//     }
+//     else
+//     {
+//         return -1;
+//     }
+// }
+// string infixToPostfix(string s)
+// {
+//     stack<char> st;
+//     string res;
+//     for(int i=0;i<s.length();i++)
+//     {
+//         if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) // if operand
+//         {
+//             res+=s[i];
+//         }
+//         else if(s[i] == '(') // if '('
+//         {
+//             st.push(s[i]);
+//         }
+//         else if(s[i] == ')') // if ')'
+//         {
+//             while(!st.empty() && st.top() != '(')
+//             {
+//                 res+=st.top();
+//                 st.pop();
+//             }
+//             if(!st.empty())
+//             { 
+//                 st.pop(); // to remove '('
+//             }
+//         }
+//         else //operators
+//         {
+//             while(!st.empty() && prec(st.top()) > prec(s[i])) // if precedence of top element is greater than current element
+//             {
+//                 res+=st.top();
+//                 st.pop();
+//             }
+//             st.push(s[i]);
+//         }
+//     }
+//     while(!st.empty()) // for the left overs
+//     {
+//         res+=st.top();
+//         st.pop();
+//     }
+//     return res;
+// }
+
 int prec(char c)
 {
-    if(c == '^')
-    {
-        return 3;
-    }
-    else if(c == '*' || c == '/')
+    if(c=='*' || c=='/')
     {
         return 2;
     }
-    else if(c == '+' || c == '-')
+    else if(c=='+' || c=='-')
     {
         return 1;
+    }
+    else if(c == '^')
+    {
+        return 3;
     }
     else
     {
         return -1;
     }
 }
-string infixToPostfix(string s)
+string solve(string s)
 {
-    stack<char> st;
-    string res;
-    for(int i=0;i<s.length();i++)
+    int n=s.size();
+    string ans="";
+    stack<char>st;
+    for(int i=0;i<n;i++)
     {
-        if((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z')) // if operand
+        char curr = s[i];
+        if((curr >= 'a' && curr<='z') || (curr>='A' && curr <='Z'))
         {
-            res+=s[i];
+            ans+=curr;
         }
-        else if(s[i] == '(') // if '('
+        else if(curr == '(')
         {
-            st.push(s[i]);
+            st.push('(');
+            // ans+='(';
         }
-        else if(s[i] == ')') // if ')'
+        else if(curr == ')')
         {
-            while(!st.empty() && st.top() != '(')
+            while(st.top()!='(')
             {
-                res+=st.top();
+                ans+=st.top();
                 st.pop();
             }
-            if(!st.empty())
-            { 
-                st.pop(); // to remove '('
-            }
+            st.pop(); //popping '('
         }
-        else //operators
+        else
         {
-            while(!st.empty() && prec(st.top()) > prec(s[i])) // if precedence of top element is greater than current element
+            while(!st.empty() && prec(curr)<=prec(st.top())) //operands we have to pop until the top element is lesser in precedence than the incoming 
             {
-                res+=st.top();
+                ans+=st.top();
                 st.pop();
             }
-            st.push(s[i]);
-        }
+            st.push(curr);
+        }        
     }
     while(!st.empty())
     {
-        res+=st.top();
+        ans+=st.top();
         st.pop();
     }
-    return res;
+    return ans;
 }
 
 // for infix to prefix , reverse the string and interchange '(' and ')' and then call infixToPostfix function and then reverse the result , 
@@ -87,13 +149,13 @@ string infixToPrefix(string s)
             s[i] = '(';
         }
     }
-    string res = infixToPostfix(s);
+    string res = solve(s);
     reverse(res.begin(),res.end());
     return res;
 }
 int main(){
     cout<<infixToPrefix("(a-b/c)*(a/k-l)"); // expected output: *-a/bc-/akl
     cout<<endl;
-    cout<<infixToPostfix("(a-b/c)*(a/k-l)"); // expected output: abc/-ak/l-*
+    cout<<solve("(a-b/c)*(a/k-l)"); // expected output: abc/-ak/l-*
 return 0;
 }

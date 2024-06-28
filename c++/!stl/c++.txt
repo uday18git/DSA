@@ -557,3 +557,132 @@ Car myCar("Toyota", "Camry", 2022); // Object created on the stack
 // OR
 
 Car* myCarPtr = new Car("Toyota", "Camry", 2022); // Object created on the heap
+
+shallow copy and deep copy
+used for copy constructors
+shallow copy is a bit wise copy of the object
+deep copy is a copy of the object with a new memory allocation
+In general, if the variables of an object have been dynamically allocated, 
+then it is required to do a Deep Copy in order to create a copy of the object.
+
+
+Single Copy: There is only one copy of a static data member that is shared by all objects of the class. 
+This means that any changes made to the static data member by one object will be reflected 
+in all other objects of the class.
+
+Declaration: Static data members are declared within the class definition using the static keyword.
+
+Definition: Static data members must be defined outside the class. 
+This definition allocates memory for the static data member.
+The syntax for defining a static data member is:
+datatype classname::static_member = value;
+
+syntax for accessing:
+classname::static_member;
+object.static_member;
+
+
+:: is called the scope resolution operator
+
+
+static FUNCTION , can only access static variables , it makes sense right 
+// C++ Program to show the working of
+// static member functions
+#include <iostream> 
+using namespace std; 
+
+class Box 
+{ 
+	private: 
+	static int length; 
+	static int breadth; 
+	static int height; 
+	
+	public:
+	
+	static void print() 
+	{ 
+		cout << "The value of the length is: " << length << endl; 
+		cout << "The value of the breadth is: " << breadth << endl; 
+		cout << "The value of the height is: " << height << endl; 
+	}
+}; 
+
+// initialize the static data members 
+
+int Box :: length = 10; 
+int Box :: breadth = 20; 
+int Box :: height = 30; 
+
+// Driver Code
+
+int main() 
+{
+	
+	Box b; 
+	
+	cout << "Static member function is called through Object name: \n" << endl; 
+	b.print(); 
+	
+	cout << "\nStatic member function is called through Class name: \n" << endl; 
+	Box::print(); 
+	
+	return 0; 
+}
+
+
+scope resolution operator vs this pointer in c++
+used for accessing static members or static class members 
+this pointer is used to refer to the current object of the class
+
+
+virtual function in c++
+
+A virtual function is a member function that is declared within a base class
+and is re defined by a derived class. 
+
+When you refer to a derived class 
+object using a pointer or a reference to the base class , 
+you can call a virtual function for
+that object and execute the derived class's version of the method.
+
+
+class Entity 
+{
+    public :
+    // string GetName() { return "Entity"; }
+     virtual string GetName() { return "Entity"; }
+};
+
+class Player : public Entity 
+{
+    private:
+    string m_Name;
+    public:
+    Player(const string& name) : m_Name(name) {} // this is initializer list 
+    string GetName(){
+        return m_Name;
+    }
+};
+void PrintName(Entity* entity)
+{
+    cout<<entity->GetName()<<endl;
+}
+int main()
+{
+    Entity* e = new Entity();
+    cout<<e->GetName()<<endl; // gives entity
+    PrintName(e); //gives entity
+
+    Player* p = new Player("Cherno");
+    cout<<p->GetName()<<endl; // gives cherno
+    PrintName(p);// gives entity , expected cherno  , as p is a object of subclass of entity but not entity , so it should have returned cherno
+ 
+    Entity* entity = p;
+    cout<<entity->GetName(); // gives entity this is the problem , here cherno was expected 
+
+// so the problem here is if we consider the object of the subclass to be of the parent class it is calling the function of the parent class 
+not the subclass so tht is the problem
+}
+virtual functions do dynamic dispatch using v tables 
+they are not free though 

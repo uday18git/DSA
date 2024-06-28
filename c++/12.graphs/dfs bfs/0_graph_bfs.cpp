@@ -37,24 +37,31 @@ void bfs(int v)// traversal starts at v , every node is explored one by one
 }
 int main()
 {
-    for(int i=0;i<N;i++)
+    // for(int i=0;i<N;i++)
+    // {
+    //     visited[i]=0;
+    // }
+    // int n,m;
+    // cin>>n>>m;//number of nodes and edges
+    // int x,y;
+    // for(int i=0;i<m;i++)
+    // {
+    //     cin>>x>>y;
+    //     adj[x].push_back(y);//undirected 
+    //     adj[y].push_back(x);
+    // }
+    // cout<<"Enter the node you want to start bfs from: "<<endl;
+    // int b;
+    // cin>>b;
+    // cout<<"bfs of the graph is"<<endl ;
+    // bfs(b);
+
+    vector<int> arr ={1,2,3};
+    for(auto it:arr)
     {
-        visited[i]=0;
+        cout<<it<<" ";
+        
     }
-    int n,m;
-    cin>>n>>m;//number of nodes and edges
-    int x,y;
-    for(int i=0;i<m;i++)
-    {
-        cin>>x>>y;
-        adj[x].push_back(y);//undirected 
-        adj[y].push_back(x);
-    }
-    cout<<"Enter the node you want to start bfs from: "<<endl;
-    int b;
-    cin>>b;
-    cout<<"bfs of the graph is"<<endl ;
-    bfs(b);
     return 0;
 }
 
@@ -62,3 +69,18 @@ int main()
 // because the while loop runs till queue is empty
 // and the for loop inside runs for all the degrees of a node
 // and total degrees in a graph is 2*e ukr
+
+
+
+void dfs(int v)
+{
+    visited[v]=1;
+    cout<<v<<" ";
+    for(auto it:adj[v])
+    {
+        if(!visited[it])
+        {
+
+        }
+    }
+}

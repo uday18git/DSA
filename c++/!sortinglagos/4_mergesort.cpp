@@ -15,6 +15,7 @@ using namespace std;
 // WHEN U R PASSING A ARRAY YOU ARE PASSING THE POINTER TO THE FIRST ELEMENT OF THE ARRAY
 void merge(int arr[], int l, int mid, int r)
 {
+    // if odd then we will take more elements in n1 only , so it works out, if even we will do equal , in n2 we are taking mid only not mid+1 so a exrta element comes there
     const int n1 = mid - l + 1; // very important to add +1 because left side one element wil be less
     const int n2 = r - mid;
     int a1[n1];
@@ -27,7 +28,6 @@ void merge(int arr[], int l, int mid, int r)
     {
         a2[i] = arr[i + mid + 1];
     }
-
     int i = 0;
     int j = 0;
     int k = l;

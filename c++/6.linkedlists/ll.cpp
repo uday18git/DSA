@@ -16,8 +16,6 @@
 //     node* n = new node(val);//new denotes the request for memory allocation on free store.
 //     node* temp=head;
 // }
-
-
 #include <bits/stdc++.h>
 using namespace std;
 class Node{
@@ -163,7 +161,6 @@ bool detectCycle(node* head)
         }
     }
     return false;
-    
 }
 //assuming that cycle has been detected.
 void removeCycle(node*head)
@@ -252,4 +249,25 @@ int main()
     // printll(head);
     // printll(reversell(head));
     // reversePrint(head);
+}
+
+
+
+
+
+class Node{
+    public:
+        int val;
+        Node* next;
+
+};
+void printll(Node* head)
+{
+    Node* temp = head;
+    while(temp)
+    {
+        cout<<temp->val<<endl;
+        temp=temp->next;
+    }
+    return;
 }

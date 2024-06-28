@@ -14,7 +14,6 @@ class node
 };
 class queue
 {
-
     public:
     node* front;
     node* back;
@@ -59,7 +58,6 @@ class queue
         }
         return false;
     }
-
 };
 int main()
 {

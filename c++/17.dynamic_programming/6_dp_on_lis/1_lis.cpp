@@ -5,26 +5,51 @@
 #include <bits/stdc++.h> 
 using namespace std;
 
-class Solution {
-public:
-    int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-        vector<int> dp(n+1,1);
-        for(int i=n-2;i>=0;i--) // in each pass we are just checking if the curr i , can be a part of the curr max LIS
+// class Solution {
+// public:
+//     int lengthOfLIS(vector<int>& nums) {
+//         int n=nums.size();
+//         vector<int> dp(n+1,1);
+//         for(int i=n-2;i>=0;i--) // in each pass we are just checking if the curr i , can be a part of the curr max LIS
+//         {
+//             for(int j=i+1;j<n;j++)
+//             {
+//                 if(nums[i]<nums[j])
+//                 {
+//                     dp[i] = max(dp[j]+1,dp[i]);
+//                 }
+//             }
+//         }
+//         return *max_element(dp.begin(),dp.end());
+//     }
+// };
+
+class Solution{
+    public:
+        int lis(vector<int>&nums)
         {
-            for(int j=i+1;j<n;j++)
+            int n=nums.size();
+            vector<int>dp(n+1,1);
+            for(int i=n-2;i>=0;i--)
             {
-                if(nums[i]<nums[j])
+                for(int j=i+1;j<n;j++)
                 {
-                    dp[i] = max(dp[j]+1,dp[i]);
+                    if(nums[i]<nums[j])
+                    {
+                        dp[i]=max(dp[i],dp[j]+1);
+                    }
                 }
             }
+            return *max_element(dp.begin(),dp.end());
         }
-        return *max_element(dp.begin(),dp.end());
-    }
 };
-
-
+int main()
+{
+    Solution obj;
+    vector<int> lol = {1,0,3,4};
+    cout<<obj.lis(lol);
+    return 0;
+}
 // class Solution {
 // public:
 // int LIS(vector<int>& nums, int prev, int ind, std::vector<std::vector<int>>& memo) {

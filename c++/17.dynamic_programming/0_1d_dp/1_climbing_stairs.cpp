@@ -71,3 +71,53 @@ public:
 
 //     }
 // };
+
+// void tower(int src, int dest ,int helper,int n)
+// {
+//     if(n==0)return;
+//     tower(src,helper,dest,n-1);
+//     cout<<"moving "<<src<<" to "<< dest<<endl;
+//     tower(helper,dest,src,n-1);
+// }
+// int main()
+// {
+//     tower(0,2,1,3);
+//     return 0;
+// }
+
+// sort a stack
+void insert(stack<int>&s,int temp)
+{
+    if(s.empty() || s.top()<=temp)
+    {
+        s.push(temp);
+        return ;
+    }
+    int val = s.top();
+    s.pop();
+    insert(s,temp);
+    s.push(val);
+}
+void sort_stack(stack<int>&s)
+{
+    if(s.size()<=1)return;
+    int temp = s.top();
+    s.pop();
+    sort_stack(s);
+    insert(s,temp);
+}
+
+int main()
+{
+    stack<int> s;
+    s.push(10);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    sort_stack(s);
+    while(!s.empty())
+    {
+        cout<<s.top()<<" ";
+        s.pop();
+    }
+}

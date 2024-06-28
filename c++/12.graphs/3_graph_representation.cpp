@@ -23,7 +23,8 @@ int main()
             cout<<adjm[i][j]<<" ";
         }
         cout<<endl;
-    }// we will get a matrix diagonally symmetrical
+    }
+    // we will get a matrix diagonally symmetrical
     // adjacency list
     cin>>n>>m;
     for(int i=0;i<m;i++)

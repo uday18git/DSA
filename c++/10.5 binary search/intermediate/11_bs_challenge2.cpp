@@ -10,23 +10,21 @@
 // [12,34,67][90] - 113 most optimal solution
 //
 // STRATEGY
-// 
+// IN THESE PROBLEMS IMPORTANT TO THINK THROUGH THE RANGE OF START AND END VERY CAREFULLY !!!!!!!!!!!!!!!!!!!!!!!
+
 #include<climits>
 #include<iostream>
 using namespace std;
-
-
-
 // min is the number we are finding basically (mx or mid)
 bool isPossible(int arr[],int n,int m,int min)
 {
     int studentsRequired=1,sum=0;
     for(int i=0;i<n;i++)
     {
-        if(arr[i]>min)
-        {
-            return false;
-        }
+        // if(arr[i]>min) //not possible
+        // {
+        //     return false;
+        // }
         if(sum+arr[i]>min)//when the sum goes greater than the minimum possible maximum pages , more students are needed right..
         //and if this students go greater than students available(m) then return false..
         {
@@ -66,7 +64,6 @@ int allocateMinimumPages(int arr[],int n,int m)
         {
             start = mid+1;//if not possible we have to try to find a bigger one
         }
-
     }
     return ans;
 }

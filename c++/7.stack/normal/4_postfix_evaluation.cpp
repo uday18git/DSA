@@ -37,13 +37,9 @@ int postfixEvaluation(string s)
                     break;
             }
         }
-        
     }return st.top();
 }
-
-
 int main(){
-
    int v=postfixEvaluation("46+2/5*7+");
    cout<<v;
 return 0;

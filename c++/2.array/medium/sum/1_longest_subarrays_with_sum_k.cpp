@@ -54,6 +54,7 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
     }
     return ans;
 }
+
 // but the above code will fail in the case of 0's and negatives
 // for example [2,0,0,3] k=3; , we will get 1 answer but we need 3 ,
 // we have to look for the prefix sum as left as possible

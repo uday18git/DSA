@@ -114,3 +114,49 @@ int main()
     cout<<largestMinDistance(arr,n,k)<<endl; //answer 3
     return 0;
 }
+
+
+// https://leetcode.com/problems/magnetic-force-between-two-balls/
+
+
+
+class Solution {
+public:
+    bool isPossible(vector<int>&position,int &m,int ans)
+    {
+        int n=position.size();
+        int prevIdx=0;
+        int ballsPlaced=1;
+        for(int i=1;i<n;i++)
+        {
+            if(position[i]-position[prevIdx] >=ans)
+            {
+                ballsPlaced++;
+                prevIdx=i;
+            }
+        }
+        return ballsPlaced>=m;
+    }
+    int maxDistance(vector<int>& position, int m) { //m is number of balls to put
+        int low =1;
+        sort(position.begin(),position.end());
+        int n=position.size();
+        int high=position[n-1]-position[0];
+        int ans=0;
+        while(low<=high)
+        {
+            int mid = high+(low-high)/2;
+            if(isPossible(position,m,mid))
+            {
+                ans=max(mid,ans);
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        // n is the number of empty baskets
+        return ans;
+    }
+};

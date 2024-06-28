@@ -40,6 +40,7 @@ public:
 
 // memoization
 
+
 class Solution{
     public:
         int minCostClimbingStairs(vector<int>&cost)
@@ -58,6 +59,5 @@ class Solution{
             int two = cost[i] + minCost(i+2,cost,memo);
             int minCostToTop= min(one,two);
             return memo[i] =minCostToTop;
-            
         }
 };

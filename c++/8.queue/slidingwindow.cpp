@@ -11,17 +11,16 @@ void printkMax(int arr[],int n,int k)
     }
 }
 int main(){
-    int n,k;cin>>n>>k;
+    int n;
+    int k;
+    cin>>n>>k;
     int arr[n];
     for(int i=0;i<n;i++)
     {
         cin>>arr[i];
     }
-
 return 0;
 }
-
-
 class Solution {
 public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {

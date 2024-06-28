@@ -7,7 +7,8 @@ Float 4 bytes
 Double 8 bytes
 Character 1 byte
 
-difference between class and a struct is that in class you can give public and private access to the members of the class
+difference between class and a struct is that in class you can give public and
+private access to the members of the class
 in struct by default everything is public and in class by default everything is private 
 
 // before accessing anything in if conditions make sure it is not empty
@@ -89,7 +90,6 @@ public:
         return left && right;
     }
     bool isValidBST(TreeNode* root) {
-        
         return check(root,LLONG_MIN,LLONG_MAX); // LLONG_MIN and LLONG_MAX are the minimum and maximum values that can be stored in a long long int
     }
 };

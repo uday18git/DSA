@@ -1,5 +1,5 @@
 //POP OPERATION COSTLY
-
+//  SAME LOGIC  , RECENT ELEMENT SHOULD BE GIVEN WHEN POPPING
 // push 
 // we will just push into q1
 

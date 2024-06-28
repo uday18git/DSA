@@ -1,5 +1,5 @@
-//minimum subarray size such that their sum>x
-//approach 1 dabba approach
+// minimum subarray size such that their sum>x
+// approach 1 dabba approach
 // approach sliding window
 // define ans,sum & start(where the ans is starting)
 // iterate over array & start adding elements to sum

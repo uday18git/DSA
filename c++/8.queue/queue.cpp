@@ -58,10 +58,10 @@ class queue{
     {
         if(front == -1 || front>back)
         {
-            
             return true;
         }
-        else{
+        else
+        {
             return false;
         }
     }

@@ -13,9 +13,14 @@ Now, let's discuss when arrays may fail and why linked lists are required:
 
 Arrays have some limitations:
 
-1.Fixed Size: As mentioned earlier, arrays have a fixed size, meaning that you have to specify the size of the array when you declare it. If you need more space than the allocated size, you may run out of space, leading to overflow, or you may end up wasting memory if the allocated size is larger than what you need.
+1.Fixed Size: As mentioned earlier, arrays have a fixed size, meaning that you have to specify 
+the size of the array when you declare it. 
+If you need more space than the allocated size, you may run out of space, leading to overflow, 
+or you may end up wasting memory if the allocated size is larger than what you need.
 2. Insertion and Deletion: Inserting or deleting elements in the middle of an array requires shifting all the elements after the insertion or deletion point, which can be inefficient, especially for large arrays.
+
 Linked lists, on the other hand, overcome these limitations:
+
 1. Dynamic Size: Linked lists can dynamically grow or shrink as elements are added or removed. Since memory allocation is done dynamically, you don't need to specify the size upfront.
 2. Efficient Insertion and Deletion: Insertion and deletion operations in a linked list can be performed efficiently without the need to shift elements. For example, inserting a new element into a linked list involves updating pointers, which is a constant-time operation.
 Let's illustrate this with an example:
