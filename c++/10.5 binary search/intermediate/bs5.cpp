@@ -67,8 +67,7 @@ public:
 // if we are not in sorted portion, we will do binary search, and if we are in left sorted array we know that the answer is in the right sorted array so we go there
 // and if we are in the right sorted array we keep going to the left as the answer will be in left
 
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 int searchInRotatedSortedArray(vector<int> arr,int target)
 {

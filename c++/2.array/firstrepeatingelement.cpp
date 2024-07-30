@@ -1,5 +1,4 @@
 #include "bits/stdc++.h" 
- 
 using namespace std;
 int main(){
     int n;
@@ -20,7 +19,5 @@ int main(){
     {
         idx[a[i]] = i;
     }
-
-
 return 0;
 }

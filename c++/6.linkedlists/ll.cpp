@@ -1,17 +1,14 @@
-
 // #include<bits/stdc++.h>
 // class node{
 //     public:
 //     int data;
 //     node* next;
-
 //     node(int val)
 //     {
 //         data = val;
 //         next = NULL;
 //     }
 // };
-
 // void insertAtTail(node* &head, int val){
 //     node* n = new node(val);//new denotes the request for memory allocation on free store.
 //     node* temp=head;
@@ -20,8 +17,8 @@
 using namespace std;
 class Node{
     public:
-    int val;
-    Node* next;
+        int val;
+        Node* next;
 };
 class node
 {
@@ -38,6 +35,7 @@ void printll(node* n)
     }
     cout<<"NULL"<<endl;
 }
+node* temp;
 void reversePrint(node* llist) {
     // SinglyLinkedListNode* temp = llist;
     if(llist == NULL)
@@ -46,7 +44,7 @@ void reversePrint(node* llist) {
     }
     // llist = llist ->next; why does this not work 
     //     reversePrint(llist); 
-    reversePrint(llist -> next); // this works!! whyyyyyyyy its the same na?? pass by value and pass by reference.
+    reversePrint(llist -> next); // this works!!
     //btw this is head recursion 
     cout<<llist->value<<endl;
 

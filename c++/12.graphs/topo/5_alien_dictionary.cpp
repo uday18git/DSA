@@ -63,6 +63,6 @@ string getAlienLanguage(vector<string> &dictionary, int k)
 }
 // crazy question
 // once u made off graph its game over
-//  you have to make graph like check one string and next string 
+// you have to make graph like check one string and next string 
 // compare each letter and if they are not equal then first char points to second char
 // after that it is just topological sort , i donno how i did it in first attempt

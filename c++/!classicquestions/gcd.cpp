@@ -42,7 +42,7 @@ int findGCD(int arr[], int n)
 // Driver code
 int main()
 {
-int arr[] = { 3, 12, 8};
+int arr[] = {3, 12, 8};
 	// int n = sizeof(arr) / sizeof(arr[0]);
 	// cout << findGCD(arr, n) << endl;
 	cout<<gcd(15,20)<<endl;

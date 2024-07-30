@@ -28,8 +28,6 @@ int main()
         {
             s=mid+1;
         }
-
-
     }
 
 return 0;

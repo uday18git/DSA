@@ -1,10 +1,9 @@
-// when question saysIf the greater value does not exist then the answer is 'n', Where 'n' is the size of the array.
+// when question says If the greater value does not exist then the answer is 'n', Where 'n' is the size of the array.
 // then end = n; is used
 
 // same logic as upper bound
 int lowerBound(vector<int> arr, int n, int x)
 {
-    // Write your code here
     int start = 0;
     int end = n;
     int ans = n;
@@ -122,3 +121,52 @@ pair<int, int> getFloorAndCeil(vector<int> &a, int n, int x)
     }
     return {floor, ciel};
 }
+
+
+
+
+
+
+
+// LOWER BOUND - LOWEST NUMBER THAT IS GREATER THAN THE KEY
+// LOWEST NUMBER IE .. >=  KEY
+int lowerBound(vector<int> arr, int n, int x)
+{
+    int start = 0;
+    int end = n;
+    int ans = n;
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+        if (arr[mid] < x)
+            start = mid + 1;
+        else
+        {
+            end = mid - 1;
+            ans = mid;
+        }
+    }
+    return ans;
+}
+// UPPER BOUND - MEANS THE HIGHEST NUMBER THAT IS LESS THAN THE NUMBER
+// EITHER WE CAN STORE THE ANSWER = MID AND SEARCH BEHIND BY DOING END=MID-1
+// OR WE CAN DO END=MID , AND RETURN END AT LAST......
+int upperBound(vector<int> &arr, int x, int n)
+{
+    int start = 0;
+    int end = n;
+    int ans = n;
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+        if (arr[mid] <= x)
+            start = mid + 1;
+        else
+        {
+            ans = mid;
+            end = mid - 1;
+        }
+    }
+    return ans;
+}
+// at the end , end variable will pass all the variables that are <= x , that is what is required

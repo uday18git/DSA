@@ -131,6 +131,9 @@ public:
     }
 };
 
+
+// UNION OF 2 ARRAYS SUMMARY - 2 sorted arrays are there , we have to combine them so keep adding the smaller number
+// if it is not equal to arr.back()
 //  union  of 2 arrays
 //  brute force 
 //  using set datastructure
@@ -138,9 +141,10 @@ public:
 //  time complexity is n1logn+n2logn + O(n1+n2) where n is size of set which is varying
 //  space complexity = O(n1+n2) + O(n1+n2)
 //  optimal Solution is to use two pointers, take the smaller one each time and see if ans.back() is not equal to the current element then push it back
-//  after the loop ends , if one of the array is still left , then that will be greater so pushed back and same we have to check .back() element is not equal to the current element
+//  after the loop ends , if one of the array is still left , then that will be greater so pushed back and same we have to check
+//  .back() element is not equal to the current element
 
-vector < int > sortedArray(vector < int > a, vector < int > b) {
+vector <int> sortedArray(vector <int> a, vector < int > b) {
     // Write your code here
     int n=a.size();
     int m=b.size();
@@ -186,7 +190,7 @@ vector < int > sortedArray(vector < int > a, vector < int > b) {
     return unionArr;
 }
 
-
+// do ++ in smaller array and if equal then put to the array
 // intersection , present in both arrays
 class Solution{
     public:
@@ -245,4 +249,9 @@ public:
 };
 
 
-// single number , one xor pass
+//find single number , one xor pass , or expected sum - actual sum
+
+// single element in a sorted array , VARIATION , SORTED MEANS WE CAN DO WITH BINARY SEARCH
+// {1,1,2,2,3,3,4,5,5,6,6} => 4
+// (even,odd) for the elements left to the single element
+// (odd,even) for the elements right to the single element

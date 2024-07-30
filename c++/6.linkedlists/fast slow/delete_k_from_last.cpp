@@ -29,6 +29,7 @@ public:
         }
         if (!fast)
             return head->next;
+            
         while (fast->next)
         {
             slow = slow->next;

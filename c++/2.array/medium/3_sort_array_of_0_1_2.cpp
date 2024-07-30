@@ -8,7 +8,7 @@
 // 3 ptrs  low,mid,high
 // [0,low-1] will be 0
 // [low,mid-1] will be 1
-// [mid,high] will be unsorted 0,1,2 numbers
+// [mid,high] will be unsorted 0,1,2 numbers , THAT MEANS THE ALGORITHM SHOULD RUN UNTIL MID REACHES HIGH (NO UNSORTED ELEMENTS REMAIN)
 // [high+1,n-1] will be 2
 // initially mid=0 and high=n-1 because all are unsorted
 

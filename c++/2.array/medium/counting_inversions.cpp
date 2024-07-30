@@ -54,7 +54,7 @@ int merge(vector<int> &arr, int low, int mid, int high) {
         }
         else {
             temp.push_back(arr[right]);
-            cnt += (mid - left + 1); //Modification 2
+            cnt += ((mid + 1) - left); //Modification 2
             right++;
         }
     }

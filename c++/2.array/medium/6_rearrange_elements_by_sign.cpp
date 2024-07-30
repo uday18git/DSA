@@ -13,8 +13,7 @@ public:
         {
             if(nums[i]<0){
                 ans[neg] = nums[i];
-                neg+=2;
-                
+                neg+=2;   
             }
             else
             {

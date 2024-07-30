@@ -9,15 +9,19 @@ using namespace std;
 // in merge
 // declare two arrays of size mid-l+1 and r-mid , temp arrays to store the sorted arrays
 // we will merge these two arrays now
-// mrege and store it in the original array
+// merge and store it in the original array
 
 // IN C++ ARRAYS ARE PASSED BY REFERENCE BY DEFAULT
 // WHEN U R PASSING A ARRAY YOU ARE PASSING THE POINTER TO THE FIRST ELEMENT OF THE ARRAY
-void merge(int arr[], int l, int mid, int r)
+void merge1(int arr[], int l, int mid, int r)
 {
-    // if odd then we will take more elements in n1 only , so it works out, if even we will do equal , in n2 we are taking mid only not mid+1 so a exrta element comes there
-    const int n1 = mid - l + 1; // very important to add +1 because left side one element wil be less
-    const int n2 = r - mid;
+    // if odd then we will take more elements in n1 only , so it works out, if even we will do equal ,
+    
+    const int n1 = mid - l + 1;  // we are storing l to mid in the first array , but then we want a solid number so we take +1
+    const int n2 = r - mid; // and here we are storing mid+1 to r , so actually it should be r-(mid+1) , but we need size so mid happened
+
+    // summary is that we are storing l to mid in first and mid+1 to r in second array 
+    // and we are making a sorted array of l to r ........
     int a1[n1];
     int a2[n2];
     for (int i = 0; i < n1; i++)
@@ -28,9 +32,9 @@ void merge(int arr[], int l, int mid, int r)
     {
         a2[i] = arr[i + mid + 1];
     }
-    int i = 0;
+    int i = 0; //in the tempo arrays
     int j = 0;
-    int k = l;
+    int k = l; //k iterates in the real array
     while (i < n1 && j < n2)
     {
         if (a1[i] < a2[j])
@@ -58,8 +62,46 @@ void merge(int arr[], int l, int mid, int r)
         j++;
         k++;
     }
+
+
+
 }
-void mergesort(int arr[], int l, int r)
+
+
+
+void merge(vector<int> &arr, int low, int mid, int high) {
+    vector<int> temp;// temporary array
+    int left = low;// starting index of left half of arr
+    int right = mid + 1;// starting index of right half of arr
+
+    //storing elements in the temporary array in a sorted manner//
+
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else {
+            temp.push_back(arr[right]);
+            right++;
+        }
+    }
+    // if elements on the left half are still left //
+    while (left <= mid) {
+        temp.push_back(arr[left]);
+        left++;
+    }
+    //  if elements on the right half are still left //
+    while (right <= high) {
+        temp.push_back(arr[right]);
+        right++;
+    }
+    // transfering all elements from temporary to arr //
+    for (int i = 0; i < temp.size(); i++) {
+        arr[i+low] = temp[i];
+    }
+}
+void mergesort(vector<int>&arr, int l, int r)
 {
     if (l < r) 
     {
@@ -71,7 +113,7 @@ void mergesort(int arr[], int l, int r)
 }
 int main()
 {
-    int arr[] = {209, 120, 1400, 230, 345, 450};
+    vector<int>arr = {209, 120, 1400, 230, 345, 450};
     mergesort(arr, 0, 5);
     cout << "merge sorted array" << endl;
     for (int i = 0; i < 6; i++)

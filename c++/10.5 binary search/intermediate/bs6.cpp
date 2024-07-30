@@ -32,7 +32,7 @@ public:
             if(nums[mid-1]!=nums[mid] && nums[mid]!=nums[mid+1])return nums[mid];
             // if u r in the left half, ur either on the even index or odd index
             // element is in the right side, so we have to eliminate the left half
-            if((mid%2==0 && nums[mid]==nums[mid+1])  || (mid%2==1 && nums[mid]==nums[mid-1]))
+            if((mid%2==0 && nums[mid]==nums[mid+1]) || (mid%2==1 && nums[mid]==nums[mid-1]))
             {
                 start=mid+1;
             }

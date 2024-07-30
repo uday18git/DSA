@@ -6,22 +6,22 @@ using namespace std;
 
 // brute force approach 
 // we will try out all the subarrays
-// int main(){
-//     vector<int> a = {-2,-3,4,-1,-2,1,5,-3};
-//     int ans = 0,curr=0;
-//     int n = a.size();
-//     for(int i=0;i<n;i++)
-//     {
-//         curr=0;
-//         for(int j=i;j<n;j++)
-//         {
-//             curr+=a[j];
-//             ans = max(ans,curr);
-//         }
-//     }
-//     cout<<ans;
-// return 0;
-// }
+int main(){
+    vector<int> a = {-2,-3,4,-1,-2,1,5,-3};
+    int ans = 0,curr=0;
+    int n = a.size();
+    for(int i=0;i<n;i++)
+    {
+        curr=0;
+        for(int j=i;j<n;j++)
+        {
+            curr+=a[j];
+            ans = max(ans,curr);
+        }
+    }
+    cout<<ans;
+return 0;
+}
 
 // optimal kadanes algo
 // int main()

@@ -60,7 +60,6 @@ int main()
     for(auto it:arr)
     {
         cout<<it<<" ";
-        
     }
     return 0;
 }

@@ -99,7 +99,6 @@ int paintersPartition(int boards[], int n, int m)
     }
     return low;
 }
-
 int main()
 {
     int arr[] = {10, 20, 30, 40};

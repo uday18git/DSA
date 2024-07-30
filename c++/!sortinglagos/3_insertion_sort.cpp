@@ -78,7 +78,7 @@ int main()
             arr[j+1] = arr[j]; // shifting the larger elements to the right
             j--;
         }
-        arr[j+1 ] = curr;
+        arr[j+1] = curr;
     }
     for(int i=0;i<n;i++)
     {

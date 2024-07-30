@@ -116,8 +116,6 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
         }   
         right++;
         if(right<n)currsum+=a[right];
-    
-    
     }
     return ans;
 }

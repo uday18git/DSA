@@ -10,6 +10,106 @@ c++ is a superset of c language , means that all the c code can be run on c++ co
 c with oops , exception handling , templating , and a more extensive standard library
 c supports procedural programming
 
+
+https://chatgpt.com/share/9d180258-46c2-4b4a-ba72-a89753052368 - time complexities of STL containers
+https://www.geeksforgeeks.org/time-complexities-of-different-data-structures/ - time complexities of different data structures
+
+
+WHEN ASKED DIFFERENCE BETWEEN LANGUAGES , MENTION THESE POINTS- PROGRAMMING PARADIGM , MEMORY MANAGEMENT , COMPILED OR INTERPRETED , PORTABILITY , PERFORMANCE 
+Here's a comparison of C++, Python, Java, and C based on various aspects:
+
+### Language Paradigm
+- **C**: Procedural programming language. Focuses on functions and procedures to operate on data.
+- **C++**: Object-oriented programming language with support for both procedural and object-oriented paradigms.
+- **Java**: Purely object-oriented programming language. Focuses on objects and classes.
+- **Python**: High-level, interpreted language that supports multiple paradigms, including procedural, object-oriented, and functional programming.
+
+### Syntax and Ease of Learning
+- **C**: Syntax is relatively simple but can be quite low-level, making it harder to learn for beginners.
+- **C++**: More complex syntax due to the inclusion of both procedural and object-oriented features.
+- **Java**: Syntax is simpler than C++ but more verbose. It's designed to be easier to read and write.
+- **Python**: Very simple and readable syntax. It is often recommended for beginners.
+
+### Memory Management
+- **C**: Manual memory management using `malloc` and `free`.
+- **C++**: Manual memory management with additional features like constructors and destructors. Also supports automatic memory management with smart pointers.
+- **Java**: Automatic garbage collection, which simplifies memory management.
+- **Python**: Automatic garbage collection and dynamic memory allocation, making it very easy to manage memory.
+
+### Performance
+- **C**: High performance and efficiency, making it suitable for system programming.
+- **C++**: Also high performance, with additional overhead due to object-oriented features.
+- **Java**: Generally slower than C and C++ because it runs on the Java Virtual Machine (JVM).
+- **Python**: Generally slower than Java, C, and C++ due to its interpreted nature. Performance can be improved with implementations like PyPy or by using external libraries.
+
+### Use Cases
+- **C**: System programming, embedded systems, operating systems, and low-level applications.
+- **C++**: Game development, real-time systems, high-performance applications, and system/software development.
+- **Java**: Enterprise applications, web applications, Android app development, and large-scale systems.
+- **Python**: Web development, data science, machine learning, scripting, automation, and rapid prototyping.
+
+### Standard Library and Ecosystem
+- **C**: Smaller standard library, often requires more third-party libraries or custom implementations.
+- **C++**: Rich standard library (STL) with many useful data structures and algorithms.
+- **Java**: Extensive standard library and a vast ecosystem with many frameworks and tools for enterprise development.
+- **Python**: Very rich standard library and a large ecosystem of third-party packages (e.g., NumPy, Pandas, Django).
+
+### Compilation and Execution
+- **C**: Compiled language. Needs a compiler like GCC to compile code into machine code.
+- **C++**: Compiled language. Needs a compiler like GCC or Clang.
+- **Java**: Compiled to bytecode that runs on the JVM, which allows for platform independence.
+- **Python**: Interpreted language. Python code is executed line by line by the Python interpreter.
+
+### Portability
+- **C**: Platform dependent. Requires recompilation for different platforms.
+- **C++**: Similar to C, requires recompilation for different platforms.
+- **Java**: Write Once, Run Anywhere (WORA) due to the JVM.
+- **Python**: Highly portable across different platforms with the availability of the Python interpreter.
+
+Each language has its strengths and is suitable for different types of projects. The choice of language often depends on the specific requirements and constraints of the project you are working on.
+
+
+Interpreted vs. Compiled Languages:
+Interpreted Language: The source code is translated into machine code at runtime by an interpreter. Example: Python.
+Compiled Language: The source code is translated into machine code before execution, creating an executable file. Example: C++.
+
+
+
+Statically Typed:
+Definition: In statically typed languages, variable types are known and checked at compile time. This means you must declare the type of a variable before using it, and the type cannot change once it's set.
+Examples: Java, C, C++, Swift, and Go.
+
+int number = 10; // The type of 'number' is explicitly declared as 'int'
+number = "Hello"; // Compilation error: incompatible types
+
+Dynamically Typed:
+Definition: In dynamically typed languages, variable types are determined at runtime, and a variable can hold values of different types over its lifetime.
+Examples: Python, JavaScript, Ruby, PHP.
+
+number = 10 # The type of 'number' is determined at runtime
+number = "Hello" # No error, 'number' is now a string
+
+Strongly Typed:
+Definition: Once a variable is assigned a type, it cannot be implicitly converted to another type without an explicit cast or conversion.
+Examples: Python, Java, Haskell, and C#.
+
+int number = 10;
+String text = "Number: " + number; // Explicitly converts 'number' to a string
+
+
+Weakly Typed:
+Definition: In weakly typed languages, types are more lenient, and implicit conversions between types are often performed automatically.
+Examples: JavaScript, Perl, PHP (in some cases).
+
+let number = 10;
+let text = "Number: " + number; // Implicitly converts 'number' to a string
+console.log(text); // Output: "Number: 10"
+
+
+
+
+
+
 features of c++ 
 oops , high level , dynamic memory allocation (allocated the dynamical heap space), multi threading
 memory management , machine independent (means the code written in c++ can be run on any machine )
@@ -35,7 +135,7 @@ gloabal variables can be accessed from any part of the program
 
 
 STORAGE CLASSES IN C++ 
-are used to describe the characteristics of a varibale / function 
+are used to describe the characteristics of a variable / function 
 
 auto - default storage class for all variables
 extern - used to define elsewhere and not within the same block , main purpose of using extern variables is that they can be accessed between to different files which are part of a large program 
@@ -78,13 +178,11 @@ int main()
 	return 0;
 }
 
-
-
 STATIC VARIABLES 
 Static has two meanings - 
 static variables : variables in a funciton , variables in a class 
 the space for it gets allocated for the lifetime of the program. 
-even if the function is callled multiple times the same variable keep 
+even if the function is called multiple times the same variable keep 
 
 static variables in class 
 // C++ program to demonstrate static
@@ -104,8 +202,8 @@ int main()
 {
     GfG obj1;
     GfG obj2;
-    obj1.i = 2;
-    obj2.i = 3;
+    obj1.i = 2; //error
+    obj2.i = 3; //error
 
     // prints value of i
     cout << obj1.i << " " << obj2.i;
@@ -125,7 +223,7 @@ public:
     };
 };
  
-int GfG::i = 1;
+int GfG::i = 1; // :: is called the scope resolution operator
  
 int main()
 {
@@ -137,9 +235,9 @@ this works , like you can print the value for each object
 but u cannot have different values for different objects
 u can access it using the class name only Gfg::i = 1;
 
-static members of class 
-
-static objects in class , 
+static functions of class 
+static variables of class 
+static objects in class 
 
 Just like variables, objects also when declared 
 as static have a scope till the lifetime of the program
@@ -275,13 +373,15 @@ public
 public members of a class can be accessed from anywhere in the program 
 using the direct member access operator with the object of that class 
 
-private 
+private - accessed only by member functions , or friend functions , cannot be accessed using subclass
 the class members declared as private can be accessed only by the member functions inside the class 
 they are not allowed to be accessed directly by any OBJECT or function outside the class
 Only member functions or the friend functions are allowed to access the private data members of a class.
 
-protected
-the protected access modifier is similar to the private access modifier in the sense that it can't be accessed outside the class  unless help of friend class
+protected - accessed by memeber , friend and subclass also can access
+
+the protected access modifier is similar to the private access modifier in the sense that it can't be accessed outside the class 
+unless help of friend class
 the difference is that the class members declared as protected can be accessed by any subclass(derived class) of that class as well
  
 class Circle
@@ -292,7 +392,7 @@ class Circle
       
     // public member function    
     public:    
-        double  compute_area()
+        double compute_area()
         {   // member function can access private 
             // data member radius
             return 3.14*radius*radius;
@@ -372,8 +472,6 @@ int main()
 	return 0;
 }
 
-
-
 constructor , copy constructor in c++
 A copy constructor is a member function that initializes an object using another object of the same class. 
 In simple terms, a constructor which creates an 
@@ -412,10 +510,8 @@ int main()
 {
     student s(1001, "Manjeet", 10000);
     s.display();
- 
     student manjeet(s); // copy constructor called
     manjeet.display();
- 
     return 0;
 }
 
@@ -585,7 +681,8 @@ object.static_member;
 :: is called the scope resolution operator
 
 
-static FUNCTION , can only access static variables , it makes sense right 
+static FUNCTION , can only access static variables , it makes sense right (because static function is for a class , like class owns static function, and static functions cant access non static variables because they are of object... static cannot be associated with a object ,
+so static function can only access static variables because static vairables belong to the class and not the object)
 // C++ Program to show the working of
 // static member functions
 #include <iostream> 
@@ -618,9 +715,7 @@ int Box :: height = 30;
 
 int main() 
 {
-	
-	Box b; 
-	
+	Box b; 	
 	cout << "Static member function is called through Object name: \n" << endl; 
 	b.print(); 
 	
@@ -630,11 +725,9 @@ int main()
 	return 0; 
 }
 
-
 scope resolution operator vs this pointer in c++
 used for accessing static members or static class members 
 this pointer is used to refer to the current object of the class
-
 
 virtual function in c++
 
@@ -646,12 +739,11 @@ object using a pointer or a reference to the base class ,
 you can call a virtual function for
 that object and execute the derived class's version of the method.
 
-
 class Entity 
 {
     public :
     // string GetName() { return "Entity"; }
-     virtual string GetName() { return "Entity"; }
+    virtual string GetName() { return "Entity"; }
 };
 
 class Player : public Entity 
@@ -684,5 +776,169 @@ int main()
 // so the problem here is if we consider the object of the subclass to be of the parent class it is calling the function of the parent class 
 not the subclass so tht is the problem
 }
+method over riding.......
 virtual functions do dynamic dispatch using v tables 
-they are not free though 
+they are not free though , extra space is required to maintain the v table and each time we have to go through the v table 
+
+
+
+OOPS 
+
+other programming paradigms??
+
+imperative - focuses on HOW to execute program logic and defines control flow as statements that change a program state.
+procedural
+oop
+parallel processing
+
+c++ is imperative.. u need to tell the computer what to do and how to do it
+
+
+declarative - focuses on WHAT to do and defines program logic.., but not a detailed control flow
+logic programming paradigm
+functional programming
+database processing 
+
+python is declarative.. u just tell the computer what to do and it does it for you
+arr = [1, 2, 3, 4, 5]
+sum_of_array = sum(arr)
+print(f"Sum: {sum_of_array}")
+
+
+pillars of oops
+inheritance - is a mechanism in which one class acquires the property of another class 
+encapsulation - is a mechanism of wrapping the data (variables) and code acting on the data (methods) together as a single unit
+data binding and data hiding make up encapsulation , imagine it as a capsule
+polymorphism - is a mechanism that allows one interface to be used for a general class of actions
+abstraction - is a mechanism that hides the implementation details of a class and only shows the necessary features of the class
+
+
+class-is a blueprint for creating objects , which contains some variables , functions and some behaviours , like what should be private public and stuff
+object - is a instance of a class, which is a real world entity , like a car , a person , a dog , a cat , so there can be a class called dog , and jack and jill can be objects of the class dog which are real dogs
+
+polymorphism, it refers to the process by which some code , behaves differently under different circumstances,
+
+compile time - function overloading , operator overloading , refers to type of polymorphism that can happen at compile time
+ and runtime are two types of polymorphisms
+
+class CompileTimePolymorphism{
+// 1st method with name add
+public int add(int x, int y){
+return x+y;
+}
+// 2nd method with name add
+public int add(int x, int y, int z){
+return x+y+z;
+}
+// 3rd method with name add
+public int add(double x, int y){
+return (int)x+y;
+}
+// 4th method with name add
+public int add(int x, double y){
+return x+(int)y;
+}
+}
+class Test{
+public static void main(String[] args){
+CompileTimePolymorphism demo=new CompileTimePolymorphism();
+// In the below statement, the Compiler looks at the argument types and decides to c
+System.out.println(demo.add(2,3));
+// Similarly, in the below statement, the compiler calls method 2
+System.out.println(demo.add(2,3,4));
+// Similarly, in the below statement, the compiler calls method 3
+System.out.println(demo.add(2,3.4));
+// Similarly, in the below statement, the compiler calls method 4
+System.out.println(demo.add(2.5,3));
+}
+}
+
+// IMPORTANT - WHEN THE CODE IS COMPILING , THAT TIME ONLY THE COMPILER DECIDES WHAT TO INVOKE AND STUFF SO  IT IS CALLED COMPILE TIME POLYMORPHISM
+
+
+Runtime Polymorphism: Runtime polymorphism, also known as Dynamic
+Polymorphism, refers to the type of Polymorphism that happens at the run time.
+What it means is it can't be decided by the compiler. Therefore what shape or value
+has to be taken depends upon the execution. Hence the name Runtime
+Polymorphism.
+
+
+inheritance - is a mechanism through which a class is created using the definition of another object or class, facilitates code reuse 
+abstraction - is a mechanism that hides the implementation details of a class and only shows the necessary features of the class
+
+Is it always necessary to create objects from class?
+No. An object is necessary to be created if the base class has non-static methods. But
+if the class has static methods, then objects don’t need to be created. You can call the
+class method directly in this case, using the class name.
+
+constructors? are special methods whose name is the same as the class name
+types of constructors , copy constructor , default constructor , parameterized constructor
+
+types of inheritance
+
+The various types of inheritance include:
+Single inheritance
+Multiple inheritances-  a class derives from more than one base class
+Multi-level inheritance - a class derives from a class which is also derived from another class
+Hierarchical inheritance - more than one derived class is created from a single base class
+Hybrid inheritance - combination of two or more types of inheritance
+
+
+what is an interface?
+an interface refers to a special type of class, which contains methods , but not their definition. 
+Only the declaration of methods is allowed inside an interface.
+you cannot create objects of an interface , you need to implement that interface and define the methods for their implementation.
+
+u cannot do .. class a extends b, c in java..
+
+interface Animal {
+    default void eat() {
+        System.out.println("Animal is eating");
+    }
+}
+
+interface Bird {
+    default void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+
+class Sparrow implements Animal, Bird {
+    // Can override the default methods if needed
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Sparrow sparrow = new Sparrow();
+        sparrow.eat(); // Animal is eating
+        sparrow.fly(); // Bird is flying
+    }
+}
+
+multiple inheritance
+java stops the diamond problem by not allowing multiple inheritance
+java uses interfaces to achieve multiple inheritance
+c++ stops diamond problem using virtual inheritance 
+diamond problem is when a class inherits from two classes and both the classes inherit from a common class
+it causes a problem because the derived class has two copies of the common class
+
+diamond problem is a problem...
+https://chatgpt.com/share/2b408640-00bc-48db-a3a9-82c3abe420de
+
+
+static polymorphism - function overloading , operator overloading
+dynamic- function overriding (done in c++ using virtual functions)
+
+
+what is abstract class? is a special class containing abstract methods, the significance of abstract class is that the abstract methods inside it are not implemented and only declared.
+How is an abstract class different from an interface?
+Interface and abstract class both are special types of classes that contain only the
+methods declaration and not their implementation. But the interface is entirely
+different from an abstract class. The main difference between the two is that, when
+an interface is implemented, the subclass must define all its methods and provide its
+implementation. Whereas when an abstract class is inherited, the subclass does not
+need to provide the definition of its abstract method, until and unless the subclass is
+using it.
+Also, an abstract class can contain abstract methods as well as non-abstract
+methods.
+Before Java 8, interfaces could only contain abstract methods.

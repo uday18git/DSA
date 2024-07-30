@@ -1,6 +1,7 @@
 // n - number of pages in n different books (ascending order)
 // m - number of students
-// All the books have to be divided among m students consecutively. Allocate the pages in such a way that 
+// All the books have to be divided among m students consecutively. 
+// Allocate the pages in such a way that 
 // maximum pages allocated to a student is minimum.
 // pages = [12,34,67,90]
 // students(m) = 2

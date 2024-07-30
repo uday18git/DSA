@@ -76,17 +76,29 @@ void delNode(Node* head,int x)
 }
 Node* reverseLL(Node* &head)
 {
-    Node* prevptr=NULL;
+    Node* prevptr = NULL;
     Node* currptr = head;
     Node* nextptr;
     while(currptr)
     {
         nextptr = currptr->next;
         currptr->next = prevptr;
-        prevptr=currptr;
-        currptr=nextptr; 
+        prevptr = currptr;
+        currptr = nextptr;
     }
     return prevptr;
+}
+
+Node* reverseLL(Node* &head)
+{
+    if(!head || !head->next)
+    {
+        return head;
+    }
+    Node* temp = reverseLL(head->next);
+    head->next->next= head;
+    head->next = NULL;
+    return temp;
 }
 void insertAF(Node* &head,int x)
 {

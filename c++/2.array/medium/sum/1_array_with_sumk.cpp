@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
@@ -11,7 +9,7 @@ public:
         {
             sum+=nums[i];
             if(sum==k)ans+=1;
-            if(mp.find(sum-k)!=mp.end())
+            if(mp.find(sum-k)!=mp.end()) // IMPORTANT TO UNDERSTAND THE LOGIC OF SUM-K
             {
                 // mp[k]+=mp[sum-k]; initial mistake was to put mp[k] in the map
                 ans+=mp[sum-k];

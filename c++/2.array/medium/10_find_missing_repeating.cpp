@@ -10,7 +10,7 @@
 // approach is you will xor for loop and the array numbers
 // you will get the xor of the missing number and repeating number
 // using that you can find the different bit, suppose the xor of both is 4
-// 1 0 0 , so 1 is different , at 1 position missng number and repeating number are differentiting
+// 1 0 0 , so 1 is different , at 1 position missing number and repeating number are differentiting
 // so what you can do is xor all the numbers with 1 at 2 position and xor all the numbers with 0 at 2  position
 // you will get the repeated number and the missing number
 // lets go
@@ -23,7 +23,6 @@ int getBit(int n,int pos)
 pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 {
 	// Write your code here
-
     int x=n;
     for(int i=0;i<n;i++)
     {
@@ -34,7 +33,6 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
     {
         pos++;
     }
-	
     int newxor=0,secondxor=0;
 	if(getBit(n,pos))
 	{
@@ -61,8 +59,7 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
         else
         {
             secondxor=secondxor^arr[i];
-        }
-        
+        }   
     }
 	int count=0;
 	for(int i=0;i<n;i++)
@@ -79,8 +76,7 @@ pair<int,int> missingAndRepeating(vector<int> &arr, int n)
 	else{
 		return {newxor,secondxor};
 	}
-     
-	
 }
+
 
 

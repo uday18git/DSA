@@ -26,10 +26,17 @@ class node
         node *next;
         node(int val)
         {
-            data = val;
-            next = NULL;
+            this->data = val;
+            this->next = NULL;
         }
 };
+
+void deleteAtHead(node *&head)
+{
+    node *todelete = head;
+    head = head->next;
+    delete todelete;
+}
 // insert at tail , create new node, if head==null then the new node is the head, else we have to, traverse till last then put the new node there 
 void insertAtTail(node* &head, int val) // if u take by value the actual linked list wont be changed , same logic as others for node*
 {
@@ -47,12 +54,6 @@ void insertAtTail(node* &head, int val) // if u take by value the actual linked 
     temp->next = n;
 }
 
-void insertAtHead(node *&head, int val)
-{
-    node *n = new node(val);
-    n->next = head;
-    head = n;
-}
 void display(node *head)
 {
     while (head != NULL)
@@ -359,7 +360,6 @@ void lastk(node *&head, int k)
     }
 
     temp->next = head;
-
     temp = head;
     int num = 1;
     while (num < (count - k))
@@ -371,52 +371,52 @@ void lastk(node *&head, int k)
     temp->next = NULL;
 }
 
-int main()
-{
-    node *head = NULL;
-    // 1
-    for (int i = 1; i <= 6; i++)
-    {
-        insertAtTail(head, i);
-    }
-    // 2
-    display(head);
-    // 3
-    //  insertAtHead(head,4);
-    //  display(head);
-    // 4
-    //  cout<<search(head,5)<<endl;
-    // 5
-    //  deletion(head,3);
-    //  display(head);
-    // 6
-    //  deleteAtHead(head);
-    //  display(head);
-    // 7
-    //  node* newhead = reverseRecursive(head);
-    //  display(newhead);
-    // 8
-    //  node* x= reversek(head,2);
-    //  display(x);
-    // 9
-    //  makeCycle(head,3);
-    //  display(head);
-    // 10
-    //  cout<<detectCycle(head)<<endl;
-    // 11
-    //  makeCycle(head,3);
-    //  cout<<detectCycle(head)<<endl;
-    //  removecycle(head);
-    //  cout<<detectCycle(head)<<endl;
-    // proof idk fk it
-    // 12
-    //  lastk(head,3);
-    //  display(head);
-    // 13
-    //  find intersection point
+// int main()
+// {
+//     node *head = NULL;
+//     // 1
+//     for (int i = 1; i <= 6; i++)
+//     {
+//         insertAtTail(head, i);
+//     }
+//     // 2
+//     display(head);
+//     // 3
+//     //  insertAtHead(head,4);
+//     //  display(head);
+//     // 4
+//     //  cout<<search(head,5)<<endl;
+//     // 5
+//     //  deletion(head,3);
+//     //  display(head);
+//     // 6
+//     //  deleteAtHead(head);
+//     //  display(head);
+//     // 7
+//     //  node* newhead = reverseRecursive(head);
+//     //  display(newhead);
+//     // 8
+//     //  node* x= reversek(head,2);
+//     //  display(x);
+//     // 9
+//     //  makeCycle(head,3);
+//     //  display(head);
+//     // 10
+//     //  cout<<detectCycle(head)<<endl;
+//     // 11
+//     //  makeCycle(head,3);
+//     //  cout<<detectCycle(head)<<endl;
+//     //  removecycle(head);
+//     //  cout<<detectCycle(head)<<endl;
+//     // proof idk fk it
+//     // 12
+//     //  lastk(head,3);
+//     //  display(head);
+//     // 13
+//     //  find intersection point
 
-    return 0;
-}
+//     return 0;
+// }
 
 // below code is for find_intersection_point
 // to find intersection point of two linked lists
@@ -536,3 +536,23 @@ int main()
 
 //     return 0;
 // }
+
+
+
+void insertAtHead(node* &head, int val)
+{
+    node *n = new node(val);
+    n->next = head;
+    head = n;
+}
+
+int main()
+{
+    node* h = new node(10);
+    h->next = new node(11);
+    h->next->next = new node(12);
+    display(h);
+    insertAtHead(h,9);
+    display(h);
+    return 0;
+}

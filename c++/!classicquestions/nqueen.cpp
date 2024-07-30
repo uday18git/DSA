@@ -1,3 +1,88 @@
+// PRACTICE
+#include<bits/stdc++.h>
+using namespace std;
+bool isSafe(vector<vector<int>>&arr,int x,int y,int n)
+{
+    int n1=arr.size();
+    int n2=arr[0].size();
+    for(int i=0;i<x;i++)
+    {
+        if(arr[i][y]==1)
+        {
+            return false;
+        }
+    }
+    int col=y;
+    int row=x;
+    while(col>=0 && row>=0)
+    {
+        if(arr[row][col]==1)
+        {
+            return false;
+        }
+        row--;
+        col--;
+    }
+    col=y;
+    row=x;
+    while(col<n && row>=0)
+    {
+        if(arr[row][col]==1)
+        {
+            return false;
+        }
+        row--;
+        col++;
+    }
+    return true;
+
+}
+bool nqueen(vector<vector<int>>&arr,int x,int n)
+{
+    if(x>=n)return true;
+    for(int col=0;col<n;col++)
+    {
+        if(isSafe(arr,x,col,n))
+        {
+            arr[x][col]=1;
+            if(nqueen(arr,x+1,n))
+            {
+                return true;
+            }
+            arr[x][col]=0;
+        }
+    }
+    return false;
+
+}
+int main()
+{
+    vector<vector<int>> arr(4,vector<int>(4,0));
+
+    if(nqueen(arr,0,4))
+    {
+        for(int i=0;i<arr.size();i++)
+        {
+            for(int j=0;j<arr[0].size();j++)
+            {
+                if(arr[i][j]==1)
+                {
+                    cout<<'Q'<<" ";
+                }
+                else
+                {
+                    cout<<'.'<<" ";
+                }
+            }
+            cout<<endl;
+        }
+    }
+}
+
+
+
+// EARLIER CODE
+
 #include <iostream>
 #include <vector>
 #include<string>

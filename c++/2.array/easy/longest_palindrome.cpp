@@ -12,8 +12,8 @@ public:
         }
         for(auto x = mp.begin();x!=mp.end();x++)
         {
-            ans+=(x->second/2)*2;
-            if(x->second%2==1)
+            ans+=(x->second/2)*2; // odd freq will also go down to even freq
+            if(x->second%2==1) // if any char is odd we can put a extra in middle so to indicate that maintain this variable
             {
                 temp=true;
             }

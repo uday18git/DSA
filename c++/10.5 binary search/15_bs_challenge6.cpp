@@ -14,6 +14,27 @@ int main()
 {
     int arr[] = {0,6,8,5,7,9};
     int n=6;
-    cout<<"Peak element index : "<<findPeakElement(arr,0,n-1,n)<<endl;
+    // cout<<"Peak element index : "<<findPeakElement(arr,0,n-1,n)<<endl;
+
+    int high=n-1;
+    int low=0;
+    while(high>=low)
+    {
+        int mid = (high+low)/2;
+        if((mid==0 || arr[mid]>arr[mid-1]) && (mid==n-1 || arr[mid]>arr[mid+1]))
+        {
+            cout<<" Found peak at: "<<arr[mid]<<endl;
+            break;
+        }
+        else if(mid>0 && arr[mid]<arr[mid-1])
+        {
+            high=mid-1;
+        }
+        else
+        {
+            low=mid+1;
+        }
+    }
+
     return 0;
 }

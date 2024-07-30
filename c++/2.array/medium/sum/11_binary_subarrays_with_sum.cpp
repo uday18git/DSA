@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/binary-subarrays-with-sum/
-
+// same as subarray with sum k
+//  but it is binary ,  no one will ask this
 class Solution {
 public:
     int numSubarraysLessThanOrEqualToSum(vector<int>nums,int goal)

@@ -21,7 +21,7 @@ int setbit(int n,int pos)
 }
 int unsetbit(int n,int pos)
 {
-    return (~(n | (1<<pos)));
+    return ((n & ~(1<<pos)));
 }
 int clearbit(int n,int pos)
 {
@@ -37,13 +37,13 @@ int updatebit(int n,int pos,int val)
 
 
 int main(){
-    int g = unsetbit(11,0);
+    int g = unsetbit(5,0);
     cout<<g<<endl;
     // int c = clearbit(10,1);
     // cout<<c<<endl;
     int b1=12;
     int b2=13;
-    cout<<(b1|b2);
+    // cout<<(b1|b2);
     // int d = updatebit(10,3,0);
     // cout<<d<<endl;
 return 0;
