@@ -26,8 +26,7 @@ void revStack(stack<int>&s)
     int temp = s.top();
     s.pop();
     revStack(s);
-    insert(s,temp);
-    
+    insert(s,temp);   
 }
 
 void insert1(stack<int> &s,int temp)

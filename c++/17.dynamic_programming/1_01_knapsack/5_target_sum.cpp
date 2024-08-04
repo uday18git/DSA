@@ -6,7 +6,6 @@
 using namespace std;
 int main()
 {
-
     vector<int> arr = {1, 1, 2, 3}; // ques
     int n = arr.size();
     int diff = 1; // ques
@@ -41,7 +40,6 @@ int main()
         }
     }
     cout << dp[n][s1] << endl;
-
     return 0;
 }
 

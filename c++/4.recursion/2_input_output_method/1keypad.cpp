@@ -20,8 +20,6 @@ public:
         {
             solve(ros,op+letters[i]);
         }
-
-
     }
     vector<string> letterCombinations(string digits) {
         if(digits.size()==0)

@@ -10,7 +10,6 @@ void josephus(vector<int> &arr,int k,int idx,int ans)
     idx = (idx+k)%arr.size();
     arr.erase(arr.begin()+idx);
     josephus(arr,k,idx,ans);
-
 }
 int main()
 {

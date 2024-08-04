@@ -21,47 +21,49 @@
 // and minus the indegree of all the nodes which are connected to the popped node
 // if the indegree of that node becomes zero then push it in the queue
 // print the popped node
-// #include <bits/stdc++.h>
-// using namespace std;
-// int main()
-// {
-//     int n,m;
-//     cin>>n>>m;
-//     int cnt=0;
-//     vector<vector<int>> adj_list(n);
-//     vector<int> indeg(n,0);
-//     for(int i=0;i<m;i++)
-//     {
-//         int u,v;cin>>u>>v;
-//         adj_list[u].push_back(v);
-//         indeg[v]++;
-//     }
-//     queue<int> pq;
-//     for(int i=0;i<n;i++)
-//     {
-//         if(indeg[i]==0){
-//             pq.push(i);
-//         }
-//     }
-//     while(!pq.empty())
-//     {
-//         cnt++;
-//         int x=pq.front();
-//         pq.pop();
-//         cout<<x<<" ";
-//         for(auto it: adj_list[x])
-//         {
-//             indeg[it]--;
-//             if(indeg[it]==0)
-//             {
-//                 pq.push(it);
-//             }
-//         }
-//     }
-//     cout<<endl<<cnt;
-//     return 0;
-//     // so if complete answer does not come , it means that there is a cycle in the given graph
-// }
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    int cnt=0;
+    vector<vector<int>> adj_list(n);
+    vector<int> indeg(n,0);
+    for(int i=0;i<m;i++)
+    {
+        int u,v;cin>>u>>v;
+        adj_list[u].push_back(v);
+        indeg[v]++;
+    }
+    queue<int> pq;
+    for(int i=0;i<n;i++)
+    {
+        if(indeg[i]==0){
+            pq.push(i);
+        }
+    }
+    while(!pq.empty())
+    {
+        cnt++;
+        int x=pq.front();
+        pq.pop();
+        cout<<x<<" ";
+        for(auto it: adj_list[x])
+        {
+            indeg[it]--;
+            if(indeg[it]==0)
+            {
+                pq.push(it);
+            }
+        }
+    }
+    cout<<endl<<cnt;
+    return 0;
+    // so if complete answer does not come , it means that there is a cycle in the given graph
+}
+
+
 // using dfs 
 // The key idea here is that in a directed acyclic graph (DAG), 
 // a topological sort orders the nodes in such a way that if there's a directed edge 

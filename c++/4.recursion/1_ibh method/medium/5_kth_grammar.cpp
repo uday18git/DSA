@@ -54,5 +54,4 @@ int main()
     Solution s ;
     cout<<s.kthGrammar(4,5);
     return 0;
-
 }

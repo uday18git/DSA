@@ -20,7 +20,6 @@ public:
                         cur[buy][cap] = max(0 + ahead[0][cap],
                                             -prices[ind] + ahead[1][cap]);
                     }
-
                     if (buy == 1)
                     { // We can sell the stock
                         cur[buy][cap] = max(0 + ahead[1][cap],
@@ -30,7 +29,6 @@ public:
             }
             ahead = cur;
         }
-
         // The result is stored in dp[0][0][2] which represents maximum profit after the final transaction.
         return ahead[0][2];
     }
@@ -112,7 +110,6 @@ public:
 //         return profit;
 //     }
 //     int maxProfit(vector<int>& prices) {
-
 //         return solve(0,1,2,prices);
 //     }
 // };

@@ -255,3 +255,4 @@ public:
 // {1,1,2,2,3,3,4,5,5,6,6} => 4
 // (even,odd) for the elements left to the single element
 // (odd,even) for the elements right to the single element
+

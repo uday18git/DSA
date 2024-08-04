@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 class Triangle extends Exception
 {
     public String toString()

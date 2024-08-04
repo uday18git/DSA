@@ -56,7 +56,5 @@ public class tdm
             System.out.println("\n"+(i+1)+"\t"+
             bt[i]+"\t\t"+tat[i]+"\t\t"+wt[i]);
         }
-        
-
     }
 }

@@ -18,7 +18,6 @@ public class course2 {
         {
             if(i==key)//error fixed
             {
-                
                 break;
             }
             ans++;   

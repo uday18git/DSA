@@ -42,3 +42,4 @@ int main(){
 
 return 0;
 }
+// https://chatgpt.com/share/1be50d4c-a2d1-488b-aa11-9ea729a3f5cf

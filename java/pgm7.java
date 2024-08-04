@@ -68,8 +68,6 @@ class Invoice
     {
         return (amount*customer.getDiscount())/100;
     }
-
-
 }
 
 public class pgm7 {

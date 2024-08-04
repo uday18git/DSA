@@ -26,7 +26,6 @@ vector<int> shortestPath(int n, vector<vector<int>>&edges, int src) {
                 dist[i] = dist[node]+1;
                 q.push(i);
             }
-            
         }
     }
     for(int i=0;i<n;i++)

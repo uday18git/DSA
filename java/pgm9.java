@@ -93,6 +93,5 @@ public class pgm9 {
         System.out.println("Dynamic length Stack Contents using interface reference");
         for (int i = 0; i < 7; i++)
             System.out.println(mystk.pop());
-    
     }
 }

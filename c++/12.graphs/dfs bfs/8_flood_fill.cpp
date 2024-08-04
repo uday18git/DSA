@@ -20,7 +20,6 @@ public:
                 dfs(nrow,ncol,ans,image,newColor,delRow,delCol,iniColor);
             }
         }
-
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
         int iniColor = image[sr][sc];

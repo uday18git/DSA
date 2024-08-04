@@ -9,7 +9,7 @@ int main() {
     // if the key would have been present
     // basically we are finding out the floor and ceil of the element
     // nice
-    vector<int> arr=  {1,3,8,10,15};
+    vector<int> arr={1,3,8,10,15};
     int start=0;
     int end=arr.size()-1;
     int key=12;

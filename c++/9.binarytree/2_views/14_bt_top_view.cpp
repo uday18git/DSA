@@ -1,6 +1,5 @@
 //striver
-
-// top view of bt
+//top view of bt
 #include <bits/stdc++.h> 
 using namespace std;
 struct TreeNode
@@ -19,6 +18,7 @@ struct TreeNode
 void top_view(TreeNode* root)
 {
     queue<pair<TreeNode* ,int>>q;
+    // level, top node WHOLE LOGIC IS THIS MAP
     map<int,int> m;
     q.push({root,0});
     while(!q.empty())
@@ -61,7 +61,6 @@ int main(){
     top_view(node);
 return 0;
 }
-
 // tc o(n)
 // sc o(n)
 // where n is the number of nodes in the binary tree

@@ -16,7 +16,6 @@
 // more numbers
 #include <bits/stdc++.h>
 using namespace std;
-
 // Function to return gcd of a and b
 int gcd(int a,int b)
 {

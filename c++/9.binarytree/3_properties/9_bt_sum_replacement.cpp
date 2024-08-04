@@ -1,6 +1,4 @@
 // apna clg
-
-
 #include "bits/stdc++.h"
 using namespace std;
 struct Node
@@ -31,10 +29,7 @@ struct Node
 //     {
 //         root->data+=root->right->data;
 //     }
-    
-    
 // }
-
 // my answer
 int sumReplacement(Node* root)
 {
@@ -44,7 +39,6 @@ int sumReplacement(Node* root)
     }
     int left = sumReplacement(root->left);
     int right = sumReplacement(root->right);
-    
     root->data+=(left+right);
     return root->data;
 }
@@ -56,7 +50,6 @@ void preorder(struct Node* root){
     cout<<root->data<<" ";
     preorder(root->left);
     preorder(root->right);
-
 }
 int main()
 {

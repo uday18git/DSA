@@ -57,10 +57,21 @@ vector<vector<int>> vertical_order_traversal(TreeNode *root)
         vector<int> a;
         for (auto it1 : it.second)
         {
-            a.insert(a.end(), it1.second.begin(), it1.second.end());
+            for(auto it2:it1.second)
+            {
+                a.push_back(it2);
+            }
         }
         ans.push_back(a);
     }
+    
+    // can do as below also
+    // for(auto it=mp.begin();it!=mp.end();++it)
+    //     {
+    //         multiset<int> s = it->second;
+    //         vector<int>v(s.begin(),s.end());
+    //         ans.push_back(v);
+    //     }
     return ans;
     // work left here
 }

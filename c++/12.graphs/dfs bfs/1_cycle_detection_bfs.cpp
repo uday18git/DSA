@@ -23,8 +23,9 @@ class Solution{
                 for(int i:adj[node])
                 {
                     if(!vis[i])
-                    {
-                        q.push({node,vis[i]});
+                    { 
+                        q.push({i,node}); 
+                        vis[i] = 1;
                     }
                     else if (parent!=i)
                     {

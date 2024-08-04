@@ -24,6 +24,7 @@ struct Node
         left = NULL;
     }
 };
+
 void Flatten(Node* root)
 {
     if(!root || (!root->left && !root->right))return;//indication that that part of tree or whole tree is flat

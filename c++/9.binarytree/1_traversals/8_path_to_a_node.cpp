@@ -14,21 +14,18 @@ struct TreeNode {
     }
 };
 bool path(TreeNode* root, TreeNode* node, vector<int>& arr) {
-    if (root == NULL) {
-        // arr.pop_back(); not here because it will pop 2 times for nodes where left and right are NULL but we need to pop only once
-        return false;
-    }
+    if(root==NULL)return false;
     arr.push_back(root->val);
-    if (root->val == node->val) {
-        return true;
-    }
-    bool left = path(root->left, node, arr);
-    bool right = path(root->right, node, arr);
-    if(!left && !right) {
+    if(root->val==node->val)return true;
+    bool left = path(root->left,node,arr);
+    bool right = path(root->right,node,arr);
+    if(!left && !right)
+    {
         arr.pop_back();
     }
     return (left || right);
 }
+
 int main() {
     // Create the tree
     TreeNode* root = new TreeNode(1);
@@ -39,7 +36,7 @@ int main() {
     root->right->left = new TreeNode(6);
     root->right->right = new TreeNode(7);
     // Find the path for node 4
-    TreeNode* node = root->left->right;
+    TreeNode* node = root->right->right;
     vector<int> pathArr;
     bool found = path(root, node, pathArr);
     // Print the modified array
@@ -50,3 +47,32 @@ int main() {
     return 0;
 }
 
+
+
+// path to all leaf nodes
+// can do without backtracking also which is easier to do 
+void solve(Node* root, vector<int>& curr, vector<vector<int>>& ans) {
+    if (!root) return;
+
+    // Add the current node's data to the current path
+    curr.push_back(root->data);
+
+    // If the current node is a leaf, add the path to the answer
+    if (root->left == NULL && root->right == NULL) {
+        ans.push_back(curr);
+    } else {
+        // Recur for left and right subtrees
+        solve(root->left, curr, ans);
+        solve(root->right, curr, ans);
+    }
+
+    // Backtrack: remove the current node's data from the current path
+    curr.pop_back();
+}
+
+vector<vector<int>> Paths(Node* root) {
+    vector<vector<int>> ans;
+    vector<int> curr;
+    solve(root, curr, ans);
+    return ans;
+}

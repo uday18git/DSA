@@ -1,6 +1,4 @@
-// striver
-
-// all in one lol
+// all in one 
 // we will use stack to solve this
 // stack will have (node,num)
 // if num==1 preorder , then ++num then push the left of the num

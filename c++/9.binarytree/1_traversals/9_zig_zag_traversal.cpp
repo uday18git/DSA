@@ -8,11 +8,11 @@
 //  consider
 //       1
 //       / \
-//    2   3
+//      2   3
 //      \    \ 
-//      4   5
-//        /\
-//     6  7
+//       4   5
+//           /\
+//          6  7
 //  first currLEvel stack = 1
 //  print it to ans [1]
 //  Left to Right is true so first left child of 1 will be pushed to next level stack..

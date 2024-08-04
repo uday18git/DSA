@@ -8,7 +8,6 @@ void solve(string ip,string op)
     {
         cout<<op<<" ";
         return; // v imp dont forget this
-
     }
     string op1 = op;
     string op2 = op+ip[0];

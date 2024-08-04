@@ -1,6 +1,6 @@
 // properties of binary trees
 // 1.maximum nodes at level L = 2^L
-// 2.maximum nodes in a node of height H is 2^H -1
+// 2.maximum nodes in a level of height H is 2^H -1
 // 3.For n nodes minimum heigth is log2(n+1)
 // 4.A bt has L leaves then it has at least log2(N+1)+1 number of levels
 

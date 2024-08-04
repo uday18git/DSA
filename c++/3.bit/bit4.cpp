@@ -11,9 +11,9 @@ for(int i = 0;i<n;i++)
 }
 for(int i = 0; i< (1<<n); i++)
 {
-    for(int j=0;j< n ; j++)
+    for(int j=0;j<n ; j++) // generates a subset
     {
-        if(i & (1<<j))
+        if(i & (1<<j)) // gets the j bit of i
         {
             cout<<arr[j]<<"";
         }

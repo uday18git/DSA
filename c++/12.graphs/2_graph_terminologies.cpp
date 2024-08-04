@@ -11,7 +11,7 @@
 // cyclic and acyclic graphs -> cyclic graph has cycle and acyclic graph doesnt have cycle
 // tree -> tree is a connected acyclic graph
 // properties of tree
-// 1.number of edges = number of nodes -1
+// 1. number of edges = number of nodes - 1
 // 2. number of connected components = 1
 // 3. number of cycles = 0
 // Each node has path from every other node bcos it is connnected

@@ -5,7 +5,6 @@ using namespace std;
 // so we have to combine the previous one and first occurance program and search for 1
 int main() {
     vector<int> arr={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-    
     int start=0;
     int end=1;
     int key=1;
@@ -15,6 +14,8 @@ int main() {
         start=end;
         end*=2;
     }
+    start=0;
+    end=arr.size()-1;
     while(start<=end)
     {
         int mid=start + (end-start)/2;
@@ -28,6 +29,6 @@ int main() {
             start=mid+1;
         }
     }
-    cout<<ans;
+    cout<<start;
     return 0;
 }

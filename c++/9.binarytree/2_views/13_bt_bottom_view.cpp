@@ -27,12 +27,11 @@ struct TreeNode{
 void bottom_view(TreeNode* root)
 {
     queue<pair<TreeNode*,int>> q;
+    //level bottom node WHOLE LOGIC IS THIS MAP
     map<int,int> m;
     q.push({root,0});
     while(!q.empty())
     {
-        
-        
         auto x = q.front();
         q.pop();
         
@@ -45,9 +44,6 @@ void bottom_view(TreeNode* root)
         {
             q.push({x.first->right,x.second+1});
         }
-        
-        
-        
     }
     for(auto it=m.begin();it!=m.end();++it)
     {

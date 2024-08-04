@@ -17,7 +17,7 @@ public:
             return dp[i][buy] = max(-prices[i] + solve(i + 1, 0, prices, dp), solve(i + 1, 1, prices, dp));
         }
         else
-        { // changed from i+1 to i+2
+        { // changed from i+1 to i+2 (COOLDOWN)
             return dp[i][buy] = max(prices[i] + solve(i + 2, 1, prices, dp), solve(i + 1, 0, prices, dp));
         }
     }

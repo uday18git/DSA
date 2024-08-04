@@ -1,5 +1,4 @@
 // apna clg
-
 // APPLICATION OF LEVEL ORDER TRAVERSAL
 #include "bits/stdc++.h"
 using namespace std;
@@ -35,7 +34,6 @@ void sumatKLevel(Node* root,int k){
                 // cout<<node->data<<" ";
                 sum_at_k+=node->data;
             }
-            
             if(node->left)
                 q.push(node->left);
             if(node->right)

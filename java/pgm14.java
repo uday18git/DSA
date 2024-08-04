@@ -10,9 +10,7 @@ class A {
             }
         }
         catch(Exception e)
-        {
-
-        }
+        {}
     }
 }
 class Mul extends Thread

@@ -15,7 +15,6 @@ abstract class Student
     {
         return Name;
     }
-
 }
 class Undergrad extends Student
 {

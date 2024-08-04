@@ -69,17 +69,3 @@ int main()
 // and the for loop inside runs for all the degrees of a node
 // and total degrees in a graph is 2*e ukr
 
-
-
-void dfs(int v)
-{
-    visited[v]=1;
-    cout<<v<<" ";
-    for(auto it:adj[v])
-    {
-        if(!visited[it])
-        {
-
-        }
-    }
-}

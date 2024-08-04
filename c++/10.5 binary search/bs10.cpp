@@ -8,7 +8,7 @@ int main() {
     int start=0;
     int end=1 ;
     int key=11;
-    while(key>arr[end] ) // wiill give segmentation fault if the array is not actually infinite length
+    while(key>arr[end] ) // will give segmentation fault if the array is not actually infinite length
     {
         start=end;
         end=end*2;
@@ -30,6 +30,5 @@ int main() {
             start=mid+1;
         }
     }
-
     return 0;
 }

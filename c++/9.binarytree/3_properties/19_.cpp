@@ -1,7 +1,7 @@
-// https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/
+ // https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/
  // first way to do is , using LCA , after finding the lca for start and dest.....
  // find path of start and dest from the lca , and from start to lca it will be u u u 
- // and from lca to dest it will be l r  .. whateever
+ // and from lca to dest it will be l r  .. whatever
 class Solution {
 public:
     TreeNode* lca(TreeNode* node,int p,int q)
@@ -24,12 +24,10 @@ public:
         pathString.push_back('L');
         dfs(node->left,pathString,p,q);
         pathString.pop_back();
-
         pathString.push_back('R');
         dfs(node->right,pathString,p,q);
         pathString.pop_back();
     }
-
     string getDirections(TreeNode* root, int startValue, int destValue) {
         TreeNode* lcaNode = lca(root,startValue,destValue);
         string pathString ="";

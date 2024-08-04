@@ -1,8 +1,6 @@
 // apna clg
-
 // height of a binary tree is the deepest node to root
 // recursively we'll find out the height of every node first remove height to left subtree and right subtree finally we will add one to the max of those
-
 #include "bits/stdc++.h"
 using namespace std;
 struct Node

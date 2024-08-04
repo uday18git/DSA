@@ -1,7 +1,7 @@
 // if there is a cycle in the graph , then there wil be a point where all the nodes will 
-//  not be processed and stil the q will become of empty because ther will be no nodes
-//  with indegree of 0, so the answer size will be less than the number of nodes
-// we can detect through taht condition
+// not be processed and stil the q will become of empty because ther will be no nodes
+// with indegree of 0, so the answer size will be less than the number of nodes
+// we can detect through that condition
 
 #include <bits/stdc++.h> 
 using namespace std;
@@ -45,7 +45,6 @@ public:
         }
         if(ans.size()==numCourses)return true;
         else return false;
-
     }
 };
 // return the topo if asked

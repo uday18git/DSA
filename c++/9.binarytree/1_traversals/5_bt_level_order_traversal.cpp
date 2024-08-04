@@ -109,9 +109,6 @@ struct Node
 // In the worst case, for a completely unbalanced tree, the maximum width could be equal to the 
 // number of nodes at the lowest level, which may lead to a space complexity of O(n). However, for a balanced binary tree, 
 // the maximum width is limited to approximately n/2, resulting in a space complexity of O(n/2) or simply O(n) for big-O notation.
-
-
-
 void printLevelOrder(Node * root)
 {
     if(root ==NULL)
@@ -165,9 +162,6 @@ void printLevelOrder(Node * root)
             }
         }
     }
-    
-
-
 }
 
 int main()

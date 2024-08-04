@@ -6,7 +6,6 @@ public:
         {
             adj[roads[i][0]].push_back({roads[i][1],roads[i][2]});
             adj[roads[i][1]].push_back({roads[i][0],roads[i][2]});
-
         }
         long long  mode = (long long)(1e18+7);
         vector<long long> ways(n,0);
@@ -38,11 +37,9 @@ public:
                     // no need to push into queue because already a instance of tht will be in the queue
                 }
             }
-
         }
         long long ans = (ways[n-1]) % mode;
         return ans;
-
     }
 };
 
